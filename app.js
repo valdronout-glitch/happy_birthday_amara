@@ -6028,6 +6028,196 @@ document.addEventListener('DOMContentLoaded', () => {
                 saturnCometContainer.appendChild(comet);
             }
         }
+
+        // ==========================================================================
+        // DYNAMIC J&T EXPRESS REAL-TIME TIMELINE TRACKING SYSTEM
+        // ==========================================================================
+        const jtTimelineEvents = [
+            {
+                time: new Date("2026-06-01T16:30:00+07:00"),
+                label: "Senin, 1 Juni 2026 - 16:30 WIB",
+                title: "Paket Diterima J&T Express 📦",
+                desc: "Pengirim menyerahkan paket ke Drop Point origin J&T Medan Cemara Asri. Paket telah diproses (ED_Cemara_Asri5)."
+            },
+            {
+                time: new Date("2026-06-01T19:00:00+07:00"),
+                label: "Senin, 1 Juni 2026 - 19:00 WIB",
+                title: "Dalam Perjalanan ke Gateway 🚚",
+                desc: "Paket sedang diberangkatkan dari Drop Point origin Medan Cemara Asri menuju Gateway Transit Hub Medan."
+            },
+            {
+                time: new Date("2026-06-01T21:30:00+07:00"),
+                label: "Senin, 1 Juni 2026 - 21:30 WIB",
+                title: "Transit di Gateway Hub Medan Selesai sortir 🏭",
+                desc: "Paket telah tiba di pusat sortir J&T Gateway Transit Hub Medan dan dimasukkan ke karung tujuan Jakarta."
+            },
+            {
+                time: new Date("2026-06-02T03:00:00+07:00"),
+                label: "Selasa, 2 Juni 2026 - 03:00 WIB",
+                title: "Berangkat dari Gateway Medan ke Jakarta ✈️",
+                desc: "Paket dibawa ke Bandara Kualanamu dan diberangkatkan menuju Bandara Soekarno-Hatta Jakarta via jalur kargo udara."
+            },
+            {
+                time: new Date("2026-06-02T10:15:00+07:00"),
+                label: "Selasa, 2 Juni 2026 - 10:15 WIB",
+                title: "Tiba di Gateway Jakarta (Transit) 📦",
+                desc: "Paket mendarat di Jakarta dan dibongkar di Gudang Transit Hub Utama Jakarta untuk disortir ulang ke rute Surabaya."
+            },
+            {
+                time: new Date("2026-06-02T16:00:00+07:00"),
+                label: "Selasa, 2 Juni 2026 - 16:00 WIB",
+                title: "Berangkat dari Gateway Jakarta menuju Surabaya ✈️",
+                desc: "Paket telah naik pesawat kargo udara menuju Surabaya (Transit Sidoarjo)."
+            },
+            {
+                time: new Date("2026-06-02T18:30:00+07:00"),
+                label: "Selasa, 2 Juni 2026 - 18:30 WIB",
+                title: "Tiba di Gateway Surabaya 🏭",
+                desc: "Paket mendarat di Bandara Juanda Surabaya dan dibawa ke pusat sortir utama J&T Jawa Timur (Sidoarjo)."
+            },
+            {
+                time: new Date("2026-06-03T01:00:00+07:00"),
+                label: "Rabu, 3 Juni 2026 - 01:00 WIB",
+                title: "Selesai Disortir & Menuju Gateway Madiun 🚚",
+                desc: "Paket dikeluarkan dari karung besar Jawa Timur, dikelompokkan ke wilayah AE (Madiun), lalu dimuat ke dalam truk boks tol Trans-Jawa."
+            },
+            {
+                time: new Date("2026-06-03T05:30:00+07:00"),
+                label: "Rabu, 3 Juni 2026 - 05:30 WIB",
+                title: "Tiba di Gateway Madiun 🏭",
+                desc: "Truk sampai di pusat sortir wilayah Madiun. Paket diturunkan dan dipisahkan lagi ke kecamatan Kartoharjo."
+            },
+            {
+                time: new Date("2026-06-03T09:00:00+07:00"),
+                label: "Rabu, 3 Juni 2026 - 09:00 WIB",
+                title: "Berangkat dari Gateway Madiun menuju Drop Point Kartoharjo 🚚💨",
+                desc: "Paket dibawa dengan mobil boks cabang menuju Drop Point J&T cabang Kartoharjo Madiun."
+            },
+            {
+                time: new Date("2026-06-04T07:30:00+07:00"),
+                label: "Kamis, 4 Juni 2026 - 07:30 WIB",
+                title: "Tiba di Drop Point Madiun Kartoharjo 🏢",
+                desc: "Paket sampai di kantor cabang J&T Kartoharjo terdekat dan langsung disortir untuk rute pengantaran motor kurir."
+            },
+            {
+                time: new Date("2026-06-04T09:00:00+07:00"),
+                label: "Kamis, 4 Juni 2026 - 09:00 WIB",
+                title: "Sedang Dikirim oleh Kurir Sopandi 🛵💨",
+                desc: "Paket sudah dibawa oleh Kurir Sprinter Sopandi di dalam motor kargo J&T dan sedang menuju ke lokasi rumah Amara."
+            },
+            {
+                time: new Date("2026-06-04T13:15:00+07:00"),
+                label: "Kamis, 4 Juni 2026 - 13:15 WIB",
+                title: "Delivered: Paket Diterima! 🎉🌸",
+                desc: "Paket kado ulang tahun dari Valdric telah berhasil diterima oleh Amara dengan selamat. Status pengiriman selesai!"
+            }
+        ];
+
+        function updateJntTrackingWidget() {
+            const jntTimeline = document.getElementById('jntTimeline');
+            const jntStatusBubble = document.getElementById('jntStatusBubble');
+            const jntHudLocation = document.getElementById('jntHudLocation');
+            const jntStatusBanner = document.getElementById('jntStatusBanner');
+            const jntStatusBannerText = document.getElementById('jntStatusBannerText');
+            const mapCourierNode = document.getElementById('mapCourierNode');
+
+            if (!jntTimeline) return;
+
+            const now = new Date();
+            
+            // Filter events that have happened
+            const activeEvents = jtTimelineEvents.filter(ev => now >= ev.time);
+            activeEvents.sort((a, b) => b.time - a.time); // Latest active first
+
+            // Find first pending event
+            const pendingEvents = jtTimelineEvents.filter(ev => now < ev.time);
+            
+            // 1. Update Status Banner
+            if (jntStatusBanner && jntStatusBannerText) {
+                if (pendingEvents.length > 0) {
+                    const nextEv = pendingEvents[0];
+                    const opt = { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit', hour12: false };
+                    const formattedTime = nextEv.time.toLocaleString('id-ID', opt).replace(',', '') + ' WIB';
+                    jntStatusBannerText.textContent = `Status paket akan diperbarui sebelum ${formattedTime}.`;
+                    jntStatusBanner.style.display = 'flex';
+                } else {
+                    jntStatusBanner.style.display = 'none';
+                }
+            }
+
+            // 2. Render Timeline
+            jntTimeline.innerHTML = '';
+            if (activeEvents.length > 0) {
+                activeEvents.forEach((ev, idx) => {
+                    const item = document.createElement('div');
+                    item.className = `timeline-item ${idx === 0 ? 'active' : ''}`;
+                    item.innerHTML = `
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-time">${ev.label}</div>
+                            <div class="timeline-title" style="font-weight: bold; color: var(--dark-text);">${ev.title}</div>
+                            <div class="timeline-desc" style="font-size: 11px; margin-top: 4px; color: var(--light-text);">${ev.desc}</div>
+                        </div>
+                    `;
+                    jntTimeline.appendChild(item);
+                });
+            } else {
+                jntTimeline.innerHTML = '<div style="text-align: center; color: var(--light-text); padding: 15px; font-size: 12px;">Menunggu pick-up kargo oleh J&T Express...</div>';
+            }
+
+            // 3. Update status bubble and HUD
+            if (activeEvents.length > 0) {
+                const latest = activeEvents[0];
+                
+                if (jntStatusBubble) {
+                    if (latest.title.includes('Delivered')) {
+                        jntStatusBubble.innerHTML = 'Diterima 🎁';
+                        jntStatusBubble.style.color = '#2b8a3e';
+                        jntStatusBubble.style.background = '#ebfbee';
+                    } else if (latest.title.includes('Sedang Dikirim')) {
+                        jntStatusBubble.innerHTML = 'Mengirim 🛵';
+                        jntStatusBubble.style.color = '#e8590c';
+                        jntStatusBubble.style.background = '#fff4e6';
+                    } else {
+                        jntStatusBubble.innerHTML = 'Sedang Transit 🚚';
+                        jntStatusBubble.style.color = '#f08c00';
+                        jntStatusBubble.style.background = '#fff9db';
+                    }
+                }
+
+                if (jntHudLocation) {
+                    if (latest.title.includes('Delivered')) {
+                        jntHudLocation.textContent = 'Tiba di Rumah Amara 🏡';
+                    } else if (latest.title.includes('Madiun')) {
+                        jntHudLocation.textContent = 'Transit di Madiun Hub';
+                    } else if (latest.title.includes('Surabaya')) {
+                        jntHudLocation.textContent = 'Sidoarjo Sorting Hub';
+                    } else if (latest.title.includes('Jakarta')) {
+                        jntHudLocation.textContent = 'Transit Gateway Jakarta';
+                    } else {
+                        jntHudLocation.textContent = 'Gateway Hub Medan';
+                    }
+                }
+
+                // 4. Update GPS courier node transform
+                if (mapCourierNode) {
+                    if (latest.title.includes('Delivered')) {
+                        mapCourierNode.style.animation = 'none';
+                        mapCourierNode.setAttribute('transform', 'translate(340, 140)');
+                    } else if (latest.title.includes('Madiun')) {
+                        mapCourierNode.style.animation = 'none';
+                        mapCourierNode.setAttribute('transform', 'translate(295, 115)');
+                    } else {
+                        mapCourierNode.style.animation = 'courierGpsTravel 20s infinite linear';
+                    }
+                }
+            }
+        }
+
+        // Initialize dynamic J&T widget
+        updateJntTrackingWidget();
+        // Periodically refresh tracking every 30 seconds
+        setInterval(updateJntTrackingWidget, 30000);
     }
 });
 

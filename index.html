@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Custom Stylesheet -->
-    <link rel="stylesheet" href="styles.css?v=1.1.7">
+    <link rel="stylesheet" href="styles.css?v=1.1.9">
 
     <!-- Critical & Cache-Proof theme toggle styles -->
     <style>
@@ -2183,7 +2183,7 @@
                                 <span class="jnt-logo-text">J&T<span class="jnt-express-text">EXPRESS</span></span>
                                 <span class="jnt-badge">Live Tracking</span>
                             </div>
-                            <div class="jnt-status-bubble">Dalam Perjalanan 🚚</div>
+                            <div class="jnt-status-bubble" id="jntStatusBubble">Dalam Perjalanan 🚚</div>
                         </div>
 
                         <div class="jnt-tracking-details">
@@ -2231,7 +2231,7 @@
                             <div class="jnt-map-hud">
                                 <div class="hud-item">
                                     <span class="hud-lbl">Lokasi Kurir:</span>
-                                    <span class="hud-val pulse-text">Menuju Hub Transit</span>
+                                    <span class="hud-val pulse-text" id="jntHudLocation">Menuju Hub Transit</span>
                                 </div>
                                 <div class="hud-item">
                                     <span class="hud-lbl">Suhu Paket:</span>
@@ -2240,35 +2240,15 @@
                             </div>
                         </div>
 
+                        <!-- Dynamic J&T Status Banner -->
+                        <div class="jnt-status-banner" id="jntStatusBanner" style="display: none;">
+                            <div class="banner-icon"><i class="fas fa-info-circle"></i></div>
+                            <div class="banner-text" id="jntStatusBannerText">Status paket akan diperbarui sebelum...</div>
+                        </div>
+
                         <!-- Tracking Timeline -->
-                        <div class="jnt-timeline">
-                            <div class="timeline-item active">
-                                <div class="timeline-marker"></div>
-                                <div class="timeline-content">
-                                    <div class="timeline-time">01 Juni 2026 - 19:30</div>
-                                    <div class="timeline-title">Transit di Gateway Hub Medan</div>
-                                    <div class="timeline-desc">Paket telah tiba di pusat sortir J&T Gateway Transit Hub
-                                        Medan.</div>
-                                </div>
-                            </div>
-                            <div class="timeline-item active">
-                                <div class="timeline-marker"></div>
-                                <div class="timeline-content">
-                                    <div class="timeline-time">01 Juni 2026 - 16:45</div>
-                                    <div class="timeline-title">Dalam Perjalanan ke Gateway</div>
-                                    <div class="timeline-desc">Paket sedang diberangkatkan dari Drop Point origin Medan
-                                        Cemara Asri menuju Gateway Transit Hub Medan.</div>
-                                </div>
-                            </div>
-                            <div class="timeline-item active">
-                                <div class="timeline-marker"></div>
-                                <div class="timeline-content">
-                                    <div class="timeline-time">01 Juni 2026 - 13:51</div>
-                                    <div class="timeline-title">Paket Diterima J&T Express</div>
-                                    <div class="timeline-desc">Drop Point Medan Cemara Asri - Paket diserahkan oleh
-                                        pengirim dan telah diproses (ED_Cemara_Asri5).</div>
-                                </div>
-                            </div>
+                        <div class="jnt-timeline" id="jntTimeline">
+                            <!-- Dynamic timeline items will be rendered here by JS -->
                         </div>
                     </div>
 
@@ -2309,7 +2289,7 @@
     <canvas id="confettiCanvas"></canvas>
 
     <!-- Custom JavaScript File -->
-    <script src="app.js?v=1.1.8"></script>
+    <script src="app.js?v=1.1.9"></script>
 </body>
 
 </html>
