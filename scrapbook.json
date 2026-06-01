@@ -48,18 +48,18 @@
         "id": "user_1780305675",
         "src": "uploads/scrapbook_1780305675.jpg",
         "caption": "ILY",
-        "left": "391.103px",
-        "top": "239.125px",
+        "left": "337.65px",
+        "top": "254.125px",
         "rotate": "4deg",
-        "zIndex": 117
+        "zIndex": 118
     },
     {
         "id": "user_1780305809",
         "src": "uploads/scrapbook_1780305809.jpg",
         "caption": "ILY",
-        "left": "125.012px",
-        "top": "244.618px",
+        "left": "48.4807px",
+        "top": "210.29px",
         "rotate": "6deg",
-        "zIndex": 116
+        "zIndex": 119
     }
 ]
