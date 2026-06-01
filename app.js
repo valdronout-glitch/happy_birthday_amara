@@ -2948,6 +2948,23 @@ document.addEventListener('DOMContentLoaded', () => {
         if (lightboxVideoElement) {
             lightboxVideoElement.pause();
             lightboxVideoElement.src = '';
+            lightboxVideoElement.style.display = 'none';
+        }
+        
+        // Remove dynamic iframe if any
+        const lightboxIframe = document.getElementById('lightboxIframe');
+        if (lightboxIframe) {
+            lightboxIframe.remove();
+        }
+
+        // Re-display raw lightbox image block just in case
+        const lightboxImg = document.getElementById('lightboxImg');
+        if (lightboxImg) lightboxImg.style.display = 'block';
+
+        // Reset the portrait styling
+        const lightboxCard = document.querySelector('.lightbox-card');
+        if (lightboxCard) {
+            lightboxCard.classList.remove('portrait-video-mode');
         }
     }
 
@@ -6032,16 +6049,41 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Simple click/tap detection with drag-to-spin tolerance
                 if (deltaX < 6 && deltaY < 6 && deltaTime < 300) {
-                    const videoSrc = youtubeCard.getAttribute('data-video') || "IMG_6546.MOV";
                     const polaroidModal = document.getElementById('polaroidModal');
                     const lightboxImg = document.getElementById('lightboxImg');
                     const lightboxVideo = document.getElementById('lightboxVideo');
                     const lightboxCaption = document.getElementById('lightboxCaption');
+                    const lightboxCard = document.querySelector('.lightbox-card');
 
                     if (polaroidModal && lightboxVideo && lightboxImg && lightboxCaption) {
                         lightboxImg.style.display = 'none';
-                        lightboxVideo.style.display = 'block';
-                        lightboxVideo.src = videoSrc;
+                        lightboxVideo.style.display = 'none'; // Hide native HTML5 video
+
+                        // Apply portrait styling classes
+                        if (lightboxCard) {
+                            lightboxCard.classList.add('portrait-video-mode');
+                        }
+
+                        // Remove existing dynamic iframe if any
+                        const oldIframe = document.getElementById('lightboxIframe');
+                        if (oldIframe) oldIframe.remove();
+
+                        // Create Google Drive Embed Iframe for Portrait Video
+                        const driveIframe = document.createElement('iframe');
+                        driveIframe.id = "lightboxIframe";
+                        driveIframe.src = "https://drive.google.com/file/d/1Ob8mc9VQl-hKNmEumIeOQdZ9l2EhG2MC/preview?autoplay=1";
+                        driveIframe.style.width = "100%";
+                        driveIframe.style.height = "100%";
+                        driveIframe.style.border = "none";
+                        driveIframe.style.borderRadius = "4px";
+                        driveIframe.allow = "autoplay; encrypted-media";
+                        driveIframe.setAttribute('allowfullscreen', 'true');
+
+                        // Append the dynamic iframe into the lightbox container
+                        const imgContainer = document.querySelector('.lightbox-img-container');
+                        if (imgContainer) {
+                            imgContainer.appendChild(driveIframe);
+                        }
 
                         // Pause background music if it is initialized and playing
                         if (musicInitialized && !bgAudio.paused) {
@@ -6053,11 +6095,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
                         lightboxCaption.textContent = "Galaksi Cinta Amara 💖";
                         polaroidModal.classList.add('show');
-                        
-                        // Play the video!
-                        lightboxVideo.play().catch(err => {
-                            console.error("Failed to autoplay video in lightbox:", err);
-                        });
 
                         // Trigger a sweet confetti burst!
                         if (typeof triggerConfettiBurst === 'function') {
