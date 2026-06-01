@@ -3184,7 +3184,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // ==========================================================================
-    // 11. SPECIAL VIDEO PLAYER
+    // 11. SPECIAL VIDEO PLAYER (DYNAMIC GOOGLE DRIVE EMBED)
     // ==========================================================================
     const birthdayVideo = document.getElementById('birthdayVideo');
     const videoPlayOverlay = document.getElementById('videoPlayOverlay');
@@ -3193,22 +3193,28 @@ document.addEventListener('DOMContentLoaded', () => {
         videoPlayOverlay.addEventListener('click', () => {
             videoPlayOverlay.style.opacity = '0';
             setTimeout(() => { videoPlayOverlay.style.display = 'none'; }, 500);
-            birthdayVideo.play();
-            if (musicInitialized && !bgAudio.paused) togglePlay();
-        });
 
-        birthdayVideo.addEventListener('play', () => {
-            videoPlayOverlay.style.display = 'none';
+            // Create Google Drive Embed Iframe
+            const driveIframe = document.createElement('iframe');
+            driveIframe.src = "https://drive.google.com/file/d/1LHOJUfLCLVaNmtclVwheLS3BBjYFBKE4/preview?autoplay=1";
+            driveIframe.style.width = "100%";
+            driveIframe.style.height = "100%";
+            driveIframe.style.border = "none";
+            driveIframe.style.borderRadius = "12px";
+            driveIframe.style.aspectRatio = "16/9";
+            driveIframe.allow = "autoplay; encrypted-media";
+            driveIframe.setAttribute('allowfullscreen', 'true');
+
+            // Replace the local video element with the Google Drive Iframe
+            birthdayVideo.parentNode.replaceChild(driveIframe, birthdayVideo);
+
+            // Pause background music if playing
             if (musicInitialized && !bgAudio.paused) {
                 bgAudio.pause();
-                btnPlayPause.innerHTML = '<i class="fas fa-play"></i>';
+                if (btnPlayPause) {
+                    btnPlayPause.innerHTML = '<i class="fas fa-play"></i>';
+                }
             }
-        });
-
-        birthdayVideo.addEventListener('ended', () => {
-            videoPlayOverlay.style.display = 'flex';
-            setTimeout(() => { videoPlayOverlay.style.opacity = '1'; }, 50);
-            if (musicInitialized && bgAudio.paused) togglePlay();
         });
     }
 
