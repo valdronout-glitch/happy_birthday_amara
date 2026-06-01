@@ -2699,8 +2699,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Merge static/fetched scrapbook items with localStorage while preserving customized coordinates/zIndex
     function mergeScrapbookItems(fetchedItems, localItems) {
+        const deletedDefaults = JSON.parse(localStorage.getItem('amara_deleted_scrapbook') || '[]');
         const merged = [];
         fetchedItems.forEach(fetched => {
+            // Skip if deleted
+            if (deletedDefaults.includes(fetched.id)) return;
+
             const local = localItems.find(it => it.id === fetched.id);
             if (local) {
                 merged.push({
@@ -2738,6 +2742,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         card.innerHTML = `
+            <button class="polaroid-delete-btn" title="Hapus Kenangan">&times;</button>
             <div class="polaroid-img-wrapper">
                 <img src="${item.src}" alt="${item.caption}" class="polaroid-img">
             </div>
@@ -2845,6 +2850,36 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
+        const deleteBtn = card.querySelector('.polaroid-delete-btn');
+        if (deleteBtn) {
+            deleteBtn.addEventListener('click', (e) => {
+                e.stopPropagation(); // Prevent modal zoom or card drag triggers
+                
+                // Animate fade out and remove card
+                card.style.transition = 'all 0.4s ease';
+                card.style.opacity = '0';
+                card.style.transform = 'scale(0.8) rotate(10deg)';
+                
+                setTimeout(() => {
+                    card.remove();
+                    
+                    // Remove from localStorage amara_scrapbook
+                    const localScrapbook = JSON.parse(localStorage.getItem('amara_scrapbook') || '[]');
+                    const filtered = localScrapbook.filter(it => it.id !== item.id);
+                    localStorage.setItem('amara_scrapbook', JSON.stringify(filtered));
+
+                    // If it was a default/preload card, store its ID as deleted
+                    if (!item.id.toString().startsWith('user_')) {
+                        const deletedDefaults = JSON.parse(localStorage.getItem('amara_deleted_scrapbook') || '[]');
+                        if (!deletedDefaults.includes(item.id)) {
+                            deletedDefaults.push(item.id);
+                            localStorage.setItem('amara_deleted_scrapbook', JSON.stringify(deletedDefaults));
+                        }
+                    }
+                }, 400);
+            });
+        }
+
         scrapbookWorkspace.appendChild(card);
     }
 
@@ -2873,8 +2908,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 })
                 .catch(err2 => {
                     console.error("Failed to load static scrapbook data:", err2);
-                    if (localScrapbookData && localScrapbookData.length > 0) {
-                        localScrapbookData.forEach(item => renderPolaroidCard(item));
+                    const deletedDefaults = JSON.parse(localStorage.getItem('amara_deleted_scrapbook') || '[]');
+                    const filteredLocal = localScrapbookData.filter(it => !deletedDefaults.includes(it.id));
+                    if (filteredLocal && filteredLocal.length > 0) {
+                        filteredLocal.forEach(item => renderPolaroidCard(item));
                     }
                 });
         });

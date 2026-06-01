@@ -1653,6 +1653,42 @@ body {
     pointer-events: none;
 }
 
+/* Polaroid Delete Button */
+.polaroid-delete-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    color: #e74c3c;
+    font-size: 18px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.25s ease;
+    z-index: 10;
+}
+
+.polaroid-card:hover .polaroid-delete-btn {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.polaroid-delete-btn:hover {
+    background: #e74c3c;
+    color: #ffffff;
+    transform: scale(1.1);
+    box-shadow: 0 3px 8px rgba(231, 76, 60, 0.3);
+}
+
 .lightbox-card {
     background: var(--cream);
     padding: 16px 16px 24px 16px;
