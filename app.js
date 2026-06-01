@@ -6037,12 +6037,14 @@ document.addEventListener('DOMContentLoaded', () => {
             let pressTime = 0;
 
             youtubeCard.addEventListener('pointerdown', (e) => {
+                e.stopPropagation(); // Prevent parent Saturn Orbit pointer capture!
                 pressX = e.clientX;
                 pressY = e.clientY;
                 pressTime = Date.now();
             });
 
             youtubeCard.addEventListener('pointerup', (e) => {
+                e.stopPropagation(); // Stop propagation!
                 const deltaX = Math.abs(e.clientX - pressX);
                 const deltaY = Math.abs(e.clientY - pressY);
                 const deltaTime = Date.now() - pressTime;
