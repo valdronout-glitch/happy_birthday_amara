@@ -6068,15 +6068,15 @@ document.addEventListener('DOMContentLoaded', () => {
                         const oldIframe = document.getElementById('lightboxIframe');
                         if (oldIframe) oldIframe.remove();
 
-                        // Create Google Drive Embed Iframe for Portrait Video
+                        // Create YouTube Embed Iframe for Portrait Video
                         const driveIframe = document.createElement('iframe');
                         driveIframe.id = "lightboxIframe";
-                        driveIframe.src = "https://drive.google.com/file/d/1Ob8mc9VQl-hKNmEumIeOQdZ9l2EhG2MC/preview?autoplay=1";
+                        driveIframe.src = "https://www.youtube.com/embed/h95Ib_Z9uiE?autoplay=1&rel=0&modestbranding=1";
                         driveIframe.style.width = "100%";
                         driveIframe.style.height = "100%";
                         driveIframe.style.border = "none";
                         driveIframe.style.borderRadius = "4px";
-                        driveIframe.allow = "autoplay; encrypted-media";
+                        driveIframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
                         driveIframe.setAttribute('allowfullscreen', 'true');
 
                         // Append the dynamic iframe into the lightbox container
