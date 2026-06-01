@@ -1184,7 +1184,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const toteClaimPanel = document.getElementById('toteClaimPanel');
         const toteCourierPanel = document.getElementById('toteCourierPanel');
         const courierScooter = document.getElementById('courierScooter');
-        
+
         if (toteDeliveryContainer) {
             toteDeliveryContainer.style.display = 'none';
             toteDeliveryContainer.style.opacity = '';
@@ -1376,7 +1376,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
             if (bouquetDisplayWrapper) bouquetDisplayWrapper.style.display = 'none';
             if (bouquetCanvas) bouquetCanvas.style.display = 'none';
-            
+
             const toteDeliveryContainer = document.getElementById('toteDeliveryContainer');
             if (toteDeliveryContainer) {
                 toteDeliveryContainer.style.display = 'flex';
@@ -1440,21 +1440,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 toteClaimPanel.style.transition = 'all 0.5s ease';
                 toteClaimPanel.style.opacity = '0';
                 toteClaimPanel.style.transform = 'scale(0.9)';
-                
+
                 setTimeout(() => {
                     toteClaimPanel.style.display = 'none';
                     toteCourierPanel.style.display = 'flex';
                     toteCourierPanel.style.opacity = '0';
                     toteCourierPanel.style.transform = 'scale(0.95)';
-                    
+
                     setTimeout(() => {
                         toteCourierPanel.style.opacity = '1';
                         toteCourierPanel.style.transform = 'scale(1)';
-                        
+
                         // Drive the vector courier scooter!
                         if (courierScooter) {
                             courierScooter.classList.add('drive-in');
-                            
+
                             // Generate real exhaust puffing smoke particles infinitely!
                             if (courierSmokeInterval) clearInterval(courierSmokeInterval);
                             courierSmokeInterval = setInterval(() => {
@@ -1484,13 +1484,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 orderIdTag.innerHTML = `Copied! <i class="fas fa-check"></i>`;
                 orderIdTag.style.background = '#2ecc71';
                 orderIdTag.style.color = '#fff';
-                
+
                 setTimeout(() => {
                     orderIdTag.innerHTML = originalText;
                     orderIdTag.style.background = '';
                     orderIdTag.style.color = '';
                 }, 2000);
-            }).catch(err => {});
+            }).catch(err => { });
         });
     }
 
@@ -1502,13 +1502,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 resiTag.innerHTML = `Copied! <i class="fas fa-check"></i>`;
                 resiTag.style.background = '#2ecc71';
                 resiTag.style.color = '#fff';
-                
+
                 setTimeout(() => {
                     resiTag.innerHTML = originalText;
                     resiTag.style.background = '';
                     resiTag.style.color = '';
                 }, 2000);
-            }).catch(err => {});
+            }).catch(err => { });
         });
     }
 
@@ -1521,7 +1521,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (toteDeliveryContainer) {
                 toteDeliveryContainer.style.transition = 'opacity 0.6s ease';
                 toteDeliveryContainer.style.opacity = '0';
-                
+
                 setTimeout(() => {
                     giftOverlay.style.opacity = '0';
                     setTimeout(() => {
@@ -1534,7 +1534,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         toteClaimPanel.style.transform = '';
                         toteCourierPanel.style.display = 'none';
                         if (courierScooter) courierScooter.classList.remove('drive-in');
-                        
+
                         // Proceed to launch original wishModal
                         showWishModal();
                         triggerConfettiBurst(150);
@@ -2662,6 +2662,66 @@ document.addEventListener('DOMContentLoaded', () => {
     const scrapbookWorkspace = document.getElementById('scrapbookWorkspace');
     let highestZ = 20;
 
+    // Premium image resizing and compression using HTML5 Canvas to prevent localStorage bloat
+    function resizeAndCompressImage(file, callback) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            const img = new Image();
+            img.onload = function () {
+                const maxDim = 800;
+                let width = img.width;
+                let height = img.height;
+
+                if (width > maxDim || height > maxDim) {
+                    if (width > height) {
+                        height = Math.round((height * maxDim) / width);
+                        width = maxDim;
+                    } else {
+                        width = Math.round((width * maxDim) / height);
+                        height = maxDim;
+                    }
+                }
+
+                const canvas = document.createElement('canvas');
+                canvas.width = width;
+                canvas.height = height;
+                const ctx = canvas.getContext('2d');
+                ctx.drawImage(img, 0, 0, width, height);
+
+                // Compress to JPEG with 0.7 quality
+                const compressedBase64 = canvas.toDataURL('image/jpeg', 0.7);
+                callback(compressedBase64);
+            };
+            img.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+    }
+
+    // Merge static/fetched scrapbook items with localStorage while preserving customized coordinates/zIndex
+    function mergeScrapbookItems(fetchedItems, localItems) {
+        const merged = [];
+        fetchedItems.forEach(fetched => {
+            const local = localItems.find(it => it.id === fetched.id);
+            if (local) {
+                merged.push({
+                    ...fetched,
+                    left: local.left || fetched.left,
+                    top: local.top || fetched.top,
+                    zIndex: local.zIndex || fetched.zIndex,
+                    rotate: local.rotate || fetched.rotate
+                });
+            } else {
+                merged.push(fetched);
+            }
+        });
+        localItems.forEach(local => {
+            if (!merged.some(m => m.id === local.id)) {
+                merged.push(local);
+            }
+        });
+        return merged;
+    }
+
     function renderPolaroidCard(item) {
         if (!scrapbookWorkspace) return;
 
@@ -2736,7 +2796,21 @@ document.addEventListener('DOMContentLoaded', () => {
                     top: card.style.top,
                     zIndex: highestZ
                 })
-            }).catch(err => console.error("Failed to save position:", err));
+            }).catch(err => {
+                console.log("Static host - saving position in localStorage.");
+                const localScrapbook = JSON.parse(localStorage.getItem('amara_scrapbook') || '[]');
+                const existingItem = localScrapbook.find(it => it.id === item.id);
+                if (existingItem) {
+                    existingItem.left = card.style.left;
+                    existingItem.top = card.style.top;
+                    existingItem.zIndex = highestZ;
+                    localStorage.setItem('amara_scrapbook', JSON.stringify(localScrapbook));
+                } else {
+                    const newItem = { ...item, left: card.style.left, top: card.style.top, zIndex: highestZ };
+                    localScrapbook.push(newItem);
+                    localStorage.setItem('amara_scrapbook', JSON.stringify(localScrapbook));
+                }
+            });
         };
 
         card.addEventListener('pointerup', (e) => {
@@ -2775,14 +2849,35 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Load scrapbook entries on startup
+    const localScrapbookData = JSON.parse(localStorage.getItem('amara_scrapbook') || '[]');
     fetch('/api/scrapbook')
-        .then(res => res.json())
+        .then(res => {
+            if (!res.ok) throw new Error("API failed");
+            return res.json();
+        })
         .then(items => {
-            if (items && items.length > 0) {
-                items.forEach(item => renderPolaroidCard(item));
+            const merged = mergeScrapbookItems(items, localScrapbookData);
+            if (merged && merged.length > 0) {
+                merged.forEach(item => renderPolaroidCard(item));
             }
         })
-        .catch(err => console.error("Failed to fetch scrapbook data:", err));
+        .catch(err => {
+            console.log("Static host or server offline - loading scrapbook from scrapbook.json and localStorage.");
+            fetch('scrapbook.json')
+                .then(res => res.json())
+                .then(items => {
+                    const merged = mergeScrapbookItems(items, localScrapbookData);
+                    if (merged && merged.length > 0) {
+                        merged.forEach(item => renderPolaroidCard(item));
+                    }
+                })
+                .catch(err2 => {
+                    console.error("Failed to load static scrapbook data:", err2);
+                    if (localScrapbookData && localScrapbookData.length > 0) {
+                        localScrapbookData.forEach(item => renderPolaroidCard(item));
+                    }
+                });
+        });
 
     // Polaroid Modal setup
     const polaroidModal = document.getElementById('polaroidModal');
@@ -2818,10 +2913,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const caption = scrapbookCaptionInput.value.trim();
             if (!file) return;
 
-            const reader = new FileReader();
-            reader.onload = function (evt) {
-                const base64Image = evt.target.result;
-
+            resizeAndCompressImage(file, function (base64Image) {
+                // Try API first
                 fetch('/api/scrapbook', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -2841,11 +2934,28 @@ document.addEventListener('DOMContentLoaded', () => {
                         fileNameDisplay.textContent = "Belum ada foto yang dipilih";
                     })
                     .catch(err => {
-                        alert("Gagal mengunggah foto. Silakan coba lagi!");
-                        console.error(err);
+                        console.log("Static host or API failure - falling back to localStorage.");
+                        highestZ++;
+                        const newItem = {
+                            id: "user_local_" + Date.now(),
+                            src: base64Image,
+                            caption: caption,
+                            left: (Math.random() * 200 + 100) + "px",
+                            top: (Math.random() * 100 + 50) + "px",
+                            rotate: (Math.random() * 10 - 5) + "deg",
+                            zIndex: highestZ
+                        };
+
+                        const localScrapbook = JSON.parse(localStorage.getItem('amara_scrapbook') || '[]');
+                        localScrapbook.push(newItem);
+                        localStorage.setItem('amara_scrapbook', JSON.stringify(localScrapbook));
+
+                        renderPolaroidCard(newItem);
+                        triggerConfettiBurst(50);
+                        scrapbookUploadForm.reset();
+                        fileNameDisplay.textContent = "Belum ada foto yang dipilih";
                     });
-            };
-            reader.readAsDataURL(file);
+            });
         });
     }
 
@@ -2866,6 +2976,15 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    function saveWishLocally(wish) {
+        const localWishes = JSON.parse(localStorage.getItem('amara_wishes') || '[]');
+        const exists = localWishes.some(w => w.text === wish.text && w.sender === wish.sender && w.color === wish.color);
+        if (!exists) {
+            localWishes.push(wish);
+            localStorage.setItem('amara_wishes', JSON.stringify(localWishes));
+        }
+    }
+
     if (wishForm) {
         wishForm.addEventListener('submit', (e) => {
             e.preventDefault();
@@ -2884,10 +3003,12 @@ document.addEventListener('DOMContentLoaded', () => {
                         if (res.ok) {
                             spawnWishLantern(message, sender, selectedColor);
                         } else {
+                            saveWishLocally(wishPayload);
                             spawnWishLantern(message, sender, selectedColor);
                         }
                     })
                     .catch(err => {
+                        saveWishLocally(wishPayload);
                         spawnWishLantern(message, sender, selectedColor);
                     });
 
@@ -2943,18 +3064,53 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Load persistent lanterns from database API on launch
+    const localWishesData = JSON.parse(localStorage.getItem('amara_wishes') || '[]');
     fetch('/api/wishes')
-        .then(res => res.json())
+        .then(res => {
+            if (!res.ok) throw new Error("API failed");
+            return res.json();
+        })
         .then(wishes => {
-            if (wishes && wishes.length > 0) {
-                wishes.forEach(w => {
+            const merged = [...wishes];
+            localWishesData.forEach(lw => {
+                if (!merged.some(w => w.text === lw.text && w.sender === lw.sender && w.color === lw.color)) {
+                    merged.push(lw);
+                }
+            });
+            if (merged && merged.length > 0) {
+                merged.forEach(w => {
                     const negativeDelay = -Math.random() * 20;
                     spawnWishLantern(w.text, w.sender, w.color, negativeDelay);
                 });
             }
         })
         .catch(err => {
-            console.log("No backend database found:", err);
+            console.log("Static host or server offline - loading wishes from wishes.json and localStorage.");
+            fetch('wishes.json')
+                .then(res => res.json())
+                .then(wishes => {
+                    const merged = [...wishes];
+                    localWishesData.forEach(lw => {
+                        if (!merged.some(w => w.text === lw.text && w.sender === lw.sender && w.color === lw.color)) {
+                            merged.push(lw);
+                        }
+                    });
+                    if (merged && merged.length > 0) {
+                        merged.forEach(w => {
+                            const negativeDelay = -Math.random() * 20;
+                            spawnWishLantern(w.text, w.sender, w.color, negativeDelay);
+                        });
+                    }
+                })
+                .catch(err2 => {
+                    console.error("Failed to load static wishes:", err2);
+                    if (localWishesData && localWishesData.length > 0) {
+                        localWishesData.forEach(w => {
+                            const negativeDelay = -Math.random() * 20;
+                            spawnWishLantern(w.text, w.sender, w.color, negativeDelay);
+                        });
+                    }
+                });
         });
 
 

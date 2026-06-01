@@ -672,7 +672,8 @@
         }
 
         /* Force remove any border or background behind the tote bag */
-        .vector-tote-bag, .tote-sparkle-glow {
+        .vector-tote-bag,
+        .tote-sparkle-glow {
             border: none !important;
             background: transparent !important;
             box-shadow: none !important;
@@ -803,7 +804,7 @@
         <video id="bgAudio"
             style="position: fixed; top: -100px; left: -100px; width: 1px; height: 1px; opacity: 0.01; pointer-events: none; z-index: -9999;"></video>
     </div>
- 
+
     <!-- 1. HERO PRE-ENTER SCREEN (THE 3D STORYBOOK) -->
     <section class="envelope-screen" id="envelopeScreen">
         <div class="book-wrapper">
@@ -824,17 +825,20 @@
                         <div class="inner-content-left">
                             <h3 class="letter-title">Untuk Amara ✨</h3>
                             <p class="letter-excerpt">
-                                Hari ini adalah hari di mana dunia menjadi lebih indah karena kehadiranmu. Semoga setiap detik hari-harimu diisi dengan kedamaian, tawa, dan mimpi yang mekar seperti mawar merah. 🌹
+                                Hari ini adalah hari di mana dunia menjadi lebih indah karena kehadiranmu. Semoga setiap
+                                detik hari-harimu diisi dengan kedamaian, tawa, dan mimpi yang mekar seperti mawar
+                                merah. 🌹
                             </p>
                         </div>
                     </div>
                 </div>
- 
+
                 <!-- Inner Page Right (Page 3) -->
                 <div class="book-page book-inner-right" id="bookInnerRight">
                     <div class="inner-content-right">
                         <p class="letter-excerpt-bold">
-                            Ada kejutan manis menantimu di lembaran berikutnya... Buka halaman ini dan masuki petualangan ulang tahunmu! 💕
+                            Ada kejutan manis menantimu di lembaran berikutnya... Buka halaman ini dan masuki
+                            petualangan ulang tahunmu! 💕
                         </p>
                         <button class="open-btn" id="btnOpenEnvelope">Buka Kejutan <i
                                 class="fa-solid fa-envelope-open-text"
@@ -845,7 +849,7 @@
             <div class="envelope-hint">Tap Buku di atas untuk membukanya! 🌸</div>
         </div>
     </section>
- 
+
     <!-- MAIN APP CONTENT (HIDDEN UNTIL BOOK IS OPENED) -->
     <main class="main-content" id="mainContent">
         <!-- Theme Toggle Button (Cache-proof, Floating fixed in Top-Right, Only visible in Main Page) -->
@@ -854,7 +858,7 @@
             <span class="icon-sun">☀️</span>
             <span class="icon-moon">🌙</span>
         </button>
- 
+
         <!-- HEADER / HERO HEADER -->
         <header class="aesthetic-header">
             <div class="sparkle-title-container">
@@ -862,14 +866,16 @@
                 <p class="subtitle">Happiest Birthday to You! 🎀✨</p>
             </div>
             <div class="gift-box-intro">
-                <p class="sweet-quote">"Semoga hari-hari kamu dipenuhi tawa, hati kamu dipenuhi kedamaian, dan mimpi kamu terbang setinggi langit."</p>
+                <p class="sweet-quote">"Semoga hari-hari kamu dipenuhi tawa, hati kamu dipenuhi kedamaian, dan mimpi
+                    kamu terbang setinggi langit."</p>
             </div>
         </header>
- 
+
         <!-- 2. INTERACTIVE BIRTHDAY CAKE SECTION -->
         <section class="section-container cake-section" id="cakeSection">
             <h2 class="section-title"><i class="fas fa-birthday-cake pink-icon"></i> Tiup Lilin & Make a Wish! 🎂</h2>
-            <p class="section-desc" id="cakeInstruction">Ayo buat keinginanmu! Klik atau geser kursor di atas lilin untuk meniupnya hingga padam, lalu lihat apa yang terjadi! ✨</p>
+            <p class="section-desc" id="cakeInstruction">Ayo buat keinginanmu! Klik atau geser kursor di atas lilin
+                untuk meniupnya hingga padam, lalu lihat apa yang terjadi! ✨</p>
 
             <div class="cake-arena" id="cakeArena">
                 <!-- Gorgeous 3D CSS Birthday Cake -->
@@ -981,7 +987,8 @@
         <!-- 3. INTERACTIVE 10 GAMES HUB SECTION -->
         <section class="section-container games-section" id="gamesSection">
             <h2 class="section-title"><i class="fas fa-gamepad pink-icon"></i> Amara's Dreamy Arcade (30 Games!) 🎮</h2>
-            <p class="section-desc">Sambil merayakan, mari bermain 10 game seru bertema pink ini! Klik tombol navigasi tab di bawah untuk beralih game.</p>
+            <p class="section-desc">Sambil merayakan, mari bermain 10 game seru bertema pink ini! Klik tombol navigasi
+                tab di bawah untuk beralih game.</p>
 
             <!-- Game Tab Headers (10 Tab Headers!) -->
             <div class="game-tabs-scroll-container">
@@ -1099,7 +1106,9 @@
                         <canvas id="catcherCanvas" width="600" height="400"></canvas>
                         <div class="game-overlay" id="catcherOverlay">
                             <h3 class="overlay-title">Tangkap Hati & Kado! 💕</h3>
-                            <p class="overlay-desc">Gunakan tombol **Kiri / Rangan** atau **Swipe/Geser** keranjang di bawah untuk menangkap hati merah, hati pink, dan kotak kado. Hindari awan mendung abu-abu!</p>
+                            <p class="overlay-desc">Gunakan tombol **Kiri / Rangan** atau **Swipe/Geser** keranjang di
+                                bawah untuk menangkap hati merah, hati pink, dan kotak kado. Hindari awan mendung
+                                abu-abu!</p>
                             <button class="action-btn play-btn" id="btnStartCatcher">Mulai Bermain 🎈</button>
                         </div>
                     </div>
@@ -1126,7 +1135,8 @@
 
                     <div class="game-overlay hidden" id="memoryOverlay">
                         <h3 class="overlay-title">Kamu Menang! 🎉</h3>
-                        <p class="overlay-desc">Kamu memiliki ingatan yang hebat! Hadiah manis menantimu di galeri bawah... 🎁</p>
+                        <p class="overlay-desc">Kamu memiliki ingatan yang hebat! Hadiah manis menantimu di galeri
+                            bawah... 🎁</p>
                         <button class="action-btn play-btn" id="btnStartMemory">Main Lagi ✨</button>
                     </div>
                 </div>
@@ -1170,7 +1180,8 @@
                 <div class="game-container" id="gamePetalPlucker">
                     <div class="game-meta">
                         <div class="meta-item"><i class="fas fa-seedling"></i> Dia Mencintaimu... ? 🌹</div>
-                        <button class="mini-reset-btn" id="btnResetPlucker"><i class="fas fa-sync-alt"></i> Tumbuhkan Baru</button>
+                        <button class="mini-reset-btn" id="btnResetPlucker"><i class="fas fa-sync-alt"></i> Tumbuhkan
+                            Baru</button>
                     </div>
                     <div class="daisy-interactive-area">
                         <div class="daisy-flower-wrapper" id="daisyFlower">
@@ -1191,7 +1202,8 @@
                     <div class="balloon-pop-board" id="balloonPopBoard">
                         <div class="game-overlay" id="balloonOverlay">
                             <h3 class="overlay-title">Pecahin Balon Cinta! 🎈</h3>
-                            <p class="overlay-desc">Klik atau tap balon pink dan emas secepat mungkin sebelum waktu 20 detik habis ya!</p>
+                            <p class="overlay-desc">Klik atau tap balon pink dan emas secepat mungkin sebelum waktu 20
+                                detik habis ya!</p>
                             <button class="action-btn play-btn" id="btnStartBalloons">Mulai Pop! 💥</button>
                         </div>
                     </div>
@@ -1207,10 +1219,12 @@
                             <div class="tarot-rose-glowing" id="tarotCrystalRose">🌹</div>
                         </div>
                         <div class="tarot-reading-board" id="tarotReadingBoard">
-                            <p class="tarot-reading-text">Ketuk Mawar Kristal Merah di atas buat meramal hoki cinta kamu hari ini ya... ✨</p>
+                            <p class="tarot-reading-text">Ketuk Mawar Kristal Merah di atas buat meramal hoki cinta kamu
+                                hari ini ya... ✨</p>
                         </div>
                     </div>
-                    <button class="action-btn" id="btnDrawTarot"><i class="fas fa-wand-magic-sparkles"></i> Ramal Sekarang ✨</button>
+                    <button class="action-btn" id="btnDrawTarot"><i class="fas fa-wand-magic-sparkles"></i> Ramal
+                        Sekarang ✨</button>
                 </div>
 
                 <!-- GAME 8: LOVE COMPATIBILITY QUIZ -->
@@ -1221,7 +1235,8 @@
                     </div>
                     <div class="quiz-box-card" id="quizCard">
                         <div class="quiz-question-number" id="quizStep">Pertanyaan 1 / 5</div>
-                        <div class="quiz-question-text" id="quizQuestion">Gimana liburan impian terbaik kamu bareng orang tersayang?</div>
+                        <div class="quiz-question-text" id="quizQuestion">Gimana liburan impian terbaik kamu bareng
+                            orang tersayang?</div>
                         <div class="quiz-options-list" id="quizOptions">
                             <!-- Options generated dynamically -->
                         </div>
@@ -1229,7 +1244,8 @@
                     <div class="quiz-results-card hidden" id="quizResults">
                         <div class="quiz-percent-glowing" id="quizPercent">99%</div>
                         <h4 class="quiz-verdict-title" id="quizVerdictTitle">Belahan Jiwa Sejati! 💕</h4>
-                        <p class="quiz-verdict-desc" id="quizVerdictDesc">Kamu sama dia punya ikatan kosmik yang nggak terpisahkan. Cinta kamu mekar abadi!</p>
+                        <p class="quiz-verdict-desc" id="quizVerdictDesc">Kamu sama dia punya ikatan kosmik yang nggak
+                            terpisahkan. Cinta kamu mekar abadi!</p>
                         <button class="action-btn" id="btnResetQuiz"><i class="fas fa-redo"></i> Ulangi Kuis</button>
                     </div>
                 </div>
@@ -1245,7 +1261,8 @@
                     <div class="wish-catcher-sky" id="wishCatcherSky">
                         <div class="game-overlay" id="wishCatcherOverlay">
                             <h3 class="overlay-title">Tangkap Bintang Harapan! 🌠</h3>
-                            <p class="overlay-desc">Bintang-bintang jatuh cepet banget nih! Klik tiap bintang jatuh secepat mungkin untuk menangkap doa manis!</p>
+                            <p class="overlay-desc">Bintang-bintang jatuh cepet banget nih! Klik tiap bintang jatuh
+                                secepat mungkin untuk menangkap doa manis!</p>
                             <button class="action-btn play-btn" id="btnStartWishCatcher">Mulai Nangkep ✨</button>
                         </div>
                     </div>
@@ -1262,7 +1279,8 @@
                     <div class="connector-board" id="connectorBoard">
                         <div class="game-overlay" id="connectorOverlay">
                             <h3 class="overlay-title">Heart Connector 🔗</h3>
-                            <p class="overlay-desc">Dua hati pink nyala berpasangan di dalam papan grid. Hubungin keduanya dengan mengeklik keduanya berturut-turut sebelum waktu habis ya!</p>
+                            <p class="overlay-desc">Dua hati pink nyala berpasangan di dalam papan grid. Hubungin
+                                keduanya dengan mengeklik keduanya berturut-turut sebelum waktu habis ya!</p>
                             <button class="action-btn play-btn" id="btnStartConnector">Hubungin Hati! 💖</button>
                         </div>
                     </div>
@@ -1280,7 +1298,8 @@
                         <canvas id="flappyCanvas" width="600" height="400"></canvas>
                         <div class="game-overlay" id="flappyOverlay">
                             <h3 class="overlay-title">Flappy Cupid 👼</h3>
-                            <p class="overlay-desc">Klik kanvas atau tekan **Spasi** untuk membuat Cupid terbang. Lewati rintangan awan mendung dan kumpulin bintang emas!</p>
+                            <p class="overlay-desc">Klik kanvas atau tekan **Spasi** untuk membuat Cupid terbang. Lewati
+                                rintangan awan mendung dan kumpulin bintang emas!</p>
                             <button class="action-btn play-btn" id="btnStartFlappy">Terbang! 🚀</button>
                         </div>
                     </div>
@@ -1310,7 +1329,8 @@
                         <canvas id="petalCanvas" width="600" height="400"></canvas>
                         <div class="game-overlay" id="petalOverlay">
                             <h3 class="overlay-title">Rose Petal Catch 🌹</h3>
-                            <p class="overlay-desc">Geser keranjang pake kursor mouse, tombol Kiri/Kanan, atau sentuhan buat menangkap kelopak mawar yang gugur!</p>
+                            <p class="overlay-desc">Geser keranjang pake kursor mouse, tombol Kiri/Kanan, atau sentuhan
+                                buat menangkap kelopak mawar yang gugur!</p>
                             <button class="action-btn play-btn" id="btnStartPetalCatch">Mulai Tangkap! 🌸</button>
                         </div>
                     </div>
@@ -1340,8 +1360,9 @@
                                         class="fas fa-unlock"></i> Decode</button>
                             </div>
                             <div class="input-group">
-                                <textarea id="loveCodeOutput" placeholder="Hasil kode rahasia bakal muncul di sini ya..."
-                                    readonly rows="3"></textarea>
+                                <textarea id="loveCodeOutput"
+                                    placeholder="Hasil kode rahasia bakal muncul di sini ya..." readonly
+                                    rows="3"></textarea>
                             </div>
                         </div>
                     </div>
@@ -1359,7 +1380,8 @@
                         <canvas id="archerCanvas" width="600" height="400"></canvas>
                         <div class="game-overlay" id="archerOverlay">
                             <h3 class="overlay-title">Cupid's Archer 🏹</h3>
-                            <p class="overlay-desc">Tarik busur panah dengan kursor mouse, lalu lepaskan untuk memanah balon hati yang jalan!</p>
+                            <p class="overlay-desc">Tarik busur panah dengan kursor mouse, lalu lepaskan untuk memanah
+                                balon hati yang jalan!</p>
                             <button class="action-btn play-btn" id="btnStartArcher">Mulai Memanah! 🎯</button>
                         </div>
                     </div>
@@ -2086,7 +2108,8 @@
                     </div>
                 </div>
                 <h3 class="tote-claim-title">Kamu Mendapatkan Kado Tambahan! 🎀</h3>
-                <p class="tote-claim-desc">Sebuah Totebag Pink cantik spesial telah disiapkan untukmu. Klik di bawah untuk mengklaim kado ini!</p>
+                <p class="tote-claim-desc">Sebuah Totebag Pink cantik spesial telah disiapkan untukmu. Klik di bawah
+                    untuk mengklaim kado ini!</p>
                 <button class="tote-claim-btn" id="btnClaimTote">Claim Tas Ini 🎁</button>
             </div>
 
@@ -2114,8 +2137,9 @@
                         <div class="check-icon"></div>
                     </div>
                     <h4 class="delivery-title">Pesanan Berhasil Diklaim! 🎉</h4>
-                    <p class="delivery-subtitle">Kurir terpercaya kami sedang bersiap mengantarkan paket spesial ini langsung ke rumahmu! 🛵💨</p>
-                    
+                    <p class="delivery-subtitle">Kurir terpercaya kami sedang bersiap mengantarkan paket spesial ini
+                        langsung ke rumahmu! 🛵💨</p>
+
                     <!-- Premium retail ticket style receipt -->
                     <div class="delivery-ticket">
                         <div class="ticket-header">BUKTI PENGIRIMAN</div>
@@ -2129,7 +2153,8 @@
                         </div>
                         <div class="ticket-row">
                             <span class="label">Nomor Pesanan:</span>
-                            <span class="val order-id-tag" id="orderIdTag">584295515954447740 <i class="far fa-copy copy-icon"></i></span>
+                            <span class="val order-id-tag" id="orderIdTag">584295515954447740 <i
+                                    class="far fa-copy copy-icon"></i></span>
                         </div>
                         <div class="ticket-row">
                             <span class="label">Estimasi:</span>
@@ -2137,7 +2162,8 @@
                         </div>
                         <div class="ticket-row">
                             <span class="label">No. Resi:</span>
-                            <span class="val order-id-tag" id="resiTag">JX9547493172 <i class="far fa-copy copy-icon"></i></span>
+                            <span class="val order-id-tag" id="resiTag">JX9547493172 <i
+                                    class="far fa-copy copy-icon"></i></span>
                         </div>
                         <div class="ticket-barcode">
                             <div class="barcode-line"></div>
@@ -2159,7 +2185,7 @@
                             </div>
                             <div class="jnt-status-bubble">Dalam Perjalanan 🚚</div>
                         </div>
-                        
+
                         <div class="jnt-tracking-details">
                             <div class="detail-col">
                                 <span class="detail-lbl">No. Resi J&T:</span>
@@ -2177,19 +2203,24 @@
                             <!-- Styled SVG Map Background -->
                             <svg class="jnt-map-svg" viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
                                 <!-- Abstract Road Grids -->
-                                <path class="map-road-bg" d="M 0,40 L 400,40 M 120,0 L 120,180 M 280,0 L 280,180 M 0,140 L 400,140 M 0,90 C 100,90 150,120 200,90 C 250,60 300,90 400,90" />
-                                
+                                <path class="map-road-bg"
+                                    d="M 0,40 L 400,40 M 120,0 L 120,180 M 280,0 L 280,180 M 0,140 L 400,140 M 0,90 C 100,90 150,120 200,90 C 250,60 300,90 400,90" />
+
                                 <!-- Active Delivery Winding Path -->
-                                <path id="deliveryGpsPath" class="map-delivery-path" d="M 40,40 L 120,40 L 120,90 C 120,90 150,110 180,95 C 210,80 250,75 280,90 L 280,140 L 340,140" fill="none" />
-                                
+                                <path id="deliveryGpsPath" class="map-delivery-path"
+                                    d="M 40,40 L 120,40 L 120,90 C 120,90 150,110 180,95 C 210,80 250,75 280,90 L 280,140 L 340,140"
+                                    fill="none" />
+
                                 <!-- Start/Origin Node -->
                                 <circle cx="40" cy="40" r="6" class="map-node origin" />
-                                <text x="40" y="25" class="map-node-label" text-anchor="middle">J&T Medan Cemara Asri 🏭</text>
-                                
+                                <text x="40" y="25" class="map-node-label" text-anchor="middle">J&T Medan Cemara Asri
+                                    🏭</text>
+
                                 <!-- Destination Node -->
                                 <circle cx="340" cy="140" r="8" class="map-node destination-pulse" />
-                                <text x="340" y="162" class="map-node-label highlight" text-anchor="middle">Rumah Amara 🏡</text>
-                                
+                                <text x="340" y="162" class="map-node-label highlight" text-anchor="middle">Rumah Amara
+                                    🏡</text>
+
                                 <!-- Animated Courier on the path -->
                                 <g id="mapCourierNode" class="map-courier-g">
                                     <circle r="12" class="map-courier-bg" />
@@ -2216,7 +2247,8 @@
                                 <div class="timeline-content">
                                     <div class="timeline-time">01 Juni 2026 - 19:30</div>
                                     <div class="timeline-title">Transit di Gateway Hub Medan</div>
-                                    <div class="timeline-desc">Paket telah tiba di pusat sortir J&T Gateway Transit Hub Medan.</div>
+                                    <div class="timeline-desc">Paket telah tiba di pusat sortir J&T Gateway Transit Hub
+                                        Medan.</div>
                                 </div>
                             </div>
                             <div class="timeline-item active">
@@ -2224,7 +2256,8 @@
                                 <div class="timeline-content">
                                     <div class="timeline-time">01 Juni 2026 - 16:45</div>
                                     <div class="timeline-title">Dalam Perjalanan ke Gateway</div>
-                                    <div class="timeline-desc">Paket sedang diberangkatkan dari Drop Point origin Medan Cemara Asri menuju Gateway Transit Hub Medan.</div>
+                                    <div class="timeline-desc">Paket sedang diberangkatkan dari Drop Point origin Medan
+                                        Cemara Asri menuju Gateway Transit Hub Medan.</div>
                                 </div>
                             </div>
                             <div class="timeline-item active">
@@ -2232,7 +2265,8 @@
                                 <div class="timeline-content">
                                     <div class="timeline-time">01 Juni 2026 - 13:51</div>
                                     <div class="timeline-title">Paket Diterima J&T Express</div>
-                                    <div class="timeline-desc">Drop Point Medan Cemara Asri - Paket diserahkan oleh pengirim dan telah diproses (ED_Cemara_Asri5).</div>
+                                    <div class="timeline-desc">Drop Point Medan Cemara Asri - Paket diserahkan oleh
+                                        pengirim dan telah diproses (ED_Cemara_Asri5).</div>
                                 </div>
                             </div>
                         </div>
