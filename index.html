@@ -1,0 +1,2281 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat Ulang Tahun Amara Clarinta Maharani ✨</title>
+
+    <!-- Meta SEO -->
+    <meta name="description"
+        content="Website spesial hari ulang tahun Amara Clarinta Maharani. Selamat ulang tahun! Semoga hari-harimu selalu indah, manis, dan dipenuhi kebahagiaan.">
+    <meta name="keywords"
+        content="Amara Clarinta Maharani, Selamat Ulang Tahun, Birthday Website, Aesthetic Pink Website">
+    <meta name="author" content="Special Gift for Amara">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=Sacramento&family=Fredoka:wght@400;600&display=swap"
+        rel="stylesheet">
+
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="styles.css?v=1.1.4">
+
+    <!-- Critical & Cache-Proof theme toggle styles -->
+    <style>
+        .theme-toggle-btn {
+            position: fixed !important;
+            top: 25px !important;
+            right: 25px !important;
+            background: none !important;
+            border: none !important;
+            outline: none !important;
+            box-shadow: none !important;
+            cursor: pointer !important;
+            z-index: 2147483647 !important;
+            /* Maximum possible z-index to stay on top of all overlays */
+            pointer-events: auto !important;
+            /* Ensure pointer events are registered */
+            font-size: 36px !important;
+            width: 60px !important;
+            height: 60px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            border-radius: 50% !important;
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.3s ease !important;
+            filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.15)) !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+
+        .theme-toggle-btn span {
+            pointer-events: none !important;
+            /* Make clicks pass directly to the button parent */
+        }
+
+        .theme-toggle-btn:hover {
+            transform: scale(1.2) rotate(15deg) !important;
+        }
+
+        .theme-toggle-btn:active {
+            transform: scale(0.9) rotate(-10deg) !important;
+        }
+
+        .theme-toggle-btn .icon-moon {
+            display: none !important;
+        }
+
+        .theme-toggle-btn .icon-sun {
+            display: block !important;
+            filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.85)) !important;
+            animation: sunPulse 3s infinite alternate !important;
+        }
+
+        .dark-mode .theme-toggle-btn .icon-sun {
+            display: none !important;
+        }
+
+        .dark-mode .theme-toggle-btn .icon-moon {
+            display: block !important;
+            filter: drop-shadow(0 0 12px rgba(0, 242, 254, 0.85)) !important;
+            animation: moonPulse 3s infinite alternate !important;
+        }
+
+        @keyframes sunPulse {
+            0% {
+                transform: scale(1);
+                filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.6));
+            }
+
+            100% {
+                transform: scale(1.08);
+                filter: drop-shadow(0 0 16px rgba(255, 165, 0, 0.9));
+            }
+        }
+
+        @keyframes moonPulse {
+            0% {
+                transform: scale(1);
+                filter: drop-shadow(0 0 8px rgba(0, 242, 254, 0.5));
+            }
+
+            100% {
+                transform: scale(1.08);
+                filter: drop-shadow(0 0 18px rgba(168, 85, 247, 0.9));
+            }
+        }
+
+        /* ==========================================================================
+           AESTHETIC AURORA DARK THEME & TRANSITIONS (CACHE-PROOF)
+           ========================================================================== */
+
+        /* --- Smooth Theme Transitions --- */
+        body,
+        .section-container,
+        .music-player-glass,
+        .player-btn,
+        .action-btn,
+        .game-container,
+        .tab-btn,
+        .gift-box-intro,
+        h1,
+        h2,
+        h3,
+        h4,
+        p,
+        span,
+        i,
+        label,
+        textarea,
+        input,
+        .gradient-text,
+        .pink-icon,
+        .subtitle {
+            transition: background 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+                background-color 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+                color 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+                border-color 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+                text-shadow 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+                filter 0.8s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        }
+
+        .dark-mode {
+            --primary-pink: #00f2fe !important;
+            /* Neon Aurora Blue-Cyan */
+            --primary-hover: #05d5e5 !important;
+            --soft-pink: #a855f7 !important;
+            /* Vibrant violet */
+            --light-pink: #1e1b4b !important;
+            /* Deep cosmic indigo */
+            --background-pink: #070a13 !important;
+            /* Galactic black-blue */
+            --cream: #111827 !important;
+            /* Deep slate dark grey */
+            --dark-text: #e2e8f0 !important;
+            /* Soft white */
+            --light-text: #94a3b8 !important;
+            /* Cool grey */
+
+            --glass-bg: rgba(15, 23, 42, 0.7) !important;
+            --glass-border: rgba(255, 255, 255, 0.08) !important;
+            --glass-shadow: 0 12px 40px 0 rgba(0, 242, 254, 0.06) !important;
+            --neon-pink-shadow: 0 0 20px rgba(0, 242, 254, 0.25) !important;
+        }
+
+        body.dark-mode {
+            background: linear-gradient(135deg, #070a13 0%, #030712 100%) !important;
+        }
+
+        /* --- Aurora Borealis Background --- */
+        .aurora-container {
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+            z-index: -2 !important;
+            overflow: hidden !important;
+            opacity: 0 !important;
+            transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            pointer-events: none !important;
+        }
+
+        .dark-mode .aurora-container {
+            opacity: 0.5 !important;
+        }
+
+        .aurora-layer {
+            position: absolute !important;
+            width: 200% !important;
+            height: 200% !important;
+            top: -50% !important;
+            left: -50% !important;
+            background: radial-gradient(circle at 20% 30%, rgba(0, 242, 254, 0.16) 0%, transparent 40%),
+                radial-gradient(circle at 80% 20%, rgba(168, 85, 247, 0.14) 0%, transparent 45%),
+                radial-gradient(circle at 50% 60%, rgba(5, 213, 229, 0.12) 0%, transparent 35%),
+                radial-gradient(circle at 30% 80%, rgba(124, 58, 237, 0.15) 0%, transparent 45%) !important;
+            filter: blur(80px) !important;
+            animation: auroraMotion 24s ease infinite alternate !important;
+        }
+
+        @keyframes auroraMotion {
+            0% {
+                transform: rotate(0deg) scale(1) translate(0px, 0px);
+            }
+
+            50% {
+                transform: rotate(6deg) scale(1.12) translate(-30px, 50px);
+            }
+
+            100% {
+                transform: rotate(-5deg) scale(0.95) translate(40px, -30px);
+            }
+        }
+
+        /* --- Floating Sun --- */
+        .light-mode-sun {
+            position: fixed !important;
+            top: 100px !important;
+            left: 80px !important;
+            width: 70px !important;
+            height: 70px !important;
+            border-radius: 50% !important;
+            background: radial-gradient(circle, #ffe359 20%, #ff8c00 100%) !important;
+            box-shadow: 0 0 30px rgba(255, 140, 0, 0.5), 0 0 60px rgba(255, 227, 89, 0.3), inset 0 -4px 10px rgba(0, 0, 0, 0.15) !important;
+            z-index: -1 !important;
+            opacity: 1 !important;
+            transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            transform: translateY(0) scale(1) !important;
+            filter: drop-shadow(0 0 25px rgba(255, 140, 0, 0.6)) !important;
+            pointer-events: none !important;
+            animation: sunFloat 8s ease-in-out infinite !important;
+        }
+
+        .dark-mode .light-mode-sun {
+            opacity: 0 !important;
+            transform: translateY(-80px) scale(0.4) !important;
+            animation: none !important;
+        }
+
+        @keyframes sunFloat {
+            0% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-10px) rotate(5deg) scale(1.03);
+            }
+
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+        }
+
+        /* --- Floating Crescent Moon --- */
+        .dark-mode-moon {
+            position: fixed !important;
+            top: 100px !important;
+            left: 80px !important;
+            width: 70px !important;
+            height: 70px !important;
+            border-radius: 50% !important;
+            box-shadow: 18px 18px 0 0 #fbf7e3 !important;
+            z-index: -1 !important;
+            opacity: 0 !important;
+            transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            transform: translateY(-80px) scale(0.4) !important;
+            filter: drop-shadow(0 0 20px rgba(251, 247, 227, 0.6)) !important;
+            pointer-events: none !important;
+        }
+
+        .dark-mode .dark-mode-moon {
+            opacity: 1 !important;
+            transform: translateY(0) scale(1) !important;
+            animation: moonFloat 8s ease-in-out infinite !important;
+        }
+
+        @keyframes moonFloat {
+            0% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-10px) rotate(3deg);
+            }
+
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+        }
+
+        /* --- Shooting Stars --- */
+        .shooting-star-container {
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+            z-index: -1 !important;
+            pointer-events: none !important;
+            overflow: hidden !important;
+            opacity: 0 !important;
+            transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        }
+
+        .dark-mode .shooting-star-container {
+            opacity: 1 !important;
+        }
+
+        .shooting-star {
+            position: absolute !important;
+            top: -50px !important;
+            height: 2px !important;
+            background: linear-gradient(-45deg, #00f2fe, rgba(0, 242, 254, 0)) !important;
+            border-radius: 999px !important;
+            filter: drop-shadow(0 0 8px #00f2fe) !important;
+            animation: shoot 5s linear infinite !important;
+        }
+
+        .shooting-star::before,
+        .shooting-star::after {
+            content: '' !important;
+            position: absolute !important;
+            top: calc(50% - 1px) !important;
+            right: 0 !important;
+            height: 2px !important;
+            background: linear-gradient(-45deg, rgba(0, 0, 0, 0), #00f2fe, rgba(0, 0, 0, 0)) !important;
+            transform: translateX(50%) rotate(45deg) !important;
+            border-radius: 999px !important;
+        }
+
+        .shooting-star::after {
+            transform: translateX(50%) rotate(-45deg) !important;
+        }
+
+        @keyframes shoot {
+            0% {
+                transform: translate(0, 0) rotate(-40deg);
+                width: 0;
+            }
+
+            10% {
+                width: 80px;
+            }
+
+            30% {
+                transform: translate(-400px, 335px) rotate(-40deg);
+                width: 0;
+                opacity: 0;
+            }
+
+            100% {
+                transform: translate(-400px, 335px) rotate(-40deg);
+                width: 0;
+                opacity: 0;
+            }
+        }
+
+        .shooting-star:nth-child(1) {
+            left: 80% !important;
+            top: 5% !important;
+            animation-delay: 0s !important;
+            animation-duration: 6s !important;
+        }
+
+        .shooting-star:nth-child(2) {
+            left: 95% !important;
+            top: 20% !important;
+            animation-delay: 1.5s !important;
+            animation-duration: 7s !important;
+        }
+
+        .shooting-star:nth-child(3) {
+            left: 65% !important;
+            top: 15% !important;
+            animation-delay: 3.2s !important;
+            animation-duration: 5.5s !important;
+        }
+
+        .shooting-star:nth-child(4) {
+            left: 75% !important;
+            top: 30% !important;
+            animation-delay: 4.8s !important;
+            animation-duration: 8s !important;
+        }
+
+        .shooting-star:nth-child(5) {
+            left: 55% !important;
+            top: 10% !important;
+            animation-delay: 6.5s !important;
+            animation-duration: 6.5s !important;
+        }
+
+        /* --- Full Screen Overlays & Intro Screen overrides in Dark Mode --- */
+        .dark-mode .intro-countdown-overlay,
+        .dark-mode .envelope-screen {
+            background: linear-gradient(135deg, #070a13 0%, #030712 100%) !important;
+            color: var(--dark-text) !important;
+        }
+
+        .dark-mode .intro-title-huge,
+        .dark-mode .intro-tiup-title {
+            color: var(--dark-text) !important;
+        }
+
+        .dark-mode .intro-heart-pulse {
+            filter: drop-shadow(0 0 15px rgba(0, 242, 254, 0.5)) hue-rotate(180deg) !important;
+        }
+
+        .dark-mode .cover-front {
+            background: linear-gradient(135deg, #00f2fe 0%, #a855f7 100%) !important;
+        }
+
+        .dark-mode .book-inner-left,
+        .dark-mode .book-inner-right,
+        .dark-mode .cover-back {
+            background: #111827 !important;
+            color: var(--dark-text) !important;
+            border-color: rgba(255, 255, 255, 0.08) !important;
+        }
+
+        .dark-mode .inner-content-left,
+        .dark-mode .inner-content-right {
+            border-color: var(--soft-pink) !important;
+            background: #111827 !important;
+        }
+
+        .dark-mode .letter-excerpt {
+            color: var(--light-text) !important;
+        }
+
+        .dark-mode .letter-excerpt-bold {
+            color: var(--dark-text) !important;
+        }
+
+        .dark-mode .letter-title {
+            color: var(--primary-pink) !important;
+        }
+
+        .dark-mode .intro-greeting-text-huge {
+            color: var(--dark-text) !important;
+        }
+
+        .dark-mode .gradient-text {
+            background: linear-gradient(45deg, #00f2fe, #a855f7, #60a5fa, #00f2fe) !important;
+            background-size: 300% 300% !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            animation: gradientShift 6s ease infinite !important;
+        }
+
+        .dark-mode .tape-label {
+            background: var(--primary-pink) !important;
+            color: #070a13 !important;
+        }
+
+        .dark-mode .ttt-cell {
+            border-color: var(--glass-border) !important;
+        }
+
+        .dark-mode .ttt-cell:hover {
+            background: rgba(0, 242, 254, 0.08) !important;
+        }
+
+        .dark-mode .gift-box-intro {
+            border-color: var(--soft-pink) !important;
+            background: rgba(15, 23, 42, 0.3) !important;
+        }
+
+        .dark-mode #particleCanvas {
+            filter: brightness(1.2) drop-shadow(0 0 4px rgba(0, 242, 254, 0.3)) !important;
+        }
+
+        .dark-mode .cake-stand {
+            background: linear-gradient(to right, #1f2937, #374151, #1f2937) !important;
+        }
+
+        .dark-mode .intro-cake-stand {
+            background: #111827 !important;
+        }
+
+        /* --- Birthday Cake drip overlap fix --- */
+        .cake-tier {
+            overflow: hidden !important;
+        }
+
+        .intro-cake-body {
+            overflow: hidden !important;
+        }
+
+        /* ==========================================================================
+           2B. INTERACTIVE CAKE CUTTING STYLES (CACHE-PROOF)
+           ========================================================================== */
+        .cake-arena {
+            position: relative !important;
+            cursor: default !important;
+        }
+
+        .cake-arena.knife-active {
+            cursor: none !important;
+            /* Hide native cursor when cutting */
+        }
+
+        /* Floating Knife Tool */
+        .cake-knife-tool {
+            position: absolute !important;
+            font-size: 40px !important;
+            pointer-events: none !important;
+            z-index: 1000 !important;
+            display: none;
+            opacity: 0 !important;
+            filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.25)) !important;
+            transition: opacity 0.3s ease !important;
+            transform: translate(-50%, -50%) rotate(-15deg) !important;
+            animation: floatKnife 1.5s infinite alternate ease-in-out !important;
+        }
+
+        @keyframes floatKnife {
+            0% {
+                transform: translate(-50%, -50%) rotate(-15deg) translateY(0) !important;
+            }
+
+            100% {
+                transform: translate(-50%, -50%) rotate(-25deg) translateY(-8px) !important;
+            }
+        }
+
+        /* Split Cake Container */
+        .cake-split-container {
+            position: relative !important;
+            width: 250px !important;
+            height: 196px !important;
+            /* matches cake wrapper dimensions */
+            display: none;
+            align-items: flex-end !important;
+            justify-content: center !important;
+            margin: 0 auto !important;
+        }
+
+        .cake-half {
+            position: absolute !important;
+            width: 250px !important;
+            height: 100% !important;
+            bottom: 0 !important;
+            left: 0 !important;
+            transition: transform 1.5s cubic-bezier(0.25, 1, 0.3, 1), opacity 0.5s ease !important;
+            pointer-events: none !important;
+        }
+
+        .cake-half-left {
+            clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%) !important;
+            transform-origin: left center !important;
+        }
+
+        .cake-half-right {
+            clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%) !important;
+            transform-origin: right center !important;
+        }
+
+        /* When the cake is sliced */
+        .cake-split-container.sliced .cake-half-left {
+            transform: translateX(-45px) rotate(-4deg) !important;
+        }
+
+        .cake-split-container.sliced .cake-half-right {
+            transform: translateX(45px) rotate(4deg) !important;
+        }
+
+        /* Inner Strawberry Jam & Cream Filling */
+        .cake-inner-filling {
+            position: absolute !important;
+            bottom: -15px !important;
+            left: 50% !important;
+            transform: translateX(-50%) scaleX(0) !important;
+            width: 90px !important;
+            height: 180px !important;
+            background: repeating-linear-gradient(to bottom,
+                    #ffe4e1 0px,
+                    /* Strawberry cream filling */
+                    #ffe4e1 15px,
+                    #d63031 15px,
+                    /* Bright red strawberry jam */
+                    #d63031 20px,
+                    #ffd580 20px,
+                    /* Gold sponge layers */
+                    #ffd580 35px) !important;
+            border-radius: 4px !important;
+            opacity: 0 !important;
+            z-index: 1 !important;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1), 0 4px 15px rgba(214, 48, 49, 0.3) !important;
+            transition: transform 1.5s cubic-bezier(0.25, 1, 0.3, 1), opacity 1.2s ease !important;
+        }
+
+        .cake-split-container.sliced .cake-inner-filling {
+            transform: translateX(-50%) scaleX(1) !important;
+            opacity: 1 !important;
+        }
+
+        /* Cream drips on the cut slice inner surface */
+        .filling-cream-drips {
+            position: absolute !important;
+            top: 5px !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 20px !important;
+            background: radial-gradient(circle, #fffdf9 45%, transparent 50%) !important;
+            background-size: 15px 30px !important;
+            opacity: 0.95 !important;
+            filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.1)) !important;
+        }
+
+        .filling-strawberry {
+            position: absolute !important;
+            top: 35% !important;
+            left: 50% !important;
+            transform: translate(-50%, -50%) !important;
+            font-size: 28px !important;
+            animation: strawberryPulse 2s infinite alternate ease-in-out !important;
+        }
+
+        @keyframes strawberryPulse {
+            0% {
+                transform: translate(-50%, -50%) scale(0.9) !important;
+                filter: drop-shadow(0 0 4px rgba(214, 48, 49, 0.3)) !important;
+            }
+
+            100% {
+                transform: translate(-50%, -50%) scale(1.15) !important;
+                filter: drop-shadow(0 0 12px rgba(214, 48, 49, 0.7)) !important;
+            }
+        }
+
+        /* Open Gift Transition Button */
+        .open-gift-transition-btn {
+            animation: slideUpTransitionBtn 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards !important;
+        }
+
+        @keyframes slideUpTransitionBtn {
+            0% {
+                transform: translateY(30px) scale(0.85) !important;
+                opacity: 0 !important;
+            }
+
+            100% {
+                transform: translateY(0) scale(1) !important;
+                opacity: 1 !important;
+            }
+        }
+
+        /* Stand and Arena alignments in split container */
+        .cake-split-container .cake-stand {
+            bottom: -15px !important;
+        }
+
+        /* Make sure elements inside the cake layers don't spill out */
+        .cake-half .cake-tier {
+            overflow: hidden !important;
+        }
+
+        /* Force remove any border or background behind the gift wrapper */
+        .gift-box-wrapper {
+            border: none !important;
+            background: transparent !important;
+            box-shadow: none !important;
+            padding: 0 !important;
+        }
+
+        /* Force remove any border or background behind the tote bag */
+        .vector-tote-bag, .tote-sparkle-glow {
+            border: none !important;
+            background: transparent !important;
+            box-shadow: none !important;
+        }
+    </style>
+    <!-- Immediate Theme Check during parsing to avoid bright flash -->
+    <script>
+        try {
+            if (localStorage.getItem('theme') === 'dark') {
+                document.documentElement.classList.add('dark-mode');
+            } else {
+                document.documentElement.classList.remove('dark-mode');
+            }
+        } catch (e) { }
+    </script>
+</head>
+
+<body>
+    <script>
+        try {
+            if (document.documentElement.classList.contains('dark-mode')) {
+                document.body.classList.add('dark-mode');
+            } else {
+                document.body.classList.remove('dark-mode');
+            }
+        } catch (e) { }
+    </script>
+    <!-- Aurora background & Moon elements for Dark Mode -->
+    <div class="aurora-container">
+        <div class="aurora-layer"></div>
+    </div>
+    <div class="shooting-star-container">
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+    </div>
+    <div class="light-mode-sun"></div>
+    <div class="dark-mode-moon"></div>
+
+    <!-- 0. PREMIUM INTRO COUNTDOWN OVERLAY -->
+    <div id="introCountdownOverlay" class="intro-countdown-overlay">
+        <!-- Canvas for high-fidelity fireworks and confetti -->
+        <canvas id="introCanvas"></canvas>
+
+        <!-- Stage 1: Full-Screen Trigger -->
+        <div id="introTriggerStage" class="intro-full-stage active">
+            <div class="intro-heart-pulse">💖</div>
+            <h1 class="intro-title-huge">Spesial Untuk Amara Clarinta Maharani ✨</h1>
+            <p class="intro-tap-hint">Ketuk di mana saja untuk memulai kejutannya... 🌸</p>
+        </div>
+
+        <!-- Stage 2: Countdown Stage -->
+        <div id="introCountdownStage" class="intro-full-stage">
+            <div id="countdownNumber" class="countdown-number">3</div>
+        </div>
+
+        <!-- Stage 3: Cake & Greeting Stage -->
+        <div id="introGreetingStage" class="intro-full-stage">
+            <h2 class="intro-tiup-title">Tiup Lilinnya, Amara! 🎂✨</h2>
+
+            <!-- Beautiful Centered CSS Cake with Interactive Candle -->
+            <div class="intro-cake-wrapper" id="introCake">
+                <div class="intro-candle" id="introCandle">
+                    <div class="intro-flame" id="introFlame"></div>
+                </div>
+                <div class="intro-cake-body">
+                    <div class="intro-cake-drip"></div>
+                </div>
+                <div class="intro-cake-stand"></div>
+            </div>
+
+            <h1 class="intro-greeting-text-huge">Selamat Ulang Tahun<br><span class="highlight gradient-text">Amara
+                    Clarinta Maharani ✨🌸</span></h1>
+        </div>
+    </div>
+
+    <!-- Background Sparkles & Floating Particles Canvas -->
+    <canvas id="particleCanvas"></canvas>
+
+    <!-- FLOATING CASSETTE MUSIC PLAYER -->
+    <div class="music-player-container" id="musicPlayer">
+        <div class="music-player-glass">
+            <div class="cassette-tape-wrapper">
+                <div class="cassette-tape" id="cassetteTape">
+                    <div class="tape-window">
+                        <div class="tape-reel reel-left" id="reelLeft"></div>
+                        <div class="tape-reel reel-right" id="reelRight"></div>
+                    </div>
+                    <div class="tape-label">AMARA MIX 💖</div>
+                </div>
+            </div>
+            <div class="player-controls">
+                <div class="song-info">
+                    <span class="song-title">Amara's Theme Song</span>
+                    <span class="song-artist">Special Video Gift 🌸</span>
+                </div>
+                <!-- Glowing Wave Visualizer -->
+                <div class="audio-wave-visualizer" id="waveVisualizer">
+                    <div class="wave-bar"></div>
+                    <div class="wave-bar"></div>
+                    <div class="wave-bar"></div>
+                    <div class="wave-bar"></div>
+                    <div class="wave-bar"></div>
+                    <div class="wave-bar"></div>
+                    <div class="wave-bar"></div>
+                    <div class="wave-bar"></div>
+                    <div class="wave-bar"></div>
+                    <div class="wave-bar"></div>
+                </div>
+                <div class="buttons">
+                    <button class="player-btn" id="btnPrev" aria-label="Lagu Sebelumnya"><i
+                            class="fas fa-backward"></i></button>
+                    <button class="player-btn play-pause-btn" id="btnPlayPause" aria-label="Putar/Jeda"><i
+                            class="fas fa-play"></i></button>
+                    <button class="player-btn" id="btnNext" aria-label="Lagu Selanjutnya"><i
+                            class="fas fa-forward"></i></button>
+                </div>
+                <div class="volume-container">
+                    <i class="fas fa-volume-down volume-icon"></i>
+                    <input type="range" id="volumeSlider" min="0" max="1" step="0.05" value="0.5">
+                    <i class="fas fa-volume-up volume-icon"></i>
+                </div>
+            </div>
+        </div>
+        <!-- Hidden Audio/Video Element playing user's provided audio/video -->
+        <video id="bgAudio"
+            style="position: fixed; top: -100px; left: -100px; width: 1px; height: 1px; opacity: 0.01; pointer-events: none; z-index: -9999;"></video>
+    </div>
+ 
+    <!-- 1. HERO PRE-ENTER SCREEN (THE 3D STORYBOOK) -->
+    <section class="envelope-screen" id="envelopeScreen">
+        <div class="book-wrapper">
+            <div class="book" id="storybook">
+                <!-- Cover Page (Page 1) -->
+                <div class="book-page book-cover" id="bookCover">
+                    <!-- Front Cover Side -->
+                    <div class="cover-side cover-front">
+                        <div class="cover-design">
+                            <div class="cover-sparkles">✨🌸✨</div>
+                            <h2 class="cover-title">Amara's Sweet Book</h2>
+                            <p class="cover-subtitle">Kenangan Indah & Kejutan Spesial 💖</p>
+                            <div class="cover-ribbon">🎀</div>
+                        </div>
+                    </div>
+                    <!-- Back Cover Side (Inside Left Page when opened) -->
+                    <div class="cover-side cover-back">
+                        <div class="inner-content-left">
+                            <h3 class="letter-title">Untuk Amara ✨</h3>
+                            <p class="letter-excerpt">
+                                Hari ini adalah hari di mana dunia menjadi lebih indah karena kehadiranmu. Semoga setiap detik hari-harimu diisi dengan kedamaian, tawa, dan mimpi yang mekar seperti mawar merah. 🌹
+                            </p>
+                        </div>
+                    </div>
+                </div>
+ 
+                <!-- Inner Page Right (Page 3) -->
+                <div class="book-page book-inner-right" id="bookInnerRight">
+                    <div class="inner-content-right">
+                        <p class="letter-excerpt-bold">
+                            Ada kejutan manis menantimu di lembaran berikutnya... Buka halaman ini dan masuki petualangan ulang tahunmu! 💕
+                        </p>
+                        <button class="open-btn" id="btnOpenEnvelope">Buka Kejutan <i
+                                class="fa-solid fa-envelope-open-text"
+                                style="margin-left: 6px; vertical-align: middle;"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="envelope-hint">Tap Buku di atas untuk membukanya! 🌸</div>
+        </div>
+    </section>
+ 
+    <!-- MAIN APP CONTENT (HIDDEN UNTIL BOOK IS OPENED) -->
+    <main class="main-content" id="mainContent">
+        <!-- Theme Toggle Button (Cache-proof, Floating fixed in Top-Right, Only visible in Main Page) -->
+        <button id="themeToggle" class="theme-toggle-btn" aria-label="Ganti Tema"
+            onclick="const isDark = document.documentElement.classList.toggle('dark-mode'); document.body.classList.toggle('dark-mode', isDark); try { localStorage.setItem('theme', isDark ? 'dark' : 'light'); } catch(e) {}">
+            <span class="icon-sun">☀️</span>
+            <span class="icon-moon">🌙</span>
+        </button>
+ 
+        <!-- HEADER / HERO HEADER -->
+        <header class="aesthetic-header">
+            <div class="sparkle-title-container">
+                <h1 class="sparkle-title gradient-text">Amara Clarinta Maharani</h1>
+                <p class="subtitle">Happiest Birthday to You! 🎀✨</p>
+            </div>
+            <div class="gift-box-intro">
+                <p class="sweet-quote">"Semoga hari-hari kamu dipenuhi tawa, hati kamu dipenuhi kedamaian, dan mimpi kamu terbang setinggi langit."</p>
+            </div>
+        </header>
+ 
+        <!-- 2. INTERACTIVE BIRTHDAY CAKE SECTION -->
+        <section class="section-container cake-section" id="cakeSection">
+            <h2 class="section-title"><i class="fas fa-birthday-cake pink-icon"></i> Tiup Lilin & Make a Wish! 🎂</h2>
+            <p class="section-desc" id="cakeInstruction">Ayo buat keinginanmu! Klik atau geser kursor di atas lilin untuk meniupnya hingga padam, lalu lihat apa yang terjadi! ✨</p>
+
+            <div class="cake-arena" id="cakeArena">
+                <!-- Gorgeous 3D CSS Birthday Cake -->
+                <div class="cake-wrapper" id="cakeWrapper">
+                    <!-- Candles layer -->
+                    <div class="candles-layer">
+                        <div class="candle" id="candle-1" data-lit="true">
+                            <div class="flame"></div>
+                        </div>
+                        <div class="candle" id="candle-2" data-lit="true">
+                            <div class="flame"></div>
+                        </div>
+                        <div class="candle" id="candle-3" data-lit="true">
+                            <div class="flame"></div>
+                        </div>
+                        <div class="candle" id="candle-4" data-lit="true">
+                            <div class="flame"></div>
+                        </div>
+                        <div class="candle" id="candle-5" data-lit="true">
+                            <div class="flame"></div>
+                        </div>
+                    </div>
+                    <!-- Cake structure -->
+                    <div class="cake-tier tier-top">
+                        <div class="drips"></div>
+                    </div>
+                    <div class="cake-tier tier-middle">
+                        <div class="drips"></div>
+                    </div>
+                    <div class="cake-tier tier-bottom">
+                        <div class="drips"></div>
+                    </div>
+                    <div class="cake-stand"></div>
+                </div>
+
+                <!-- 3D Splitted Birthday Cake for Slicing Experience -->
+                <div class="cake-split-container" id="cakeSplitContainer">
+                    <!-- Inner Strawberry Jam and Cream Filling revealed between halves -->
+                    <div class="cake-inner-filling" id="cakeInnerFilling">
+                        <div class="filling-strawberry">🍓</div>
+                        <div class="filling-cream-drips"></div>
+                    </div>
+
+                    <!-- Left Clipped Half -->
+                    <div class="cake-half cake-half-left">
+                        <div class="cake-tier tier-top">
+                            <div class="drips"></div>
+                        </div>
+                        <div class="cake-tier tier-middle">
+                            <div class="drips"></div>
+                        </div>
+                        <div class="cake-tier tier-bottom">
+                            <div class="drips"></div>
+                        </div>
+                        <div class="cake-stand"></div>
+                    </div>
+
+                    <!-- Right Clipped Half -->
+                    <div class="cake-half cake-half-right">
+                        <div class="cake-tier tier-top">
+                            <div class="drips"></div>
+                        </div>
+                        <div class="cake-tier tier-middle">
+                            <div class="drips"></div>
+                        </div>
+                        <div class="cake-tier tier-bottom">
+                            <div class="drips"></div>
+                        </div>
+                        <div class="cake-stand"></div>
+                    </div>
+                </div>
+
+                <!-- Floating Interactive Cutting Knife Icon -->
+                <div class="cake-knife-tool" id="cakeKnife">🔪</div>
+            </div>
+
+            <div class="cake-controls" style="display: flex; flex-direction: column; align-items: center; gap: 16px;">
+                <button class="action-btn" id="btnResetCandles"><i class="fas fa-redo"></i> Nyalakan Ulang
+                    Lilin</button>
+                <button class="action-btn open-gift-transition-btn" id="btnOpenGiftTransition"
+                    style="display: none; transform: scale(0.9); opacity: 0; transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275); background: linear-gradient(135deg, #ff477e 0%, #ff8da1 100%); box-shadow: 0 0 20px rgba(255, 107, 139, 0.5);"><i
+                        class="fas fa-gift"></i> Buka Kado Kejutan 🎁✨</button>
+            </div>
+        </section>
+
+        <!-- SPECIAL VIDEO GREETING SECTION -->
+        <section class="section-container video-section" id="videoSection">
+            <h2 class="section-title"><i class="fas fa-video pink-icon"></i> Pesan Video Spesial untuk Amara 🎬</h2>
+            <p class="section-desc">Ada pesan video ucapan ultah manis yang nungguin kamu di bawah. Yuk putar videonya
+                buat lihat ucapan paling indah! ✨</p>
+
+            <div class="video-player-wrapper">
+                <div class="video-frame-glass">
+                    <video id="birthdayVideo" controls poster="assets/polaroid_dreamy_birthday.png">
+                        <!-- Special video greeting -->
+                        <source src="mix.mp4" type="video/mp4">
+                        Browser Anda tidak mendukung tag video HTML5.
+                    </video>
+                    <div class="video-overlay-play" id="videoPlayOverlay">
+                        <div class="play-icon-circle">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <span class="play-overlay-text">Putar Pesan Spesial Amara 💖</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. INTERACTIVE 10 GAMES HUB SECTION -->
+        <section class="section-container games-section" id="gamesSection">
+            <h2 class="section-title"><i class="fas fa-gamepad pink-icon"></i> Amara's Dreamy Arcade (30 Games!) 🎮</h2>
+            <p class="section-desc">Sambil merayakan, mari bermain 10 game seru bertema pink ini! Klik tombol navigasi tab di bawah untuk beralih game.</p>
+
+            <!-- Game Tab Headers (10 Tab Headers!) -->
+            <div class="game-tabs-scroll-container">
+                <div class="game-tabs" id="gameTabs">
+                    <button class="tab-btn active" data-target="gameHeartCatcher">
+                        <i class="fas fa-heart"></i> Catcher
+                    </button>
+                    <button class="tab-btn" data-target="gameMemoryMatch">
+                        <i class="fas fa-th-large"></i> Memory
+                    </button>
+                    <button class="tab-btn" data-target="gameTicTacToe">
+                        <i class="fas fa-times-circle"></i> Tic-Tac-Toe
+                    </button>
+                    <button class="tab-btn" data-target="gameSlidePuzzle">
+                        <i class="fas fa-puzzle-piece"></i> Slide Puzzle
+                    </button>
+                    <button class="tab-btn" data-target="gamePetalPlucker">
+                        <i class="fas fa-spa"></i> Pluck Daisy
+                    </button>
+                    <button class="tab-btn" data-target="gamePopBalloons">
+                        <i class="fas fa-circle-nodes"></i> Balloon Pop
+                    </button>
+                    <button class="tab-btn" data-target="gameTarotTeller">
+                        <i class="fas fa-wand-magic-sparkles"></i> Tarot Cards
+                    </button>
+                    <button class="tab-btn" data-target="gameLoveQuiz">
+                        <i class="fas fa-question-circle"></i> Quiz
+                    </button>
+                    <button class="tab-btn" data-target="gameWishCatcher">
+                        <i class="fas fa-star-and-crescent"></i> Stars Wish
+                    </button>
+                    <button class="tab-btn" data-target="gameHeartConnector">
+                        <i class="fas fa-link"></i> Link Heart
+                    </button>
+                    <button class="tab-btn" data-target="gameFlappyCupid">
+                        <i class="fas fa-dove"></i> Flappy Cupid
+                    </button>
+                    <button class="tab-btn" data-target="gameBubbleWrap">
+                        <i class="fas fa-border-all"></i> Bubble Wrap
+                    </button>
+                    <button class="tab-btn" data-target="gamePetalCatch">
+                        <i class="fas fa-basket-shopping"></i> Petal Catch
+                    </button>
+                    <button class="tab-btn" data-target="gameLoveCode">
+                        <i class="fas fa-user-secret"></i> Secret Code
+                    </button>
+                    <button class="tab-btn" data-target="gameCupidArcher">
+                        <i class="fas fa-bullseye"></i> Cupid Archer
+                    </button>
+                    <button class="tab-btn" data-target="gameWordSearch">
+                        <i class="fas fa-search"></i> Word Search
+                    </button>
+                    <button class="tab-btn" data-target="gamePianoTap">
+                        <i class="fas fa-music"></i> Piano Tap
+                    </button>
+                    <button class="tab-btn" data-target="gameDoodlePad">
+                        <i class="fas fa-palette"></i> Doodle Pad
+                    </button>
+                    <button class="tab-btn" data-target="gameCupcakeClicker">
+                        <i class="fas fa-cookie-bite"></i> Cupcake Clicker
+                    </button>
+                    <button class="tab-btn" data-target="gameWhackCupid">
+                        <i class="fas fa-hammer"></i> Whack Cupid
+                    </button>
+                    <button class="tab-btn" data-target="gamePolaroidJigsaw">
+                        <i class="fas fa-puzzle-piece"></i> Polaroid Jigsaw
+                    </button>
+                    <button class="tab-btn" data-target="gameHeartSnake">
+                        <i class="fas fa-gift"></i> Heart Snake
+                    </button>
+                    <button class="tab-btn" data-target="gameCupidMaze">
+                        <i class="fas fa-map-signs"></i> Cupid Maze
+                    </button>
+                    <button class="tab-btn" data-target="gameCrystalBall">
+                        <i class="fas fa-circle-notch"></i> Crystal Ball
+                    </button>
+                    <button class="tab-btn" data-target="gameBrickBreaker">
+                        <i class="fas fa-gamepad"></i> Brick Breaker
+                    </button>
+                    <button class="tab-btn" data-target="gameHeartRhythm">
+                        <i class="fas fa-drum"></i> Rhythm Heart
+                    </button>
+                    <button class="tab-btn" data-target="gameHeartSequence">
+                        <i class="fas fa-braille"></i> Heart Sequence
+                    </button>
+                    <button class="tab-btn" data-target="gameCupcakeStudio">
+                        <i class="fas fa-magic"></i> Cupcake Studio
+                    </button>
+                    <button class="tab-btn" data-target="gameTypingSpeed">
+                        <i class="fas fa-keyboard"></i> Love Typing
+                    </button>
+                    <button class="tab-btn" data-target="gameConnectDots">
+                        <i class="fas fa-pen-nib"></i> Connect Dots
+                    </button>
+                    <button class="tab-btn" data-target="gameF1Racing">
+                        <i class="fas fa-car-side"></i> F1 Racing
+                    </button>
+                </div>
+            </div>
+
+            <!-- Game Arena Wrapper -->
+            <div class="games-arena-wrapper">
+                <!-- GAME 1: HEART CATCHER -->
+                <div class="game-container active" id="gameHeartCatcher">
+                    <div class="game-meta">
+                        <div class="meta-item"><i class="fas fa-star gold-text"></i> Skor: <span
+                                id="catcherScore">0</span></div>
+                        <div class="meta-item"><i class="fas fa-trophy yellow-text"></i> Rekor: <span
+                                id="catcherHighScore">0</span></div>
+                        <div class="meta-item"><i class="fas fa-heartbeat red-text"></i> Nyawa: <span
+                                id="catcherLives">3</span></div>
+                    </div>
+
+                    <div class="catcher-board-wrapper">
+                        <canvas id="catcherCanvas" width="600" height="400"></canvas>
+                        <div class="game-overlay" id="catcherOverlay">
+                            <h3 class="overlay-title">Tangkap Hati & Kado! 💕</h3>
+                            <p class="overlay-desc">Gunakan tombol **Kiri / Rangan** atau **Swipe/Geser** keranjang di bawah untuk menangkap hati merah, hati pink, dan kotak kado. Hindari awan mendung abu-abu!</p>
+                            <button class="action-btn play-btn" id="btnStartCatcher">Mulai Bermain 🎈</button>
+                        </div>
+                    </div>
+
+                    <!-- Mobile Catcher Controls -->
+                    <div class="mobile-controls">
+                        <button class="ctrl-btn" id="ctrlLeft"><i class="fas fa-arrow-left"></i></button>
+                        <button class="ctrl-btn" id="ctrlRight"><i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+
+                <!-- GAME 2: MEMORY MATCH -->
+                <div class="game-container" id="gameMemoryMatch">
+                    <div class="game-meta">
+                        <div class="meta-item"><i class="fas fa-history"></i> Langkah: <span id="memoryMoves">0</span>
+                        </div>
+                        <div class="meta-item"><i class="fas fa-check-circle"></i> Pasangan: <span id="memoryPairs">0 /
+                                8</span></div>
+                        <button class="mini-reset-btn" id="btnResetMemory"><i class="fas fa-sync-alt"></i>
+                            Reset</button>
+                    </div>
+
+                    <div class="memory-grid" id="memoryGrid"></div>
+
+                    <div class="game-overlay hidden" id="memoryOverlay">
+                        <h3 class="overlay-title">Kamu Menang! 🎉</h3>
+                        <p class="overlay-desc">Kamu memiliki ingatan yang hebat! Hadiah manis menantimu di galeri bawah... 🎁</p>
+                        <button class="action-btn play-btn" id="btnStartMemory">Main Lagi ✨</button>
+                    </div>
+                </div>
+
+                <!-- GAME 3: TIC-TAC-TOE -->
+                <div class="game-container" id="gameTicTacToe">
+                    <div class="game-meta">
+                        <div class="meta-item"><i class="fas fa-user-friends"></i> Cupid vs Amara 💖</div>
+                        <div class="meta-item"><i class="fas fa-star gold-text"></i> Skor: <span id="tttScore">0</span>
+                        </div>
+                        <button class="mini-reset-btn" id="btnResetTTT"><i class="fas fa-sync-alt"></i> Reset</button>
+                    </div>
+                    <div class="ttt-board" id="tttBoard">
+                        <div class="ttt-cell" data-idx="0"></div>
+                        <div class="ttt-cell" data-idx="1"></div>
+                        <div class="ttt-cell" data-idx="2"></div>
+                        <div class="ttt-cell" data-idx="3"></div>
+                        <div class="ttt-cell" data-idx="4"></div>
+                        <div class="ttt-cell" data-idx="5"></div>
+                        <div class="ttt-cell" data-idx="6"></div>
+                        <div class="ttt-cell" data-idx="7"></div>
+                        <div class="ttt-cell" data-idx="8"></div>
+                    </div>
+                    <div class="ttt-status" id="tttStatus">Giliranku! Ketuk kotak untuk meletakkan 💖</div>
+                </div>
+
+                <!-- GAME 4: LETTER SLIDE PUZZLE -->
+                <div class="game-container" id="gameSlidePuzzle">
+                    <div class="game-meta">
+                        <div class="meta-item"><i class="fas fa-hourglass-half"></i> Langkah: <span
+                                id="slideMoves">0</span></div>
+                        <button class="mini-reset-btn" id="btnResetSlide"><i class="fas fa-sync-alt"></i> Reset</button>
+                    </div>
+                    <div class="slide-puzzle-wrapper">
+                        <div class="slide-puzzle-grid" id="slidePuzzleGrid"></div>
+                    </div>
+                    <div class="ttt-status">Susun angka 1 s/d 8 berurutan untuk menyatukan kartu ucapan! 💌</div>
+                </div>
+
+                <!-- GAME 5: DAISY PETAL PLUCKER -->
+                <div class="game-container" id="gamePetalPlucker">
+                    <div class="game-meta">
+                        <div class="meta-item"><i class="fas fa-seedling"></i> Dia Mencintaimu... ? 🌹</div>
+                        <button class="mini-reset-btn" id="btnResetPlucker"><i class="fas fa-sync-alt"></i> Tumbuhkan Baru</button>
+                    </div>
+                    <div class="daisy-interactive-area">
+                        <div class="daisy-flower-wrapper" id="daisyFlower">
+                            <!-- Petals generated by script -->
+                        </div>
+                    </div>
+                    <div class="plucker-status" id="pluckerStatus">Klik kelopak bunga di atas satu per satu... 🌸</div>
+                </div>
+
+                <!-- GAME 6: BALLOON POP -->
+                <div class="game-container" id="gamePopBalloons">
+                    <div class="game-meta">
+                        <div class="meta-item"><i class="fas fa-bullseye"></i> Balon di-Pop: <span
+                                id="balloonPopCount">0</span></div>
+                        <div class="meta-item"><i class="fas fa-clock"></i> Sisa Waktu: <span
+                                id="balloonTimer">20</span>s</div>
+                    </div>
+                    <div class="balloon-pop-board" id="balloonPopBoard">
+                        <div class="game-overlay" id="balloonOverlay">
+                            <h3 class="overlay-title">Pecahin Balon Cinta! 🎈</h3>
+                            <p class="overlay-desc">Klik atau tap balon pink dan emas secepat mungkin sebelum waktu 20 detik habis ya!</p>
+                            <button class="action-btn play-btn" id="btnStartBalloons">Mulai Pop! 💥</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GAME 7: TAROT FORTUNE TELLER -->
+                <div class="game-container" id="gameTarotTeller">
+                    <div class="game-meta">
+                        <div class="meta-item"><i class="fas fa-star-of-david"></i> Ramalan Cinta Spesial Amara 🔮</div>
+                    </div>
+                    <div class="tarot-table-area">
+                        <div class="tarot-card-deck">
+                            <div class="tarot-rose-glowing" id="tarotCrystalRose">🌹</div>
+                        </div>
+                        <div class="tarot-reading-board" id="tarotReadingBoard">
+                            <p class="tarot-reading-text">Ketuk Mawar Kristal Merah di atas buat meramal hoki cinta kamu hari ini ya... ✨</p>
+                        </div>
+                    </div>
+                    <button class="action-btn" id="btnDrawTarot"><i class="fas fa-wand-magic-sparkles"></i> Ramal Sekarang ✨</button>
+                </div>
+
+                <!-- GAME 8: LOVE COMPATIBILITY QUIZ -->
+                <div class="game-container" id="gameLoveQuiz">
+                    <div class="game-meta">
+                        <div class="meta-item"><i class="fas fa-heart-circle-check"></i> Ujian Kecocokan Cinta Amara 🎀
+                        </div>
+                    </div>
+                    <div class="quiz-box-card" id="quizCard">
+                        <div class="quiz-question-number" id="quizStep">Pertanyaan 1 / 5</div>
+                        <div class="quiz-question-text" id="quizQuestion">Gimana liburan impian terbaik kamu bareng orang tersayang?</div>
+                        <div class="quiz-options-list" id="quizOptions">
+                            <!-- Options generated dynamically -->
+                        </div>
+                    </div>
+                    <div class="quiz-results-card hidden" id="quizResults">
+                        <div class="quiz-percent-glowing" id="quizPercent">99%</div>
+                        <h4 class="quiz-verdict-title" id="quizVerdictTitle">Belahan Jiwa Sejati! 💕</h4>
+                        <p class="quiz-verdict-desc" id="quizVerdictDesc">Kamu sama dia punya ikatan kosmik yang nggak terpisahkan. Cinta kamu mekar abadi!</p>
+                        <button class="action-btn" id="btnResetQuiz"><i class="fas fa-redo"></i> Ulangi Kuis</button>
+                    </div>
+                </div>
+
+                <!-- GAME 9: WISH CATCHER -->
+                <div class="game-container" id="gameWishCatcher">
+                    <div class="game-meta">
+                        <div class="meta-item"><i class="fas fa-meteor"></i> Bintang Terkumpul: <span
+                                id="caughtStarsCount">0</span></div>
+                        <div class="meta-item"><i class="fas fa-clock"></i> Sisa Waktu: <span id="wishTimer">20</span>s
+                        </div>
+                    </div>
+                    <div class="wish-catcher-sky" id="wishCatcherSky">
+                        <div class="game-overlay" id="wishCatcherOverlay">
+                            <h3 class="overlay-title">Tangkap Bintang Harapan! 🌠</h3>
+                            <p class="overlay-desc">Bintang-bintang jatuh cepet banget nih! Klik tiap bintang jatuh secepat mungkin untuk menangkap doa manis!</p>
+                            <button class="action-btn play-btn" id="btnStartWishCatcher">Mulai Nangkep ✨</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GAME 10: HEART CONNECTOR -->
+                <div class="game-container" id="gameHeartConnector">
+                    <div class="game-meta">
+                        <div class="meta-item"><i class="fas fa-bolt"></i> Pasangan Hati: <span
+                                id="connectedHearts">0</span></div>
+                        <div class="meta-item"><i class="fas fa-clock"></i> Waktu: <span id="connectorTimer">20</span>s
+                        </div>
+                    </div>
+                    <div class="connector-board" id="connectorBoard">
+                        <div class="game-overlay" id="connectorOverlay">
+                            <h3 class="overlay-title">Heart Connector 🔗</h3>
+                            <p class="overlay-desc">Dua hati pink nyala berpasangan di dalam papan grid. Hubungin keduanya dengan mengeklik keduanya berturut-turut sebelum waktu habis ya!</p>
+                            <button class="action-btn play-btn" id="btnStartConnector">Hubungin Hati! 💖</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GAME 11: FLAPPY CUPID -->
+                <div class="game-container" id="gameFlappyCupid">
+                    <div class="game-meta">
+                        <div class="meta-item"><i class="fas fa-star gold-text"></i> Skor: <span
+                                id="flappyScore">0</span></div>
+                        <div class="meta-item"><i class="fas fa-trophy yellow-text"></i> Rekor: <span
+                                id="flappyHighScore">0</span></div>
+                    </div>
+                    <div class="catcher-board-wrapper">
+                        <canvas id="flappyCanvas" width="600" height="400"></canvas>
+                        <div class="game-overlay" id="flappyOverlay">
+                            <h3 class="overlay-title">Flappy Cupid 👼</h3>
+                            <p class="overlay-desc">Klik kanvas atau tekan **Spasi** untuk membuat Cupid terbang. Lewati rintangan awan mendung dan kumpulin bintang emas!</p>
+                            <button class="action-btn play-btn" id="btnStartFlappy">Terbang! 🚀</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GAME 12: LOVE BUBBLE WRAP -->
+                <div class="game-container" id="gameBubbleWrap">
+                    <div class="game-meta">
+                        <div class="meta-item"><i class="fas fa-circle-check pink-icon"></i> Di-Pop: <span
+                                id="bubblePopCount">0 / 36</span></div>
+                        <button class="mini-reset-btn" id="btnResetBubble"><i class="fas fa-sync-alt"></i>
+                            Reset</button>
+                    </div>
+                    <div class="memory-grid" id="bubbleWrapGrid"
+                        style="grid-template-columns: repeat(6, 1fr); max-width: 380px;"></div>
+                </div>
+
+                <!-- GAME 13: ROSE PETAL CATCH -->
+                <div class="game-container" id="gamePetalCatch">
+                    <div class="game-meta">
+                        <div class="meta-item"><i class="fas fa-spa pink-icon"></i> Petal Dikumpulkan: <span
+                                id="petalScore">0</span></div>
+                        <div class="meta-item"><i class="fas fa-clock"></i> Waktu: <span id="petalTimer">20</span>s
+                        </div>
+                    </div>
+                    <div class="catcher-board-wrapper">
+                        <canvas id="petalCanvas" width="600" height="400"></canvas>
+                        <div class="game-overlay" id="petalOverlay">
+                            <h3 class="overlay-title">Rose Petal Catch 🌹</h3>
+                            <p class="overlay-desc">Geser keranjang pake kursor mouse, tombol Kiri/Kanan, atau sentuhan buat menangkap kelopak mawar yang gugur!</p>
+                            <button class="action-btn play-btn" id="btnStartPetalCatch">Mulai Tangkap! 🌸</button>
+                        </div>
+                    </div>
+                    <div class="mobile-controls">
+                        <button class="ctrl-btn" id="ctrlPetalLeft"><i class="fas fa-arrow-left"></i></button>
+                        <button class="ctrl-btn" id="ctrlPetalRight"><i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+
+                <!-- GAME 14: SECRET LOVE CODE -->
+                <div class="game-container" id="gameLoveCode">
+                    <div class="game-meta">
+                        <div class="meta-item"><i class="fas fa-user-secret pink-icon"></i> Enkripsi Doa Rahasia 🌸
+                        </div>
+                    </div>
+                    <div class="wish-creator-box" style="width: 100%; max-width: 500px; margin: 0 auto;">
+                        <div class="wish-form">
+                            <div class="input-group">
+                                <textarea id="loveCodeInput"
+                                    placeholder="Tulis pesan rahasiamu di sini untuk diubah menjadi kode emoji..."
+                                    rows="3"></textarea>
+                            </div>
+                            <div class="color-picker-wrapper" style="justify-content: center;">
+                                <button class="action-btn" id="btnEncodeMessage"
+                                    style="width: auto; margin-right: 10px;"><i class="fas fa-lock"></i> Encode</button>
+                                <button class="action-btn" id="btnDecodeMessage" style="width: auto;"><i
+                                        class="fas fa-unlock"></i> Decode</button>
+                            </div>
+                            <div class="input-group">
+                                <textarea id="loveCodeOutput" placeholder="Hasil kode rahasia bakal muncul di sini ya..."
+                                    readonly rows="3"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GAME 15: CUPID'S ARCHER -->
+                <div class="game-container" id="gameCupidArcher">
+                    <div class="game-meta">
+                        <div class="meta-item"><i class="fas fa-bullseye pink-icon"></i> Target Kena: <span
+                                id="archerScore">0</span></div>
+                        <div class="meta-item"><i class="fas fa-clock"></i> Sisa Waktu: <span
+                                id="archerTimer">20</span>s</div>
+                    </div>
+                    <div class="catcher-board-wrapper">
+                        <canvas id="archerCanvas" width="600" height="400"></canvas>
+                        <div class="game-overlay" id="archerOverlay">
+                            <h3 class="overlay-title">Cupid's Archer 🏹</h3>
+                            <p class="overlay-desc">Tarik busur panah dengan kursor mouse, lalu lepaskan untuk memanah balon hati yang jalan!</p>
+                            <button class="action-btn play-btn" id="btnStartArcher">Mulai Memanah! 🎯</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GAME 16: LOVE WORD SEARCH -->
+                <div class="game-container" id="gameWordSearch">
+                    <div class="game-meta">
+                        <div class="meta-item"><i class="fas fa-search pink-icon"></i> Kata Ditemukan: <span
+                                id="wordsFoundCount">0 / 6</span></div>
+                        <button class="mini-reset-btn" id="btnResetWordSearch"><i class="fas fa-sync-alt"></i>
+                            Reset</button>
+                    </div>
+                    <div class="word-search-layout"
+                        style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
+                        <div class="memory-grid" id="wordSearchGrid"
+                            style="grid-template-columns: repeat(8, 1fr); gap: 4px; max-width: 320px; user-select: none;">
+                        </div>
+                        <div class="ttt-status" id="wordSearchWords"
+                            style="font-size: 13px; color: var(--light-text); display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GAME 17: MELODY PIANO TAP -->
+                <div class="game-container" id="gamePianoTap">
+                    <div class="game-meta">
+                        <div class="meta-item"><i class="fas fa-music pink-icon"></i> Ketukan Sempurna: <span
+                                id="pianoScore">0</span></div>
+                        <div class="meta-item"><i class="fas fa-heartbeat"></i> Combo: <span id="pianoCombo">0</span>
+                        </div>
+                    </div>
+                    <div class="catcher-board-wrapper">
+                        <canvas id="pianoCanvas" width="600" height="400"></canvas>
+                        <div class="game-overlay" id="pianoOverlay">
+                            <h3 class="overlay-title">Piano Tap Melody 🎹</h3>
+                            <p class="overlay-desc">Klik ubin mawar pink yang jatuh tepat saat menyentuh garis bawah
+                                untuk melantunkan melodi lagu ulang tahun Amara!</p>
+                            <button class="action-btn play-btn" id="btnStartPiano">Main Piano ✨</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GAME 18: AESTHETIC DOODLE PAD -->
+                <div class="game-container" id="gameDoodlePad">
+                    <div class="game-meta">
+                        <div class="meta-item"><i class="fas fa-paint-brush pink-icon"></i> Doodle Art Studio 🎨</div>
+                        <button class="mini-reset-btn" id="btnResetDoodle"><i class="fas fa-eraser"></i> Clear</button>
+                    </div>
+                    <div class="doodle-layout"
+                        style="display: flex; flex-direction: column; align-items: center; gap: 12px; width: 100%;">
+                        <div class="doodle-toolbar"
+                            style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; background: rgba(255,255,255,0.5); padding: 8px 16px; border-radius: 12px;">
+                            <div style="display: flex; align-items: center; gap: 6px; font-size: 13px;">
+                                <label>Warna:</label>
+                                <input type="color" id="doodleColor" value="#ff6b8b"
+                                    style="border: none; width: 30px; height: 30px; border-radius: 4px; cursor: pointer;">
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 6px; font-size: 13px;">
+                                <label>Stiker:</label>
+                                <div class="color-options" id="doodleStamps" style="gap: 4px;">
+                                    <span class="color-dot active doodle-stamp" data-stamp="none"
+                                        style="background: #eee; display: flex; align-items: center; justify-content: center; font-size: 11px;">🖊️</span>
+                                    <span class="color-dot doodle-stamp" data-stamp="💖"
+                                        style="background: #eee; display: flex; align-items: center; justify-content: center; font-size: 11px;">💖</span>
+                                    <span class="color-dot doodle-stamp" data-stamp="🌸"
+                                        style="background: #eee; display: flex; align-items: center; justify-content: center; font-size: 11px;">🌸</span>
+                                    <span class="color-dot doodle-stamp" data-stamp="🎂"
+                                        style="background: #eee; display: flex; align-items: center; justify-content: center; font-size: 11px;">🎂</span>
+                                    <span class="color-dot doodle-stamp" data-stamp="🌟"
+                                        style="background: #eee; display: flex; align-items: center; justify-content: center; font-size: 11px;">🌟</span>
+                                </div>
+                            </div>
+                            <button class="mini-reset-btn" id="btnDownloadDoodle"
+                                style="background: var(--primary-pink); color: white;"><i class="fas fa-download"></i>
+                                Save</button>
+                        </div>
+                        <div class="catcher-board-wrapper" style="max-width: 550px;">
+                            <canvas id="doodleCanvas" width="550" height="320"
+                                style="background: #fff; display: block; border-radius: 12px; border: 1.5px solid var(--glass-border); cursor: crosshair;"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GAME 19: SWEET CUPCAKE CLICKER -->
+                <div class="game-container" id="gameCupcakeClicker">
+                    <div class="game-meta">
+                        <div class="meta-item"><i class="fas fa-cookie pink-icon"></i> Permen: <span
+                                id="clickerCount">0</span></div>
+                        <div class="meta-item"><i class="fas fa-gauge"></i> CPS: <span id="clickerCps">0</span></div>
+                    </div>
+                    <div class="clicker-layout"
+                        style="display: flex; flex-direction: column; align-items: center; gap: 20px; width: 100%;">
+                        <div class="giant-cupcake" id="giantCupcake"
+                            style="font-size: 84px; cursor: pointer; transition: transform 0.1s ease; user-select: none;">
+                            🧁</div>
+                        <div
+                            style="display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; width: 100%; max-width: 440px;">
+                            <div class="action-btn" id="upgradeAutoClick"
+                                style="font-size: 12px; flex: 1; min-width: 180px; padding: 10px; text-align: center; cursor: pointer; background: rgba(255,255,255,0.65); border: 1px solid var(--glass-border); color: var(--dark-text);">
+                                Auto Clicker (Beli: <span id="autoClickCost">15</span> 🍬) [Lv: <span
+                                    id="autoClickLevel">0</span>]
+                            </div>
+                            <div class="action-btn" id="upgradeFairyDust"
+                                style="font-size: 12px; flex: 1; min-width: 180px; padding: 10px; text-align: center; cursor: pointer; background: rgba(255,255,255,0.65); border: 1px solid var(--glass-border); color: var(--dark-text);">
+                                Fairy Dust (Beli: <span id="fairyDustCost">100</span> 🍬) [Lv: <span
+                                    id="fairyDustLevel">0</span>]
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GAME 20: WHACK-A-CUPID -->
+                <div class="game-container" id="gameWhackCupid">
+                    <div class="game-meta">
+                        <div class="meta-item"><i class="fas fa-hammer pink-icon"></i> Cupid di-Whack: <span
+                                id="whackScore">0</span></div>
+                        <div class="meta-item"><i class="fas fa-clock"></i> Waktu: <span id="whackTimer">20</span>s
+                        </div>
+                    </div>
+                    <div class="catcher-board-wrapper" style="max-width: 360px; height: 260px; position: relative;">
+                        <div class="whack-grid" id="whackGrid"
+                            style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; padding: 15px; width: 100%; height: 100%;">
+                            <div class="whack-hole" data-idx="0"
+                                style="background: #3b154c; border-radius: 50%; height: 75px; position: relative; overflow: hidden; box-shadow: inset 0 8px 12px rgba(0,0,0,0.6);">
+                                <div class="whack-mole"
+                                    style="font-size: 36px; position: absolute; bottom: -50px; left: 50%; transform: translateX(-50%); transition: bottom 0.15s ease; cursor: pointer; user-select: none;">
+                                    👼</div>
+                            </div>
+                            <div class="whack-hole" data-idx="1"
+                                style="background: #3b154c; border-radius: 50%; height: 75px; position: relative; overflow: hidden; box-shadow: inset 0 8px 12px rgba(0,0,0,0.6);">
+                                <div class="whack-mole"
+                                    style="font-size: 36px; position: absolute; bottom: -50px; left: 50%; transform: translateX(-50%); transition: bottom 0.15s ease; cursor: pointer; user-select: none;">
+                                    👼</div>
+                            </div>
+                            <div class="whack-hole" data-idx="2"
+                                style="background: #3b154c; border-radius: 50%; height: 75px; position: relative; overflow: hidden; box-shadow: inset 0 8px 12px rgba(0,0,0,0.6);">
+                                <div class="whack-mole"
+                                    style="font-size: 36px; position: absolute; bottom: -50px; left: 50%; transform: translateX(-50%); transition: bottom 0.15s ease; cursor: pointer; user-select: none;">
+                                    👼</div>
+                            </div>
+                            <div class="whack-hole" data-idx="3"
+                                style="background: #3b154c; border-radius: 50%; height: 75px; position: relative; overflow: hidden; box-shadow: inset 0 8px 12px rgba(0,0,0,0.6);">
+                                <div class="whack-mole"
+                                    style="font-size: 36px; position: absolute; bottom: -50px; left: 50%; transform: translateX(-50%); transition: bottom 0.15s ease; cursor: pointer; user-select: none;">
+                                    👼</div>
+                            </div>
+                            <div class="whack-hole" data-idx="4"
+                                style="background: #3b154c; border-radius: 50%; height: 75px; position: relative; overflow: hidden; box-shadow: inset 0 8px 12px rgba(0,0,0,0.6);">
+                                <div class="whack-mole"
+                                    style="font-size: 36px; position: absolute; bottom: -50px; left: 50%; transform: translateX(-50%); transition: bottom 0.15s ease; cursor: pointer; user-select: none;">
+                                    👼</div>
+                            </div>
+                            <div class="whack-hole" data-idx="5"
+                                style="background: #3b154c; border-radius: 50%; height: 75px; position: relative; overflow: hidden; box-shadow: inset 0 8px 12px rgba(0,0,0,0.6);">
+                                <div class="whack-mole"
+                                    style="font-size: 36px; position: absolute; bottom: -50px; left: 50%; transform: translateX(-50%); transition: bottom 0.15s ease; cursor: pointer; user-select: none;">
+                                    👼</div>
+                            </div>
+                        </div>
+                        <div class="game-overlay" id="whackOverlay">
+                            <h3 class="overlay-title">Whack-A-Cupid! 🔨</h3>
+                            <p class="overlay-desc">Ketuk Cupid yang bermunculan dari lubang secepat mungkin sebelum
+                                waktu 20 detik habis!</p>
+                            <button class="action-btn play-btn" id="btnStartWhack">Mulai Whack! 👼</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GAME 21: LOVE POLAROID JIGSAW -->
+                <div class="game-container" id="gamePolaroidJigsaw">
+                    <div class="game-meta">
+                        <div class="meta-item"><i class="fas fa-puzzle-piece pink-icon"></i> Polaroid Jigsaw Puzzle 🧩
+                        </div>
+                        <button class="mini-reset-btn" id="btnResetJigsaw"><i class="fas fa-sync-alt"></i>
+                            Reset</button>
+                    </div>
+                    <div class="jigsaw-puzzle-layout"
+                        style="display: flex; flex-direction: column; align-items: center; gap: 15px; width: 100%;">
+                        <div class="memory-grid" id="jigsawBoardSlots"
+                            style="grid-template-columns: repeat(3, 1fr); gap: 4px; max-width: 240px; aspect-ratio: 1; border: 2px dashed var(--soft-pink); border-radius: 8px; background: rgba(255,255,255,0.3);">
+                        </div>
+                        <div class="jigsaw-pieces-pool" id="jigsawPiecesPool"
+                            style="display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; max-width: 320px; min-height: 80px; padding: 10px; background: rgba(255,255,255,0.45); border-radius: 8px;">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GAME 22: ROMANTIC HEART SNAKE -->
+                <div class="game-container" id="gameHeartSnake">
+                    <div class="game-meta">
+                        <div class="meta-item"><i class="fas fa-star gold-text"></i> Hati Makan: <span
+                                id="snakeScore">0</span></div>
+                        <div class="meta-item"><i class="fas fa-trophy yellow-text"></i> Rekor: <span
+                                id="snakeHighScore">0</span></div>
+                    </div>
+                    <div class="catcher-board-wrapper" style="max-width: 320px;">
+                        <canvas id="snakeCanvas" width="320" height="320"
+                            style="background: #fff5f7; border-radius: 12px; border: 1.5px solid var(--glass-border); display: block;"></canvas>
+                        <div class="game-overlay" id="snakeOverlay">
+                            <h3 class="overlay-title">Heart Snake 🐍💖</h3>
+                            <p class="overlay-desc">Arahkan ular hati menggunakan tombol arah layar atau keyboard (WASD)
+                                untuk memakan bintang cinta!</p>
+                            <button class="action-btn play-btn" id="btnStartSnake">Mulai Ular! ✨</button>
+                        </div>
+                    </div>
+                    <div class="mobile-controls"
+                        style="display: flex; flex-direction: column; align-items: center; gap: 4px; max-width: 140px; margin-top: 10px;">
+                        <button class="ctrl-btn" id="ctrlSnakeUp" style="padding: 10px 16px;"><i
+                                class="fas fa-chevron-up"></i></button>
+                        <div style="display: flex; gap: 16px;">
+                            <button class="ctrl-btn" id="ctrlSnakeLeft" style="padding: 10px 16px;"><i
+                                    class="fas fa-chevron-left"></i></button>
+                            <button class="ctrl-btn" id="ctrlSnakeRight" style="padding: 10px 16px;"><i
+                                    class="fas fa-chevron-right"></i></button>
+                        </div>
+                        <button class="ctrl-btn" id="ctrlSnakeDown" style="padding: 10px 16px;"><i
+                                class="fas fa-chevron-down"></i></button>
+                    </div>
+                </div>
+
+                <!-- GAME 23: CUPID'S MAZE -->
+                <div class="game-container" id="gameCupidMaze">
+                    <div class="game-meta">
+                        <div class="meta-item"><i class="fas fa-map pink-icon"></i> Cari Kunci Cinta Cupid 🗺️</div>
+                        <button class="mini-reset-btn" id="btnResetMaze"><i class="fas fa-sync-alt"></i> Reset</button>
+                    </div>
+                    <div class="catcher-board-wrapper" style="max-width: 320px;">
+                        <canvas id="mazeCanvas" width="320" height="320"
+                            style="background: #fff5f7; border-radius: 12px; border: 1.5px solid var(--glass-border); display: block;"></canvas>
+                        <div class="game-overlay" id="mazeOverlay">
+                            <h3 class="overlay-title">Cupid's Maze 🗺️🌸</h3>
+                            <p class="overlay-desc">Gunakan panah di layar atau keyboard untuk menggerakkan mawar merah
+                                menuju kunci cinta di dalam labirin!</p>
+                            <button class="action-btn play-btn" id="btnStartMaze">Masuki Labirin 🧭</button>
+                        </div>
+                    </div>
+                    <div class="mobile-controls"
+                        style="display: flex; flex-direction: column; align-items: center; gap: 4px; max-width: 140px; margin-top: 10px;">
+                        <button class="ctrl-btn" id="ctrlMazeUp" style="padding: 10px 16px;"><i
+                                class="fas fa-chevron-up"></i></button>
+                        <div style="display: flex; gap: 16px;">
+                            <button class="ctrl-btn" id="ctrlMazeLeft" style="padding: 10px 16px;"><i
+                                    class="fas fa-chevron-left"></i></button>
+                            <button class="ctrl-btn" id="ctrlMazeRight" style="padding: 10px 16px;"><i
+                                    class="fas fa-chevron-right"></i></button>
+                        </div>
+                        <button class="ctrl-btn" id="ctrlMazeDown" style="padding: 10px 16px;"><i
+                                class="fas fa-chevron-down"></i></button>
+                    </div>
+                </div>
+
+                <!-- GAME 24: MAGIC LOVE CRYSTAL BALL -->
+                <div class="game-container" id="gameCrystalBall">
+                    <div class="game-meta">
+                        <div class="meta-item"><i class="fas fa-circle-notch pink-icon"></i> Bola Kristal Ajaib Cinta 🔮
+                        </div>
+                    </div>
+                    <div class="crystal-ball-area"
+                        style="display: flex; flex-direction: column; align-items: center; gap: 16px; width: 100%;">
+                        <div class="giant-cupcake" id="btnTriggerCrystalBall"
+                            style="font-size: 80px; cursor: pointer; animation: floatLantern 6s infinite alternate; user-select: none;">
+                            🔮</div>
+                        <div class="plucker-status" style="font-size: 13px; text-align: center;">Pikirkan satu
+                            pertanyaan cinta dalam hatimu, lalu ketuk bola kristal di atas! ✨</div>
+                        <div class="tarot-reading-board" id="crystalReadingBoard"
+                            style="width: 100%; max-width: 440px;">
+                            <p class="tarot-reading-text" id="crystalReadingText">Menunggu pancaran aura cinta spiritual
+                                Anda... 🔮</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GAME 25: BRICK BREAKER LOVE -->
+                <div class="game-container" id="gameBrickBreaker">
+                    <div class="game-meta">
+                        <div class="meta-item"><i class="fas fa-cubes pink-icon"></i> Skor: <span
+                                id="brickScore">0</span></div>
+                        <div class="meta-item"><i class="fas fa-heart"></i> Nyawa: <span id="brickLives">3</span></div>
+                    </div>
+                    <div class="catcher-board-wrapper">
+                        <canvas id="brickCanvas" width="500" height="350"></canvas>
+                        <div class="game-overlay" id="brickOverlay">
+                            <h3 class="overlay-title">Brick Breaker Love 🧱💖</h3>
+                            <p class="overlay-desc">Gerakkan papan pink di bawah dengan menggeser mouse atau menyentuh
+                                layar untuk memantulkan bola hati penghancur bata!</p>
+                            <button class="action-btn play-btn" id="btnStartBrick">Mulai Main! 🎮</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GAME 26: CUPID'S HEART RHYTHM -->
+                <div class="game-container" id="gameHeartRhythm">
+                    <div class="game-meta">
+                        <div class="meta-item"><i class="fas fa-drum pink-icon"></i> Skor Ketepatan: <span
+                                id="rhythmScore">0</span></div>
+                        <div class="meta-item"><i class="fas fa-fire"></i> Combo: <span id="rhythmCombo">0</span></div>
+                    </div>
+                    <div class="catcher-board-wrapper">
+                        <canvas id="rhythmCanvas" width="500" height="320"></canvas>
+                        <div class="game-overlay" id="rhythmOverlay">
+                            <h3 class="overlay-title">Heart Rhythm Test 💓</h3>
+                            <p class="overlay-desc">Klik tombol **Tap Hati!** di bawah tepat pada waktunya saat
+                                lingkaran mawar menyusut sempurna ke mawar pusat!</p>
+                            <button class="action-btn play-btn" id="btnStartRhythm">Mulai Rhythm! 🥁</button>
+                        </div>
+                    </div>
+                    <div class="rhythm-controls" style="margin-top: 10px;">
+                        <button class="action-btn" id="btnTapRhythm"
+                            style="width: auto; padding: 12px 24px; font-weight: bold; background: var(--primary-pink); color: #fff; box-shadow: 0 4px 15px rgba(255,107,139,0.3);"><i
+                                class="fas fa-heart"></i> Tap Hati! 💖</button>
+                    </div>
+                </div>
+
+                <!-- GAME 27: MEMORY HEART SEQUENCE -->
+                <div class="game-container" id="gameHeartSequence">
+                    <div class="game-meta">
+                        <div class="meta-item"><i class="fas fa-braille pink-icon"></i> Ronde: <span
+                                id="seqRound">1</span></div>
+                        <div class="meta-item"><i class="fas fa-circle-check"></i> Status: <span
+                                id="seqStatus">Mulai</span></div>
+                    </div>
+                    <div class="catcher-board-wrapper" style="max-width: 320px; height: 260px;">
+                        <div class="sequence-grid"
+                            style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; padding: 15px; width: 100%; height: 100%;">
+                            <div class="seq-panel" data-idx="0"
+                                style="background-color: #ff6b8b; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 32px; color: white; cursor: pointer; transition: filter 0.1s ease; user-select: none;">
+                                🌸</div>
+                            <div class="seq-panel" data-idx="1"
+                                style="background-color: #ffb6c1; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 32px; color: white; cursor: pointer; transition: filter 0.1s ease; user-select: none;">
+                                💖</div>
+                            <div class="seq-panel" data-idx="2"
+                                style="background-color: #ffd700; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 32px; color: white; cursor: pointer; transition: filter 0.1s ease; user-select: none;">
+                                🌟</div>
+                            <div class="seq-panel" data-idx="3"
+                                style="background-color: #4fc3f7; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 32px; color: white; cursor: pointer; transition: filter 0.1s ease; user-select: none;">
+                                🎈</div>
+                        </div>
+                        <div class="game-overlay" id="sequenceOverlay">
+                            <h3 class="overlay-title">Memory Heart Sequence 🧬</h3>
+                            <p class="overlay-desc">Perhatikan urutan panel warna-warni yang menyala, lalu ulangi
+                                ketukan panel dalam urutan yang tepat!</p>
+                            <button class="action-btn play-btn" id="btnStartSequence">Mulai Simon Says! 🎮</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GAME 28: CUPCAKE DECORATION STUDIO -->
+                <div class="game-container" id="gameCupcakeStudio">
+                    <div class="game-meta">
+                        <div class="meta-item"><i class="fas fa-palette pink-icon"></i> Studio Dekorasi Cupcake Amara 🧁
+                        </div>
+                        <button class="mini-reset-btn" id="btnResetCupcakeStudio"><i class="fas fa-sync-alt"></i>
+                            Reset</button>
+                    </div>
+                    <div class="studio-layout"
+                        style="display: flex; flex-direction: column; align-items: center; gap: 15px; width: 100%;">
+                        <div class="studio-toppings-bar"
+                            style="display: flex; gap: 10px; justify-content: center; width: 100%; max-width: 440px; padding: 10px; background: rgba(255,255,255,0.45); border-radius: 12px; user-select: none;">
+                            <div class="topping-item" draggable="true" data-type="cherry"
+                                style="padding: 6px 12px; background: white; border-radius: 20px; border: 1px solid var(--glass-border); cursor: grab; font-size: 13px;">
+                                🍒 Cherry</div>
+                            <div class="topping-item" draggable="true" data-type="cream"
+                                style="padding: 6px 12px; background: white; border-radius: 20px; border: 1px solid var(--glass-border); cursor: grab; font-size: 13px;">
+                                🍦 Krim</div>
+                            <div class="topping-item" draggable="true" data-type="sparkle"
+                                style="padding: 6px 12px; background: white; border-radius: 20px; border: 1px solid var(--glass-border); cursor: grab; font-size: 13px;">
+                                ✨ Sparkles</div>
+                            <div class="topping-item" draggable="true" data-type="candle"
+                                style="padding: 6px 12px; background: white; border-radius: 20px; border: 1px solid var(--glass-border); cursor: grab; font-size: 13px;">
+                                🕯️ Lilin</div>
+                        </div>
+                        <div class="studio-canvas-area" id="studioCupcakeCanvasArea"
+                            style="position: relative; width: 300px; height: 300px; border: 2px dashed var(--soft-pink); border-radius: 16px; background: rgba(255,255,255,0.3); display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                            <div class="studio-base-cupcake" style="font-size: 96px; user-select: none; z-index: 1;">🧁
+                            </div>
+                            <div class="studio-dropped-toppings" id="studioToppingsContainer"
+                                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 2;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GAME 29: LOVE QUOTE TYPING SPEED -->
+                <div class="game-container" id="gameTypingSpeed">
+                    <div class="game-meta">
+                        <div class="meta-item"><i class="fas fa-clock"></i> Sisa Waktu: <span
+                                id="typingTimer">20</span>s</div>
+                        <div class="meta-item"><i class="fas fa-tachometer-alt"></i> WPM: <span id="typingWpm">0</span>
+                        </div>
+                    </div>
+                    <div class="wish-creator-box"
+                        style="width: 100%; max-width: 500px; margin: 0 auto; position: relative;">
+                        <div class="wish-form">
+                            <div class="typing-quote-display" id="typingQuoteDisplay"
+                                style="font-family: var(--font-heading); font-size: 16px; font-style: italic; color: var(--dark-text); background: var(--cream); padding: 12px; border-radius: 8px; border: 1.5px solid var(--soft-pink); text-align: center; margin-bottom: 10px;">
+                                Cinta sejati tidak pernah memudar, ia tumbuh lebih cerah dari hari ke hari.</div>
+                            <div class="input-group">
+                                <textarea id="typingInput"
+                                    placeholder="Mulai mengetik kalimat di atas dengan cepat dan tepat di sini..."
+                                    rows="3" disabled></textarea>
+                            </div>
+                        </div>
+                        <div class="game-overlay" id="typingOverlay">
+                            <h3 class="overlay-title">Typing Speed Challenge ⌨️</h3>
+                            <p class="overlay-desc">Uji kecepatan mengetik kata-kata cinta romantis Anda dalam waktu 20
+                                detik!</p>
+                            <button class="action-btn play-btn" id="btnStartTyping">Mulai Ketik! ⚡</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GAME 30: STARRY CONNECT-THE-DOTS -->
+                <div class="game-container" id="gameConnectDots">
+                    <div class="game-meta">
+                        <div class="meta-item"><i class="fas fa-pen-nib pink-icon"></i> Hubungkan Bintang Harapan 🌠
+                        </div>
+                        <button class="mini-reset-btn" id="btnResetConnectDots"><i class="fas fa-sync-alt"></i>
+                            Reset</button>
+                    </div>
+                    <div class="catcher-board-wrapper">
+                        <canvas id="dotsCanvas" width="500" height="350"></canvas>
+                        <div class="game-overlay" id="dotsOverlay">
+                            <h3 class="overlay-title">Connect-The-Dots ⭐</h3>
+                            <p class="overlay-desc">Klik bintang bercahaya nomor 1 s/d 10 secara berurutan untuk
+                                merangkai gambar kejutan rahasia di langit!</p>
+                            <button class="action-btn play-btn" id="btnStartConnectDots">Mulai Rangkai! ✨</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GAME 31: F1 RACING GRAND PRIX -->
+                <div class="game-container" id="gameF1Racing">
+                    <div class="game-meta">
+                        <div class="meta-item"><i class="fas fa-flag-checkered pink-icon"></i> Jarak: <span
+                                id="f1Score">0</span>m</div>
+                        <div class="meta-item"><i class="fas fa-tachometer-alt yellow-text"></i> Speed: <span
+                                id="f1Speed">0</span> km/h</div>
+                        <div class="meta-item"><i class="fas fa-heartbeat red-text"></i> Armor: <span
+                                id="f1Armor">100</span>%</div>
+                        <button class="mini-reset-btn" id="btnResetF1Racing"><i class="fas fa-sync-alt"></i>
+                            Reset</button>
+                    </div>
+                    <div class="catcher-board-wrapper">
+                        <canvas id="f1Canvas" width="500" height="350"></canvas>
+                        <div class="game-overlay" id="f1Overlay">
+                            <h3 class="overlay-title">F1 Grand Prix 🏎️🏁</h3>
+                            <p class="overlay-desc">Kendarai mobil F1 pink Amara! Hindari tabrakan dengan mobil rival,
+                                kumpulkan bintang & hati, dan ambil ⚡ untuk Turbo Boost!</p>
+                            <div style="font-size: 11px; color: rgba(255,255,255,0.7); margin-bottom: 12px;">Kontrol:
+                                Tombol A/D, Panah Kiri/Kanan, atau Geser/Ketuk Layar</div>
+                            <button class="action-btn play-btn" id="btnStartF1Racing">Mulai Balapan! 🏎️</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. AESTHETIC POLAROID SCRAPBOOK -->
+        <section class="section-container gallery-section" id="gallerySection">
+            <h2 class="section-title"><i class="fas fa-camera-retro pink-icon"></i> Polaroid Scrapbook 📸</h2>
+            <p class="section-desc">Seret, geser, dan susun Polaroid kenangan manis Amara sesukamu di papan scrapbook di
+                bawah! Klik dua kali foto untuk memperbesarnya. ✨</p>
+
+            <!-- GLASSMORPHIC SCRAPBOOK UPLOAD PANEL -->
+            <div class="scrapbook-upload-panel">
+                <h3 class="upload-panel-title"><i class="fas fa-plus-circle pink-icon"></i> Tambah Foto Kenangan Amara
+                    🌸</h3>
+                <form id="scrapbookUploadForm" class="upload-form-row">
+                    <div class="upload-file-group">
+                        <label for="scrapbookImageInput" class="custom-file-upload">
+                            <i class="fas fa-camera"></i> Pilih Foto
+                        </label>
+                        <input type="file" id="scrapbookImageInput" accept="image/*" required style="display: none;">
+                        <span class="file-name-display" id="fileNameDisplay">Belum ada foto terpilih</span>
+                    </div>
+                    <div class="upload-text-group">
+                        <input type="text" id="scrapbookCaptionInput" placeholder="Tulis keterangan foto yang manis..."
+                            required maxlength="40">
+                    </div>
+                    <button type="submit" class="action-btn upload-btn" id="btnUploadScrapbook"><i
+                            class="fas fa-heart"></i> Unggah ✨</button>
+                </form>
+            </div>
+
+            <div class="scrapbook-workspace" id="scrapbookWorkspace">
+                <!-- Polaroid cards will be rendered dynamically by app.js from the database -->
+            </div>
+        </section>
+
+        <!-- 5. WISH WALL / CELESTIAL LANTERN BOARD -->
+        <section class="section-container wish-section" id="wishSection">
+            <h2 class="section-title"><i class="fas fa-magic pink-icon"></i> Pelepasan Lentera Harapan 🏮🌸</h2>
+            <p class="section-desc">Kirimkan doa dan harapan terbaikmu untuk Amara. Ucapanmu akan berubah menjadi
+                lentera kertas bercahaya yang terbang pelan-pelan menghias langit malam berbintang Amara! Arahin kursor
+                ke lentera buat membacanya, atau klik aja buat perbesar ya. ✨</p>
+
+            <div class="wish-creator-box">
+                <form id="wishForm" class="wish-form">
+                    <div class="input-group">
+                        <input type="text" id="wishSender" placeholder="Nama Kamu..." required maxlength="25">
+                    </div>
+                    <div class="input-group">
+                        <textarea id="wishMessage" placeholder="Tulis doa atau harapan terbaikmu untuk Amara..."
+                            required maxlength="150" rows="3"></textarea>
+                    </div>
+                    <div class="color-picker-wrapper">
+                        <label>Warna Lentera:</label>
+                        <div class="color-options">
+                            <span class="color-dot active" data-color="#ffb6c1"
+                                style="background-color: #ffb6c1;"></span>
+                            <span class="color-dot" data-color="#ffe4e1" style="background-color: #ffe4e1;"></span>
+                            <span class="color-dot" data-color="#ffd1dc" style="background-color: #ffd1dc;"></span>
+                            <span class="color-dot" data-color="#e0ffff" style="background-color: #e0ffff;"></span>
+                            <span class="color-dot" data-color="#f0e68c" style="background-color: #f0e68c;"></span>
+                        </div>
+                    </div>
+                    <button type="submit" class="action-btn send-wish-btn"><i class="fas fa-paper-plane"></i> Lepasin
+                        Lenteranya ✨</button>
+                </form>
+            </div>
+
+            <!-- Virtual Celestial Sky Board for Floating Lanterns -->
+            <div class="wish-board-wrapper">
+                <div class="wish-board celestial-sky" id="wishBoard">
+                    <div class="sky-background-stars"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. INTERACTIVE SATURN HEART ORBIT -->
+        <section class="section-container saturn-section" id="saturnSection">
+            <div class="saturn-aurora-bg">
+                <div class="saturn-aurora-wave wave-emerald"></div>
+                <div class="saturn-aurora-wave wave-cyan"></div>
+                <div class="saturn-aurora-wave wave-teal"></div>
+            </div>
+            <div class="saturn-stars-container" id="saturnStarsContainer"></div>
+            <div class="saturn-comet-container" id="saturnCometContainer"></div>
+            <div class="saturn-mountain-silhouette"></div>
+            <h2 class="section-title saturn-title"><i class="fas fa-globe pink-icon"></i> Galaksi Cinta Amara 🪐✨</h2>
+            <p class="section-desc">Seret kursor atau geser layar untuk memutar cincin orbit Saturnus dan melihat
+                galaksi foto kenangan & pesan manis untukmu! 💖</p>
+
+            <div class="saturn-arena" id="saturnArena">
+                <!-- Large 3D Glowing Heart in center -->
+                <div class="saturn-center-heart" id="saturnCenterHeart">
+                    <div class="heart-pulse-glow"></div>
+                    <svg class="svg-3d-heart" viewBox="0 0 100 100">
+                        <defs>
+                            <radialGradient id="heartGrad" cx="50%" cy="40%" r="50%">
+                                <stop offset="0%" stop-color="#ff758c" />
+                                <stop offset="60%" stop-color="#ff8da1" />
+                                <stop offset="100%" stop-color="#d63031" />
+                            </radialGradient>
+                            <filter id="shadow3d">
+                                <feDropShadow dx="2" dy="6" stdDeviation="4" flood-opacity="0.35" />
+                            </filter>
+                        </defs>
+                        <path d="M50,30 C35,10 10,20 10,45 C10,70 50,90 50,90 C50,90 90,70 90,45 C90,20 65,10 50,30 Z"
+                            fill="url(#heartGrad)" filter="url(#shadow3d)" />
+                    </svg>
+                </div>
+
+                <!-- Volumetric Golden Orbit Ring -->
+                <div class="saturn-orbit-ring-container">
+                    <svg class="saturn-orbit-ring-svg" viewBox="0 0 800 300">
+                        <ellipse cx="400" cy="150" rx="360" ry="80" fill="none" stroke="rgba(255, 215, 0, 0.65)"
+                            stroke-width="4.5" stroke-dasharray="12 8"
+                            style="filter: drop-shadow(0 0 16px rgba(255,215,0,0.85));" />
+                        <ellipse cx="400" cy="150" rx="358" ry="78" fill="none" stroke="rgba(255, 255, 255, 0.4)"
+                            stroke-width="1.5" />
+                    </svg>
+                </div>
+
+                <!-- Floating Orbiting Elements (Calculated via 3D Math JS) -->
+                <div class="saturn-orbit-elements" id="saturnOrbitElements">
+                    <!-- Polaroid 1 -->
+                    <div class="saturn-card polaroid-card orbit-element" data-angle="0">
+                        <div class="polaroid-img-wrapper">
+                            <img src="assets/amara_1.png" alt="Amara Kenangan 1">
+                        </div>
+                        <div class="polaroid-caption">Senyum Tercantik 🌸</div>
+                    </div>
+
+                    <!-- Note 1 -->
+                    <div class="saturn-card note-card orbit-element" data-angle="51.4">
+                        <div class="note-content">
+                            <div class="note-pin">📌</div>
+                            <p>"Kamu adalah hal terindah yang selalu ku syukuri kehadirannya di semesta ini." 💖</p>
+                        </div>
+                    </div>
+
+                    <!-- Polaroid 2 -->
+                    <div class="saturn-card polaroid-card orbit-element" data-angle="102.8">
+                        <div class="polaroid-img-wrapper">
+                            <img src="assets/amara_2.jpg" alt="Amara Kenangan 2">
+                        </div>
+                        <div class="polaroid-caption">Cantikkk ☀️</div>
+                    </div>
+
+                    <!-- Spotify Widget Embed -->
+                    <div class="saturn-card spotify-card orbit-element" data-angle="154.2"
+                        style="background: transparent; border: none; box-shadow: none; padding: 0;">
+                        <iframe style="border-radius:12px; box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);"
+                            src="https://open.spotify.com/embed/playlist/2g5Bp2JPmJwNZwJRZqNG8A?utm_source=generator&theme=0"
+                            width="220" height="152" frameBorder="0" allowfullscreen=""
+                            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                            loading="lazy"></iframe>
+                    </div>
+
+                    <!-- Polaroid 3 -->
+                    <div class="saturn-card polaroid-card orbit-element" data-angle="205.6">
+                        <div class="polaroid-img-wrapper">
+                            <img src="assets/amara_3.jpg" alt="Amara Kenangan 3">
+                        </div>
+                        <div class="polaroid-caption">Cewe Cakep✨</div>
+                    </div>
+
+                    <!-- Note 2 (Memory Map) -->
+                    <div class="saturn-card map-card orbit-element" data-angle="257.0">
+                        <div class="map-header">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+                            <span class="map-title">Memory Map 🗺️</span>
+                        </div>
+                        <div class="map-body">
+                            <div class="map-item"><i class="fas fa-heart text-pink"></i> <span>First Meet</span></div>
+                            <div class="map-item"><i class="fas fa-location-dot text-pink"></i> <span>Special
+                                    Spot</span></div>
+                            <div class="map-item"><i class="fas fa-star text-pink"></i> <span>Sweetest Day</span></div>
+                        </div>
+                    </div>
+
+                    <!-- YouTube Widget Mock -->
+                    <div class="saturn-card youtube-card orbit-element" data-angle="308.4">
+                        <div class="yt-thumbnail-wrapper">
+                            <img src="assets/polaroid_dreamy_birthday.png" alt="YouTube Thumbnail">
+                            <div class="yt-play-btn"><i class="fas fa-play"></i></div>
+                        </div>
+                        <div class="yt-info">
+                            <div class="yt-title">Making breakfast two ways | in my kitchen</div>
+                            <div class="yt-author">Special Vibe Studio 🌸</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="aesthetic-footer">
+            <p>Created with Love & Sparkles for Amara Clarinta Maharani 💖</p>
+            <p class="copyright">&copy; 2026 Special Birthday Gift, from Valdric</p>
+        </footer>
+    </main>
+
+    <!-- GIFT BOX OPENING OVERLAY -->
+    <div class="gift-overlay-container" id="giftOverlay">
+        <div class="gift-box-wrapper" id="giftBoxWrapper">
+            <div class="gift-aura"></div>
+            <!-- Interactive 3D CSS Gift Box -->
+            <div class="gift-box" id="interactiveGiftBox">
+                <div class="gift-lid"></div>
+                <div class="gift-box-body"></div>
+                <div class="gift-box-ribbon-h"></div>
+                <div class="gift-box-ribbon-v"></div>
+                <div class="gift-box-bow"></div>
+            </div>
+            <div class="gift-instruction">Ada kado kejutan manis untukmu! Tap kado di atas untuk membukanya! 🎁✨</div>
+        </div>
+
+        <!-- Bouquet Display Wrapper Containing Bouquet assembly area and butterflies -->
+        <div class="bouquet-display-wrapper" id="bouquetDisplayWrapper">
+            <div class="bouquet-glow-ring"></div>
+
+            <div class="bouquet-assembly-area" id="bouquetAssemblyArea">
+                <!-- 1. Back Wrapping Paper -->
+                <div class="wrapping-paper-back-container" id="wrappingPaperBack">
+                    <svg viewBox="0 0 400 400" class="wrapping-paper-svg">
+                        <path
+                            d="M200,380 L60,180 C40,150 40,80 100,50 C140,30 180,60 200,100 C220,60 260,30 300,50 C360,80 360,150 340,180 Z"
+                            fill="#ffccd5" stroke="#ffb3c1" stroke-width="1.8" />
+                        <path
+                            d="M200,380 L100,140 C80,110 90,70 130,50 C170,30 190,70 200,95 C210,70 230,30 270,50 C310,70 320,110 300,140 Z"
+                            fill="#ffa6b9" stroke="#ffa1b9" stroke-width="1.2" />
+                    </svg>
+                </div>
+
+                <!-- 2. Container for the 50 dynamically generated elegant DOM roses -->
+                <div class="bouquet-roses-container" id="bouquetRosesContainer"></div>
+
+                <!-- 3. Front Wrapping Paper folds & ribbon tied waist -->
+                <div class="wrapping-paper-front-container" id="wrappingPaperFront">
+                    <svg viewBox="0 0 400 400" class="wrapping-paper-svg">
+                        <path
+                            d="M200,380 L110,240 C100,225 115,190 150,195 L200,212 L250,195 C285,190 300,225 290,240 Z"
+                            fill="#ffccd5" stroke="#ffb3c1" stroke-width="1.8" />
+                        <path
+                            d="M200,380 L135,270 C130,260 145,235 170,242 L200,252 L230,242 C255,235 270,260 265,270 Z"
+                            fill="#ffa6b9" stroke="#ffa1b9" stroke-width="1.2" />
+                        <rect x="155" y="278" width="90" height="12" rx="6" fill="#ff4d6d" opacity="0.9" />
+                        <path d="M165,290 C165,300 155,340 140,360 C180,365 220,365 260,360 C245,340 235,300 235,290 Z"
+                            fill="#ffccd5" opacity="0.95" />
+                    </svg>
+                </div>
+            </div>
+
+            <div class="butterfly-container" id="butterflyContainer"></div>
+        </div>
+        <canvas id="bouquetCanvas"></canvas>
+
+        <!-- PREMIUM INTERACTIVE TOTEBAG CLAIM & DELIVERY SERVICE -->
+        <div class="tote-delivery-container" id="toteDeliveryContainer">
+            <!-- Stage A: Totebag Claim Panel -->
+            <div class="tote-claim-panel" id="toteClaimPanel">
+                <div class="tote-sparkle-glow"></div>
+                <div class="vector-tote-bag">
+                    <div class="tote-handle left"></div>
+                    <div class="tote-handle right"></div>
+                    <div class="tote-body">
+                        <div class="tote-heart">💖</div>
+                        <div class="tote-stitch"></div>
+                    </div>
+                </div>
+                <h3 class="tote-claim-title">Kamu Mendapatkan Kado Tambahan! 🎀</h3>
+                <p class="tote-claim-desc">Sebuah Totebag Pink cantik spesial telah disiapkan untukmu. Klik di bawah untuk mengklaim kado ini!</p>
+                <button class="tote-claim-btn" id="btnClaimTote">Claim Tas Ini 🎁</button>
+            </div>
+
+            <!-- Stage B: Courier delivery tracking -->
+            <div class="tote-courier-panel" id="toteCourierPanel">
+                <div class="courier-scene">
+                    <div class="road-line"></div>
+                    <!-- Vector delivery courier on scooter riding happily -->
+                    <div class="courier-scooter" id="courierScooter">
+                        <div class="scooter-body">
+                            <div class="scooter-wheel front"></div>
+                            <div class="scooter-wheel back"></div>
+                            <div class="scooter-cargo">
+                                <div class="cargo-tote-peek">💖</div>
+                            </div>
+                            <div class="scooter-light"></div>
+                            <div class="courier-helmet"></div>
+                        </div>
+                        <div class="exhaust-smoke" id="exhaustSmoke"></div>
+                    </div>
+                </div>
+
+                <div class="delivery-status-card">
+                    <div class="success-checkmark">
+                        <div class="check-icon"></div>
+                    </div>
+                    <h4 class="delivery-title">Pesanan Berhasil Diklaim! 🎉</h4>
+                    <p class="delivery-subtitle">Kurir terpercaya kami sedang bersiap mengantarkan paket spesial ini langsung ke rumahmu! 🛵💨</p>
+                    
+                    <!-- Premium retail ticket style receipt -->
+                    <div class="delivery-ticket">
+                        <div class="ticket-header">BUKTI PENGIRIMAN</div>
+                        <div class="ticket-row">
+                            <span class="label">Penerima:</span>
+                            <span class="val">Amara Clarinta Maharani 🌸</span>
+                        </div>
+                        <div class="ticket-row">
+                            <span class="label">Tujuan:</span>
+                            <span class="val">Rumah Amara 🏡</span>
+                        </div>
+                        <div class="ticket-row">
+                            <span class="label">Nomor Pesanan:</span>
+                            <span class="val order-id-tag" id="orderIdTag">584295515954447740 <i class="far fa-copy copy-icon"></i></span>
+                        </div>
+                        <div class="ticket-row">
+                            <span class="label">Estimasi:</span>
+                            <span class="val text-pink">Kemungkinan datang 04 Juni - 06 Juni 2026 📅</span>
+                        </div>
+                        <div class="ticket-row">
+                            <span class="label">No. Resi:</span>
+                            <span class="val order-id-tag" id="resiTag">JX9547493172 <i class="far fa-copy copy-icon"></i></span>
+                        </div>
+                        <div class="ticket-barcode">
+                            <div class="barcode-line"></div>
+                            <div class="barcode-line wide"></div>
+                            <div class="barcode-line"></div>
+                            <div class="barcode-line thin"></div>
+                            <div class="barcode-line wide"></div>
+                            <div class="barcode-line"></div>
+                            <div class="barcode-line thin"></div>
+                        </div>
+                    </div>
+
+                    <!-- J&T Live Tracking Widget -->
+                    <div class="jnt-tracker-card">
+                        <div class="jnt-header">
+                            <div class="jnt-brand">
+                                <span class="jnt-logo-text">J&T<span class="jnt-express-text">EXPRESS</span></span>
+                                <span class="jnt-badge">Live Tracking</span>
+                            </div>
+                            <div class="jnt-status-bubble">Dalam Perjalanan 🚚</div>
+                        </div>
+                        
+                        <div class="jnt-tracking-details">
+                            <div class="detail-col">
+                                <span class="detail-lbl">No. Resi J&T:</span>
+                                <span class="detail-val">JX9547493172</span>
+                            </div>
+                            <div class="detail-col text-right">
+                                <span class="detail-lbl">Layanan:</span>
+                                <span class="detail-val JNT-service">J&T EZ ⚡</span>
+                            </div>
+                        </div>
+
+                        <!-- Animated Vector GPS Map -->
+                        <div class="jnt-map-viewport">
+                            <div class="map-radar-ping"></div>
+                            <!-- Styled SVG Map Background -->
+                            <svg class="jnt-map-svg" viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
+                                <!-- Abstract Road Grids -->
+                                <path class="map-road-bg" d="M 0,40 L 400,40 M 120,0 L 120,180 M 280,0 L 280,180 M 0,140 L 400,140 M 0,90 C 100,90 150,120 200,90 C 250,60 300,90 400,90" />
+                                
+                                <!-- Active Delivery Winding Path -->
+                                <path id="deliveryGpsPath" class="map-delivery-path" d="M 40,40 L 120,40 L 120,90 C 120,90 150,110 180,95 C 210,80 250,75 280,90 L 280,140 L 340,140" fill="none" />
+                                
+                                <!-- Start/Origin Node -->
+                                <circle cx="40" cy="40" r="6" class="map-node origin" />
+                                <text x="40" y="25" class="map-node-label" text-anchor="middle">J&T Medan Cemara Asri 🏭</text>
+                                
+                                <!-- Destination Node -->
+                                <circle cx="340" cy="140" r="8" class="map-node destination-pulse" />
+                                <text x="340" y="162" class="map-node-label highlight" text-anchor="middle">Rumah Amara 🏡</text>
+                                
+                                <!-- Animated Courier on the path -->
+                                <g id="mapCourierNode" class="map-courier-g">
+                                    <circle r="12" class="map-courier-bg" />
+                                    <!-- Cute delivery courier symbol -->
+                                    <text dy="4" class="map-courier-emoji" text-anchor="middle">🛵</text>
+                                </g>
+                            </svg>
+                            <div class="jnt-map-hud">
+                                <div class="hud-item">
+                                    <span class="hud-lbl">Lokasi Kurir:</span>
+                                    <span class="hud-val pulse-text">Menuju Hub Transit</span>
+                                </div>
+                                <div class="hud-item">
+                                    <span class="hud-lbl">Suhu Paket:</span>
+                                    <span class="hud-val">Aman (24°C) ❄️</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tracking Timeline -->
+                        <div class="jnt-timeline">
+                            <div class="timeline-item active">
+                                <div class="timeline-marker"></div>
+                                <div class="timeline-content">
+                                    <div class="timeline-time">01 Juni 2026 - 19:30</div>
+                                    <div class="timeline-title">Transit di Gateway Hub Medan</div>
+                                    <div class="timeline-desc">Paket telah tiba di pusat sortir J&T Gateway Transit Hub Medan.</div>
+                                </div>
+                            </div>
+                            <div class="timeline-item active">
+                                <div class="timeline-marker"></div>
+                                <div class="timeline-content">
+                                    <div class="timeline-time">01 Juni 2026 - 16:45</div>
+                                    <div class="timeline-title">Dalam Perjalanan ke Gateway</div>
+                                    <div class="timeline-desc">Paket sedang diberangkatkan dari Drop Point origin Medan Cemara Asri menuju Gateway Transit Hub Medan.</div>
+                                </div>
+                            </div>
+                            <div class="timeline-item active">
+                                <div class="timeline-marker"></div>
+                                <div class="timeline-content">
+                                    <div class="timeline-time">01 Juni 2026 - 13:51</div>
+                                    <div class="timeline-title">Paket Diterima J&T Express</div>
+                                    <div class="timeline-desc">Drop Point Medan Cemara Asri - Paket diserahkan oleh pengirim dan telah diproses (ED_Cemara_Asri5).</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="tote-claim-btn" id="btnContinueWish">Lanjutkan Membuat Permohonan ✨</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Polaroid Lightbox / Zoom Modal -->
+    <div class="modal-wish-container" id="polaroidModal">
+        <div class="lightbox-card">
+            <button class="lightbox-close" id="btnLightboxClose">&times;</button>
+            <div class="lightbox-img-container">
+                <img src="" id="lightboxImg" alt="Zoomed Polaroid Photo">
+            </div>
+            <div class="lightbox-caption" id="lightboxCaption"></div>
+        </div>
+    </div>
+
+    <!-- Wish Pop-up / Wish Modal when candles are blown -->
+    <div class="modal-wish-container id-modal" id="wishModal">
+        <div class="modal-wish-card">
+            <button class="lightbox-close" id="btnWishModalClose">&times;</button>
+            <div class="modal-hearts">🎉🌸🎈</div>
+            <h3 class="modal-title">Make a Wish, Amara! 💫</h3>
+            <p class="modal-desc">Semua lilin telah padam! Pejamkan matamu, buatlah permohonan terindah dalam hatimu...
+            </p>
+            <div class="wish-input-wrapper">
+                <textarea id="amaraPersonalWish" placeholder="Tulis permohonanmu di sini (opsional)..."
+                    rows="3"></textarea>
+            </div>
+            <button class="action-btn" id="btnSavePersonalWish">Kirim Permohonan ke Bintang ✨</button>
+        </div>
+    </div>
+
+    <!-- Canvas Confetti Overlay -->
+    <canvas id="confettiCanvas"></canvas>
+
+    <!-- Custom JavaScript File -->
+    <script src="app.js?v=1.1.4"></script>
+</body>
+
+</html>

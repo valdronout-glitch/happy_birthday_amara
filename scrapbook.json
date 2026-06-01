@@ -1,0 +1,47 @@
+[
+    {
+        "id": "default_amara_1",
+        "src": "assets/amara_1.png",
+        "caption": "Gorgeous Amara 🌸",
+        "left": "55.3662px",
+        "top": "7.54731px",
+        "rotate": "-3deg",
+        "zIndex": 59
+    },
+    {
+        "id": "default_amara_2",
+        "src": "assets/amara_2.jpg",
+        "caption": "Sweetest Smile 💕",
+        "left": "270.259px",
+        "top": "17.6247px",
+        "rotate": "4deg",
+        "zIndex": 77
+    },
+    {
+        "id": "default_amara_3",
+        "src": "assets/amara_3.jpg",
+        "caption": "Sparkling Eyes ✨",
+        "left": "474.584px",
+        "top": "21.5905px",
+        "rotate": "-5deg",
+        "zIndex": 76
+    },
+    {
+        "id": "user_1779980884",
+        "src": "uploads/scrapbook_1779980884.jpg",
+        "caption": "kucing",
+        "left": "683.834px",
+        "top": "16.4394px",
+        "rotate": "-3deg",
+        "zIndex": 71
+    },
+    {
+        "id": "user_1780230153",
+        "src": "uploads/scrapbook_1780230153.jpg",
+        "caption": "Cakep Bangettt",
+        "left": "879.79px",
+        "top": "18.5466px",
+        "rotate": "-4deg",
+        "zIndex": 78
+    }
+]
