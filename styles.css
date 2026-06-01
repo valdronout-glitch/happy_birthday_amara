@@ -1534,21 +1534,27 @@ body {
 }
 
 .custom-file-upload {
-    display: inline-block;
-    padding: 10px 18px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 11px 24px;
     cursor: pointer;
-    background: linear-gradient(135deg, var(--rose-pink) 0%, var(--soft-pink) 100%);
+    background: linear-gradient(135deg, var(--primary-pink) 0%, #ff8da1 100%);
     color: white;
     font-weight: 600;
     border-radius: 20px;
-    font-size: 0.9rem;
-    box-shadow: 0 4px 15px rgba(255, 107, 139, 0.2);
+    font-size: 0.95rem;
+    box-shadow: 0 6px 20px rgba(255, 107, 139, 0.3);
     transition: all 0.3s ease;
+    border: none;
+    outline: none;
 }
 
 .custom-file-upload:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(255, 107, 139, 0.3);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(255, 107, 139, 0.45);
+    background: linear-gradient(135deg, var(--primary-hover) 0%, var(--primary-pink) 100%);
 }
 
 .file-name-display {
@@ -1580,7 +1586,7 @@ body {
 }
 
 .upload-text-group input[type="text"]:focus {
-    border-color: var(--rose-pink);
+    border-color: var(--primary-pink);
     background: white;
     box-shadow: 0 0 0 3px rgba(255, 107, 139, 0.15);
 }
