@@ -2852,6 +2852,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const deleteBtn = card.querySelector('.polaroid-delete-btn');
         if (deleteBtn) {
+            // Prevent pointerdown and mousedown from initiating dragging/pointerCapture on the card!
+            deleteBtn.addEventListener('pointerdown', (e) => e.stopPropagation());
+            deleteBtn.addEventListener('mousedown', (e) => e.stopPropagation());
+
             deleteBtn.addEventListener('click', (e) => {
                 e.stopPropagation(); // Prevent modal zoom or card drag triggers
                 

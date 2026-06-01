@@ -30,10 +30,10 @@
         "id": "user_1779980884",
         "src": "uploads/scrapbook_1779980884.jpg",
         "caption": "kucing",
-        "left": "683.834px",
-        "top": "16.4394px",
+        "left": "693.334px",
+        "top": "28.2519px",
         "rotate": "-3deg",
-        "zIndex": 71
+        "zIndex": 82
     },
     {
         "id": "user_1780230153",
@@ -43,5 +43,14 @@
         "top": "18.5466px",
         "rotate": "-4deg",
         "zIndex": 78
+    },
+    {
+        "id": "user_1780305675",
+        "src": "uploads/scrapbook_1780305675.jpg",
+        "caption": "ILY",
+        "left": "222.728px",
+        "top": "272.234px",
+        "rotate": "4deg",
+        "zIndex": 106
     }
 ]
