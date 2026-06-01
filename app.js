@@ -2840,10 +2840,28 @@ document.addEventListener('DOMContentLoaded', () => {
             const caption = card.querySelector('.polaroid-caption');
             const polaroidModal = document.getElementById('polaroidModal');
             const lightboxImg = document.getElementById('lightboxImg');
+            const lightboxVideo = document.getElementById('lightboxVideo');
             const lightboxCaption = document.getElementById('lightboxCaption');
 
             if (img && polaroidModal && lightboxImg && lightboxCaption) {
-                lightboxImg.src = img.src;
+                // If it's a video file or metadata has a video, handle it
+                const videoSrc = card.getAttribute('data-video');
+                if (videoSrc) {
+                    lightboxImg.style.display = 'none';
+                    if (lightboxVideo) {
+                        lightboxVideo.style.display = 'block';
+                        lightboxVideo.src = videoSrc;
+                        lightboxVideo.play();
+                    }
+                } else {
+                    if (lightboxVideo) {
+                        lightboxVideo.style.display = 'none';
+                        lightboxVideo.pause();
+                        lightboxVideo.src = '';
+                    }
+                    lightboxImg.style.display = 'block';
+                    lightboxImg.src = img.src;
+                }
                 lightboxCaption.textContent = caption ? caption.textContent : 'Sweet Memory ✨';
                 polaroidModal.classList.add('show');
                 triggerConfettiBurst(35);
@@ -2923,10 +2941,20 @@ document.addEventListener('DOMContentLoaded', () => {
     // Polaroid Modal setup
     const polaroidModal = document.getElementById('polaroidModal');
     const btnLightboxClose = document.getElementById('btnLightboxClose');
+    const lightboxVideoElement = document.getElementById('lightboxVideo');
+
+    function closePolaroidModal() {
+        if (polaroidModal) polaroidModal.classList.remove('show');
+        if (lightboxVideoElement) {
+            lightboxVideoElement.pause();
+            lightboxVideoElement.src = '';
+        }
+    }
+
     if (polaroidModal && btnLightboxClose) {
-        btnLightboxClose.addEventListener('click', () => { polaroidModal.classList.remove('show'); });
+        btnLightboxClose.addEventListener('click', closePolaroidModal);
         polaroidModal.addEventListener('click', (e) => {
-            if (e.target === polaroidModal) polaroidModal.classList.remove('show');
+            if (e.target === polaroidModal) closePolaroidModal();
         });
     }
 
@@ -5977,6 +6005,62 @@ document.addEventListener('DOMContentLoaded', () => {
 
         saturnArena.addEventListener('pointerup', endDrag);
         saturnArena.addEventListener('pointercancel', endDrag);
+
+        // Handle clicking the YouTube card in the orbit
+        const youtubeCard = document.querySelector('.youtube-card');
+        if (youtubeCard) {
+            let pressX = 0;
+            let pressY = 0;
+            let pressTime = 0;
+
+            youtubeCard.addEventListener('pointerdown', (e) => {
+                pressX = e.clientX;
+                pressY = e.clientY;
+                pressTime = Date.now();
+            });
+
+            youtubeCard.addEventListener('pointerup', (e) => {
+                const deltaX = Math.abs(e.clientX - pressX);
+                const deltaY = Math.abs(e.clientY - pressY);
+                const deltaTime = Date.now() - pressTime;
+
+                // Simple click/tap detection with drag-to-spin tolerance
+                if (deltaX < 6 && deltaY < 6 && deltaTime < 300) {
+                    const videoSrc = youtubeCard.getAttribute('data-video') || "IMG_6546.MOV";
+                    const polaroidModal = document.getElementById('polaroidModal');
+                    const lightboxImg = document.getElementById('lightboxImg');
+                    const lightboxVideo = document.getElementById('lightboxVideo');
+                    const lightboxCaption = document.getElementById('lightboxCaption');
+
+                    if (polaroidModal && lightboxVideo && lightboxImg && lightboxCaption) {
+                        lightboxImg.style.display = 'none';
+                        lightboxVideo.style.display = 'block';
+                        lightboxVideo.src = videoSrc;
+
+                        // Pause background music if it is initialized and playing
+                        if (musicInitialized && !bgAudio.paused) {
+                            bgAudio.pause();
+                            if (btnPlayPause) {
+                                btnPlayPause.innerHTML = '<i class="fas fa-play"></i>';
+                            }
+                        }
+
+                        lightboxCaption.textContent = "Galaksi Cinta Amara 💖";
+                        polaroidModal.classList.add('show');
+                        
+                        // Play the video!
+                        lightboxVideo.play().catch(err => {
+                            console.error("Failed to autoplay video in lightbox:", err);
+                        });
+
+                        // Trigger a sweet confetti burst!
+                        if (typeof triggerConfettiBurst === 'function') {
+                            triggerConfettiBurst(35);
+                        }
+                    }
+                }
+            });
+        }
 
         // Dynamic Space Ornament Generator (Twinkling Stars & Comets)
         const saturnStarsContainer = document.getElementById('saturnStarsContainer');

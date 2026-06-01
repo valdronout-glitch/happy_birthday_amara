@@ -2018,7 +2018,7 @@
                     </div>
 
                     <!-- YouTube Widget Mock -->
-                    <div class="saturn-card youtube-card orbit-element" data-angle="308.4">
+                    <div class="saturn-card youtube-card orbit-element" data-angle="308.4" data-video="IMG_6546.MOV">
                         <div class="yt-thumbnail-wrapper">
                             <img src="assets/polaroid_dreamy_birthday.png" alt="YouTube Thumbnail">
                             <div class="yt-play-btn"><i class="fas fa-play"></i></div>
@@ -2263,7 +2263,8 @@
         <div class="lightbox-card">
             <button class="lightbox-close" id="btnLightboxClose">&times;</button>
             <div class="lightbox-img-container">
-                <img src="" id="lightboxImg" alt="Zoomed Polaroid Photo">
+                <img src="" id="lightboxImg" alt="Zoomed Polaroid Photo" style="display: block; width: 100%; height: 100%; object-fit: cover;">
+                <video id="lightboxVideo" controls style="display: none; width: 100%; height: 100%; object-fit: cover; background: #000;"></video>
             </div>
             <div class="lightbox-caption" id="lightboxCaption"></div>
         </div>
@@ -2289,7 +2290,7 @@
     <canvas id="confettiCanvas"></canvas>
 
     <!-- Custom JavaScript File -->
-    <script src="app.js?v=1.1.9"></script>
+    <script src="app.js?v=1.2.0"></script>
 </body>
 
 </html>
