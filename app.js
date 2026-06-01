@@ -3059,6 +3059,9 @@ document.addEventListener('DOMContentLoaded', () => {
             colorDots.forEach(d => d.classList.remove('active'));
             dot.classList.add('active');
             selectedColor = dot.getAttribute('data-color');
+            // Sync with hidden Netlify Form input
+            const wishColorInput = document.getElementById('wishColor');
+            if (wishColorInput) wishColorInput.value = selectedColor;
         });
     });
 
@@ -3079,24 +3082,27 @@ document.addEventListener('DOMContentLoaded', () => {
             if (sender && message) {
                 const wishPayload = { text: message, sender: sender, color: selectedColor };
 
-                // Save to local database API
+                // 1. Spawn locally so the client (Amara) sees it immediately
+                spawnWishLantern(message, sender, selectedColor);
+                saveWishLocally(wishPayload);
+
+                // 2. Submit to local python database (for localhost development)
                 fetch('/api/wishes', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(wishPayload)
+                }).catch(err => {
+                    console.log("Local python server is offline or static host.");
+                });
+
+                // 3. Submit to Netlify Forms (for Production syncing so Valdric gets it!)
+                fetch("/", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                    body: new URLSearchParams(new FormData(wishForm)).toString()
                 })
-                    .then(res => {
-                        if (res.ok) {
-                            spawnWishLantern(message, sender, selectedColor);
-                        } else {
-                            saveWishLocally(wishPayload);
-                            spawnWishLantern(message, sender, selectedColor);
-                        }
-                    })
-                    .catch(err => {
-                        saveWishLocally(wishPayload);
-                        spawnWishLantern(message, sender, selectedColor);
-                    });
+                .then(() => console.log("Wish successfully synced to Netlify Forms!"))
+                .catch(err => console.error("Netlify Forms submission failed:", err));
 
                 document.getElementById('wishSender').value = '';
                 document.getElementById('wishMessage').value = '';

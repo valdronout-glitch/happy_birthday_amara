@@ -1879,12 +1879,17 @@
                 ke lentera buat membacanya, atau klik aja buat perbesar ya. ✨</p>
 
             <div class="wish-creator-box">
-                <form id="wishForm" class="wish-form">
+                <form id="wishForm" class="wish-form" data-netlify="true" name="wishes">
+                    <!-- Hidden input for Netlify Forms identification -->
+                    <input type="hidden" name="form-name" value="wishes">
+                    <!-- Hidden input for the selected lantern color -->
+                    <input type="hidden" name="color" id="wishColor" value="#ffb6c1">
+
                     <div class="input-group">
-                        <input type="text" id="wishSender" placeholder="Nama Kamu..." required maxlength="25">
+                        <input type="text" id="wishSender" name="sender" placeholder="Nama Kamu..." required maxlength="25">
                     </div>
                     <div class="input-group">
-                        <textarea id="wishMessage" placeholder="Tulis doa atau harapan terbaikmu untuk Amara..."
+                        <textarea id="wishMessage" name="message" placeholder="Tulis doa atau harapan terbaikmu untuk Amara..."
                             required maxlength="150" rows="3"></textarea>
                     </div>
                     <div class="color-picker-wrapper">
