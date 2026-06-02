@@ -3128,9 +3128,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function syncToCloudDB(wishes) {
-        fetch('https://kvdb.io/amaraWish2026G9xKq7/wishes', {
-            method: 'POST',
-            body: JSON.stringify(wishes)
+        fetch('https://api.restful-api.dev/objects/ff8081819d82fab6019e88f0ea732e79', {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                name: "amara_wishes",
+                data: { wishes: wishes }
+            })
         })
         .then(() => console.log("Wishes successfully synced to cloud database!"))
         .catch(err => console.error("Cloud database sync failed:", err));
@@ -3153,20 +3157,16 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log("Local python server is offline or static host.");
         });
 
-        // 3. Save & Sync to public cloud database (kvdb.io)
-        fetch('https://kvdb.io/amaraWish2026G9xKq7/wishes')
+        // 3. Save & Sync to public cloud database (restful-api.dev)
+        fetch('https://api.restful-api.dev/objects/ff8081819d82fab6019e88f0ea732e79')
             .then(res => {
-                if (res.ok) return res.text();
+                if (res.ok) return res.json();
                 throw new Error("Cloud fetch failed");
             })
-            .then(text => {
+            .then(obj => {
                 let cloudWishes = [];
-                if (text && text.trim()) {
-                    try {
-                        cloudWishes = JSON.parse(text);
-                    } catch (e) {
-                        console.error("Failed to parse cloud wishes on update:", e);
-                    }
+                if (obj && obj.data && Array.isArray(obj.data.wishes)) {
+                    cloudWishes = obj.data.wishes;
                 }
                 const exists = cloudWishes.some(w => w.text === wishPayload.text && w.sender === wishPayload.sender);
                 if (!exists) {
@@ -3291,11 +3291,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // 3. Fetch cloud DB wishes
         try {
-            const res = await fetch('https://kvdb.io/amaraWish2026G9xKq7/wishes');
+            const res = await fetch('https://api.restful-api.dev/objects/ff8081819d82fab6019e88f0ea732e79');
             if (res.ok) {
-                const text = await res.text();
-                if (text && text.trim()) {
-                    cloudWishes = JSON.parse(text);
+                const obj = await res.json();
+                if (obj && obj.data && Array.isArray(obj.data.wishes)) {
+                    cloudWishes = obj.data.wishes;
                 }
             }
         } catch (e) {
