@@ -3127,42 +3127,62 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    function syncToCloudDB(wishes) {
+        fetch('https://kvdb.io/amaraWish2026G9xKq7/wishes', {
+            method: 'POST',
+            body: JSON.stringify(wishes)
+        })
+        .then(() => console.log("Wishes successfully synced to cloud database!"))
+        .catch(err => console.error("Cloud database sync failed:", err));
+    }
+
     function saveAndSyncWish(wishPayload) {
         // 1. Save locally
         saveWishLocally(wishPayload);
 
-        // 2. Sync to Puter.js cloud if available
-        if (typeof puter !== 'undefined') {
-            puter.kv.get('amara_wishes')
-                .then(cloudWishesStr => {
-                    let cloudWishes = [];
-                    try {
-                        cloudWishes = cloudWishesStr ? JSON.parse(cloudWishesStr) : [];
-                    } catch (e) {
-                        console.error("Failed to parse cloud wishes on update:", e);
-                    }
-                    
-                    const exists = cloudWishes.some(w => w.text === wishPayload.text && w.sender === wishPayload.sender);
-                    if (!exists) {
-                        cloudWishes.push(wishPayload);
-                        puter.kv.set('amara_wishes', JSON.stringify(cloudWishes))
-                            .then(() => console.log("Wish successfully synced to Puter.js cloud!"))
-                            .catch(err => console.error("Puter.js save failed:", err));
-                    }
-                })
-                .catch(err => {
-                    console.error("Puter.js get failed during wish save:", err);
-                });
-        }
-
-        // 3. Submit to local python database (for localhost development)
+        // 2. Submit to local python database (for localhost development)
         fetch('/api/wishes', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(wishPayload)
-        }).catch(err => {
+        })
+        .then(res => {
+            if (res.ok) console.log("Wish successfully saved to local python server!");
+        })
+        .catch(err => {
             console.log("Local python server is offline or static host.");
         });
+
+        // 3. Save & Sync to public cloud database (kvdb.io)
+        fetch('https://kvdb.io/amaraWish2026G9xKq7/wishes')
+            .then(res => {
+                if (res.ok) return res.text();
+                throw new Error("Cloud fetch failed");
+            })
+            .then(text => {
+                let cloudWishes = [];
+                if (text && text.trim()) {
+                    try {
+                        cloudWishes = JSON.parse(text);
+                    } catch (e) {
+                        console.error("Failed to parse cloud wishes on update:", e);
+                    }
+                }
+                const exists = cloudWishes.some(w => w.text === wishPayload.text && w.sender === wishPayload.sender);
+                if (!exists) {
+                    cloudWishes.push(wishPayload);
+                    syncToCloudDB(cloudWishes);
+                }
+            })
+            .catch(err => {
+                console.warn("Cloud DB fetch failed during save, initializing with local list:", err);
+                const localWishes = JSON.parse(localStorage.getItem('amara_wishes') || '[]');
+                const exists = localWishes.some(w => w.text === wishPayload.text && w.sender === wishPayload.sender);
+                if (!exists) {
+                    localWishes.push(wishPayload);
+                }
+                syncToCloudDB(localWishes);
+            });
     }
 
     if (wishForm) {
@@ -3176,7 +3196,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // 1. Spawn locally so the client (Amara) sees it immediately
                 spawnWishLantern(message, sender, selectedColor);
                 
-                // 2. Save & Sync to local storage, Puter.js cloud, and python server
+                // 2. Save & Sync to local storage, Cloud database, and python server
                 saveAndSyncWish(wishPayload);
 
                 // 3. Submit to Netlify Forms (for Production syncing so Valdric gets it!)
@@ -3247,49 +3267,66 @@ document.addEventListener('DOMContentLoaded', () => {
         }, remainingTime * 1000);
     }
 
-    // Load persistent lanterns from cloud (Puter.js) and database APIs on launch
-    const localWishesData = JSON.parse(localStorage.getItem('amara_wishes') || '[]');
-    
-    function mergeAndSpawnWishes(cloudWishes, staticWishes) {
+    async function loadWishes() {
+        const localWishesData = JSON.parse(localStorage.getItem('amara_wishes') || '[]');
+        let staticWishes = [];
+        let localApiWishes = [];
+        let cloudWishes = [];
+
+        // 1. Fetch static wishes.json
+        try {
+            const res = await fetch('wishes.json');
+            if (res.ok) staticWishes = await res.json();
+        } catch (e) {
+            console.warn("Failed to load static wishes.json:", e);
+        }
+
+        // 2. Fetch local python API wishes
+        try {
+            const res = await fetch('/api/wishes');
+            if (res.ok) localApiWishes = await res.json();
+        } catch (e) {
+            console.log("Local python server is offline or static host.");
+        }
+
+        // 3. Fetch cloud DB wishes
+        try {
+            const res = await fetch('https://kvdb.io/amaraWish2026G9xKq7/wishes');
+            if (res.ok) {
+                const text = await res.text();
+                if (text && text.trim()) {
+                    cloudWishes = JSON.parse(text);
+                }
+            }
+        } catch (e) {
+            console.warn("Failed to load wishes from cloud database:", e);
+        }
+
+        // 4. Merge all wishes uniquely by sender + text
         const mergedMap = new Map();
         
-        // Add static wishes first
-        staticWishes.forEach(w => {
+        const allWishes = [
+            ...staticWishes,
+            ...localApiWishes,
+            ...cloudWishes,
+            ...localWishesData
+        ];
+
+        allWishes.forEach(w => {
             if (w && w.text && w.sender) {
-                const key = `${w.text}-${w.sender}`;
+                const key = `${w.text.trim()}-${w.sender.trim()}`;
                 mergedMap.set(key, w);
             }
         });
-        
-        // Add cloud wishes
-        cloudWishes.forEach(w => {
-            if (w && w.text && w.sender) {
-                const key = `${w.text}-${w.sender}`;
-                mergedMap.set(key, w);
-            }
-        });
-        
-        // Add local wishes
-        localWishesData.forEach(w => {
-            if (w && w.text && w.sender) {
-                const key = `${w.text}-${w.sender}`;
-                mergedMap.set(key, w);
-            }
-        });
-        
+
         const mergedList = Array.from(mergedMap.values());
-        
-        // Sync merged list back to Puter cloud storage so all users get them!
-        if (typeof puter !== 'undefined') {
-            puter.kv.set('amara_wishes', JSON.stringify(mergedList))
-                .then(() => console.log("Merged wishes synced to Puter.js cloud!"))
-                .catch(err => console.error("Failed to sync merged wishes to Puter:", err));
-        }
-        
-        // Save Amara's personal wishes to her local localStorage as secondary backup
-        const amaraWishesOnly = mergedList.filter(w => w.sender && w.sender.includes("Amara"));
-        if (amaraWishesOnly.length > 0) {
-            localStorage.setItem('amara_wishes', JSON.stringify(amaraWishesOnly));
+
+        // Save merged list locally to localStorage
+        localStorage.setItem('amara_wishes', JSON.stringify(mergedList));
+
+        // Sync back to cloud DB if we have more wishes locally or succeeded loading to ensure all users get the merged list
+        if (cloudWishes.length > 0 || mergedList.length > staticWishes.length) {
+            syncToCloudDB(mergedList);
         }
 
         // Spawn all lanterns
@@ -3299,73 +3336,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 spawnWishLantern(w.text, w.sender, w.color, negativeDelay);
             });
         }
-    }
-
-    function loadWishes() {
-        if (typeof puter !== 'undefined') {
-            console.log("Puter.js cloud is available - fetching wishes.");
-            puter.kv.get('amara_wishes')
-                .then(cloudWishesStr => {
-                    let cloudWishes = [];
-                    try {
-                        cloudWishes = cloudWishesStr ? JSON.parse(cloudWishesStr) : [];
-                    } catch (e) {
-                        console.error("Failed to parse cloud wishes:", e);
-                    }
-                    
-                    fetch('wishes.json')
-                        .then(res => res.json())
-                        .then(staticWishes => {
-                            mergeAndSpawnWishes(cloudWishes, staticWishes);
-                        })
-                        .catch(err => {
-                            console.warn("Failed to load wishes.json, merging cloud + local.");
-                            mergeAndSpawnWishes(cloudWishes, []);
-                        });
-                })
-                .catch(err => {
-                    console.error("Puter.js get failed, falling back to static wishes + local storage:", err);
-                    loadWishesFallback();
-                });
-        } else {
-            console.log("Puter.js not available - falling back to static wishes + local storage.");
-            loadWishesFallback();
-        }
-    }
-
-    function loadWishesFallback() {
-        // First try local python server API (in case we are in localhost development with server.py running)
-        fetch('/api/wishes')
-            .then(res => {
-                if (!res.ok) throw new Error("API failed");
-                return res.json();
-            })
-            .then(wishes => {
-                fetch('wishes.json')
-                    .then(res2 => res2.json())
-                    .then(staticWishes => {
-                        mergeAndSpawnWishes(wishes, staticWishes);
-                    })
-                    .catch(() => {
-                        mergeAndSpawnWishes(wishes, []);
-                    });
-            })
-            .catch(() => {
-                fetch('wishes.json')
-                    .then(res => res.json())
-                    .then(staticWishes => {
-                        mergeAndSpawnWishes([], staticWishes);
-                    })
-                    .catch(err => {
-                        console.error("All fallback wish loads failed, using local storage wishes.");
-                        if (localWishesData && localWishesData.length > 0) {
-                            localWishesData.forEach(w => {
-                                const negativeDelay = -Math.random() * 20;
-                                spawnWishLantern(w.text, w.sender, w.color, negativeDelay);
-                            });
-                        }
-                    });
-            });
     }
 
     // Trigger loading wishes at startup
