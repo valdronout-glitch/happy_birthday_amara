@@ -6489,6 +6489,509 @@ document.addEventListener('DOMContentLoaded', () => {
         updateJntTrackingWidget();
         // Periodically refresh tracking every 30 seconds
         setInterval(updateJntTrackingWidget, 30000);
+
+        // ==========================================================================
+        // 12. LOVESPACE SOCIAL MEDIA & REAL-TIME CHAT SYSTEM
+        // ==========================================================================
+        const lsLoginOverlay = document.getElementById('loveSpaceLoginOverlay');
+        const lsLoginForm = document.getElementById('loveSpaceLoginForm');
+        const lsUsernameInput = document.getElementById('lsUsername');
+        const lsPasswordInput = document.getElementById('lsPassword');
+        const lsWorkspace = document.getElementById('loveSpaceWorkspace');
+        
+        // Profiles views
+        const lsProfileCardView = document.getElementById('lsProfileCardView');
+        const lsProfileCardEdit = document.getElementById('lsProfileCardEdit');
+        const lsProfileAvatarImg = document.getElementById('lsProfileAvatarImg');
+        const lsProfileDisplayName = document.getElementById('lsProfileDisplayName');
+        const lsProfileUsername = document.getElementById('lsProfileUsername');
+        const lsProfileBio = document.getElementById('lsProfileBio');
+        const lsProfileMood = document.getElementById('lsProfileMood');
+        
+        // Profiles Edit inputs
+        const lsProfileEditForm = document.getElementById('lsProfileEditForm');
+        const lsEditDisplayName = document.getElementById('lsEditDisplayName');
+        const lsEditBio = document.getElementById('lsEditBio');
+        const lsEditMood = document.getElementById('lsEditMood');
+        const lsEditAvatarFile = document.getElementById('lsEditAvatarFile');
+        const lsEditFileName = document.getElementById('lsEditFileName');
+        
+        // Buttons
+        const btnEditProfile = document.getElementById('btnEditProfile');
+        const btnCancelEditProfile = document.getElementById('btnCancelEditProfile');
+        const btnDeleteStatus = document.getElementById('btnDeleteStatus');
+        const btnLogoutLoveSpace = document.getElementById('btnLogoutLoveSpace');
+        
+        // Chat elements
+        const lsChatPartnerAvatar = document.getElementById('lsChatPartnerAvatar');
+        const lsChatPartnerName = document.getElementById('lsChatPartnerName');
+        const lsChatPartnerStatus = document.getElementById('lsChatPartnerStatus');
+        const lsChatMessages = document.getElementById('lsChatMessages');
+        const lsChatSendForm = document.getElementById('lsChatSendForm');
+        const lsChatInput = document.getElementById('lsChatInput');
+        const lsChatImgFile = document.getElementById('lsChatImgFile');
+        const lsChatImgPreviewCard = document.getElementById('lsChatImgPreviewCard');
+        const lsChatImgPreview = document.getElementById('lsChatImgPreview');
+        const btnRemoveChatImgPreview = document.getElementById('btnRemoveChatImgPreview');
+
+        // State variables
+        let lsCurrentUser = null; // 'valdric' or 'amara'
+        let lsPartnerUser = null; // 'amara' or 'valdric'
+        let lsProfileData = {};   // { valdric: {...}, amara: {...} }
+        let lsChatMessagesData = []; // list of message objects
+        let lsChatPollInterval = null;
+        let lsActiveAvatarBase64 = "";
+        let lsActiveChatImgBase64 = "";
+
+        const CHAT_DB_URL = "https://api.restful-api.dev/objects/ff8081819d82fab6019e8908a3712e97";
+        const PROFILE_DB_URL = "https://api.restful-api.dev/objects/ff8081819d82fab6019e8908dd052e98";
+
+        // Predefined logins
+        const LS_USERS = {
+            valdric: "valdric123",
+            amara: "amara123"
+        };
+
+        // Predefined Avatars
+        const DEFAULT_AVATARS = {
+            valdric: "assets/amara_2.jpg",
+            amara: "assets/amara_1.png"
+        };
+
+        // File compression helper
+        function resizeImageBase64(file, maxDim, callback) {
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = function (event) {
+                const img = new Image();
+                img.src = event.target.result;
+                img.onload = function () {
+                    const canvas = document.createElement('canvas');
+                    let width = img.width;
+                    let height = img.height;
+
+                    if (width > height) {
+                        if (width > maxDim) {
+                            height *= maxDim / width;
+                            width = maxDim;
+                        }
+                    } else {
+                        if (height > maxDim) {
+                            width *= maxDim / height;
+                            height = maxDim;
+                        }
+                    }
+
+                    canvas.width = width;
+                    canvas.height = height;
+                    const ctx = canvas.getContext('2d');
+                    ctx.drawImage(img, 0, 0, width, height);
+                    const dataUrl = canvas.toDataURL('image/jpeg', 0.7);
+                    callback(dataUrl);
+                };
+            };
+        }
+
+        // Login Handler
+        if (lsLoginForm) {
+            lsLoginForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const username = lsUsernameInput.value.trim().toLowerCase();
+                const password = lsPasswordInput.value.trim();
+
+                if (LS_USERS[username] && LS_USERS[username] === password) {
+                    lsCurrentUser = username;
+                    lsPartnerUser = username === 'valdric' ? 'amara' : 'valdric';
+                    
+                    // Welcome feedback
+                    triggerConfettiBurst(40);
+                    
+                    // Fade effect
+                    lsLoginOverlay.style.opacity = '0';
+                    setTimeout(() => {
+                        lsLoginOverlay.style.display = 'none';
+                        lsWorkspace.style.display = 'flex';
+                        lsWorkspace.style.opacity = '0';
+                        setTimeout(() => {
+                            lsWorkspace.style.opacity = '1';
+                            lsWorkspace.style.transition = 'opacity 0.5s ease';
+                        }, 50);
+                    }, 400);
+
+                    // Initialize LoveSpace Workspace
+                    initLoveSpaceSession();
+                } else {
+                    alert("Akun tidak terdaftar atau password salah! Coba lagi ya, Kak. 🔐💕");
+                }
+            });
+        }
+
+        function initLoveSpaceSession() {
+            // Fetch initial profiles and messages
+            fetchProfiles(true);
+            fetchChatMessages(true);
+
+            // Set polling interval for real-time updates (every 3 seconds)
+            if (lsChatPollInterval) clearInterval(lsChatPollInterval);
+            lsChatPollInterval = setInterval(() => {
+                fetchProfiles(false);
+                fetchChatMessages(false);
+            }, 3000);
+        }
+
+        // Fetch User Profiles (CRUD - Read)
+        function fetchProfiles(isFirstLoad) {
+            fetch(PROFILE_DB_URL)
+                .then(res => {
+                    if (res.ok) return res.ok ? res.json() : null;
+                    throw new Error("Failed to load profiles");
+                })
+                .then(obj => {
+                    if (obj && obj.data && obj.data.profiles) {
+                        lsProfileData = obj.data.profiles;
+                        renderUserProfile();
+                        renderPartnerHeader();
+                    }
+                })
+                .catch(err => {
+                    console.error("Profiles fetch failed, using fallback:", err);
+                    if (isFirstLoad) {
+                        lsProfileData = {
+                            valdric: { displayName: "Valdric 💖", bio: "Mencintaimu adalah hal terbaik yang pernah ada.", mood: "Kangen Amara...", avatar: "" },
+                            amara: { displayName: "Amara Clarinta 🌸", bio: "Sweet 21st, looking forward to magical days!", mood: "Happy Birthday!", avatar: "" }
+                        };
+                        renderUserProfile();
+                        renderPartnerHeader();
+                    }
+                });
+        }
+
+        // Render Current User Profile (CRUD - Read)
+        function renderUserProfile() {
+            const profile = lsProfileData[lsCurrentUser];
+            if (!profile) return;
+
+            lsProfileDisplayName.textContent = profile.displayName || (lsCurrentUser === 'valdric' ? "Valdric 💖" : "Amara Clarinta 🌸");
+            lsProfileUsername.textContent = `@${lsCurrentUser}`;
+            lsProfileBio.textContent = profile.bio || "Tuliskan bio cinta manismu di sini...";
+            
+            if (profile.mood) {
+                lsProfileMood.textContent = profile.mood;
+                document.getElementById('lsProfileMoodContainer').style.display = 'flex';
+            } else {
+                document.getElementById('lsProfileMoodContainer').style.display = 'none';
+            }
+
+            // Set Avatar image
+            if (profile.avatar) {
+                lsProfileAvatarImg.src = profile.avatar;
+            } else {
+                lsProfileAvatarImg.src = DEFAULT_AVATARS[lsCurrentUser];
+            }
+        }
+
+        // Render Partner Header
+        function renderPartnerHeader() {
+            const partner = lsProfileData[lsPartnerUser];
+            if (!partner) return;
+
+            lsChatPartnerName.textContent = partner.displayName || (lsPartnerUser === 'valdric' ? "Valdric 💖" : "Amara Clarinta 🌸");
+            
+            if (partner.mood) {
+                lsChatPartnerStatus.textContent = partner.mood;
+            } else {
+                lsChatPartnerStatus.textContent = "Online dan memikirkanmu... 💕";
+            }
+
+            if (partner.avatar) {
+                lsChatPartnerAvatar.src = partner.avatar;
+            } else {
+                lsChatPartnerAvatar.src = DEFAULT_AVATARS[lsPartnerUser];
+            }
+        }
+
+        // Fetch Chat Messages (Read)
+        let lastMessageCount = 0;
+        function fetchChatMessages(forceScroll) {
+            fetch(CHAT_DB_URL)
+                .then(res => {
+                    if (res.ok) return res.json();
+                    throw new Error("Chat fetch failed");
+                })
+                .then(obj => {
+                    if (obj && obj.data && Array.isArray(obj.data.messages)) {
+                        lsChatMessagesData = obj.data.messages;
+                        renderChatMessages(forceScroll);
+                    }
+                })
+                .catch(err => console.error("Chat polling failed:", err));
+        }
+
+        // Render Chat speech bubbles
+        function renderChatMessages(forceScroll) {
+            if (!lsChatMessages) return;
+            
+            const isAtBottom = lsChatMessages.scrollHeight - lsChatMessages.scrollTop <= lsChatMessages.clientHeight + 100;
+            
+            lsChatMessages.innerHTML = '';
+            
+            lsChatMessagesData.forEach(msg => {
+                const isOwn = msg.sender.toLowerCase() === lsCurrentUser;
+                const senderKey = isOwn ? lsCurrentUser : lsPartnerUser;
+                const senderProfile = lsProfileData[senderKey] || {};
+                
+                const bubbleWrapper = document.createElement('div');
+                bubbleWrapper.className = `lovespace-chat-bubble-wrapper ${isOwn ? 'own' : ''}`;
+
+                // Avatar
+                const avatar = document.createElement('img');
+                avatar.className = 'lovespace-chat-msg-avatar';
+                avatar.src = senderProfile.avatar || DEFAULT_AVATARS[senderKey] || 'assets/amara_1.png';
+                bubbleWrapper.appendChild(avatar);
+
+                // Bubble Card
+                const bubble = document.createElement('div');
+                bubble.className = 'lovespace-chat-bubble';
+
+                // Image attachment
+                if (msg.image) {
+                    const img = document.createElement('img');
+                    img.src = msg.image;
+                    img.className = 'lovespace-chat-image-attachment';
+                    img.addEventListener('click', () => {
+                        // Zoom via Polaroid Lightbox modal
+                        const polaroidModal = document.getElementById('polaroidModal');
+                        const lightboxImg = document.getElementById('lightboxImg');
+                        const lightboxCaption = document.getElementById('lightboxCaption');
+                        const lightboxVideo = document.getElementById('lightboxVideo');
+
+                        if (polaroidModal && lightboxImg && lightboxCaption) {
+                            if (lightboxVideo) lightboxVideo.style.display = 'none';
+                            lightboxImg.style.display = 'block';
+                            lightboxImg.src = msg.image;
+                            lightboxCaption.textContent = `Foto manis dari ${senderProfile.displayName || senderKey} ✨`;
+                            polaroidModal.classList.add('show');
+                            triggerConfettiBurst(25);
+                        }
+                    });
+                    bubble.appendChild(img);
+                }
+
+                // Text
+                if (msg.text) {
+                    const textNode = document.createElement('span');
+                    textNode.textContent = msg.text;
+                    bubble.appendChild(textNode);
+                }
+
+                // Time
+                const timeSpan = document.createElement('span');
+                timeSpan.className = 'lovespace-chat-time';
+                const dateObj = new Date(msg.time);
+                timeSpan.textContent = dateObj.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                bubble.appendChild(timeSpan);
+
+                bubbleWrapper.appendChild(bubble);
+                lsChatMessages.appendChild(bubbleWrapper);
+            });
+
+            // Scroll down
+            if (forceScroll || (isAtBottom && lsChatMessagesData.length !== lastMessageCount)) {
+                lsChatMessages.scrollTop = lsChatMessages.scrollHeight;
+            }
+
+            lastMessageCount = lsChatMessagesData.length;
+        }
+
+        // Edit Profile Form Toggle (CRUD - Update Form)
+        if (btnEditProfile) {
+            btnEditProfile.addEventListener('click', () => {
+                const profile = lsProfileData[lsCurrentUser] || {};
+                
+                lsEditDisplayName.value = profile.displayName || "";
+                lsEditBio.value = profile.bio || "";
+                lsEditMood.value = profile.mood || "";
+                lsEditFileName.textContent = "Menggunakan foto profil lama";
+                lsActiveAvatarBase64 = profile.avatar || "";
+
+                lsProfileCardView.style.display = 'none';
+                lsProfileCardEdit.style.display = 'block';
+            });
+        }
+
+        if (btnCancelEditProfile) {
+            btnCancelEditProfile.addEventListener('click', () => {
+                lsProfileCardEdit.style.display = 'none';
+                lsProfileCardView.style.display = 'block';
+            });
+        }
+
+        // Avatar change handler (FileReader)
+        if (lsEditAvatarFile) {
+            lsEditAvatarFile.addEventListener('change', () => {
+                const file = lsEditAvatarFile.files[0];
+                if (file) {
+                    lsEditFileName.textContent = file.name;
+                    // Resize to 120px max dimension to keep avatar very compact
+                    resizeImageBase64(file, 120, (base64) => {
+                        lsActiveAvatarBase64 = base64;
+                    });
+                }
+            });
+        }
+
+        // Save Profile Perubahan (CRUD - Update Save)
+        if (lsProfileEditForm) {
+            lsProfileEditForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const displayName = lsEditDisplayName.value.trim();
+                const bio = lsEditBio.value.trim();
+                const mood = lsEditMood.value.trim();
+
+                lsProfileData[lsCurrentUser] = {
+                    displayName: displayName,
+                    bio: bio,
+                    mood: mood,
+                    avatar: lsActiveAvatarBase64
+                };
+
+                // Sync profile data to restful-api.dev cloud
+                fetch(PROFILE_DB_URL, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        name: "amara_user_profiles",
+                        data: { profiles: lsProfileData }
+                    })
+                })
+                .then(res => {
+                    if (res.ok) {
+                        console.log("Profile successfully updated in cloud!");
+                        triggerConfettiBurst(20);
+                        
+                        renderUserProfile();
+                        renderPartnerHeader();
+
+                        lsProfileCardEdit.style.display = 'none';
+                        lsProfileCardView.style.display = 'block';
+                    } else {
+                        throw new Error("Update failed");
+                    }
+                })
+                .catch(err => {
+                    alert("Gagal memperbarui profil di cloud. Coba lagi ya! 😢");
+                });
+            });
+        }
+
+        // Hapus Status / Mood (CRUD - Delete)
+        if (btnDeleteStatus) {
+            btnDeleteStatus.addEventListener('click', () => {
+                const profile = lsProfileData[lsCurrentUser];
+                if (profile) {
+                    profile.mood = "";
+                    profile.bio = "Mencintaimu selalu. 💕";
+                    
+                    fetch(PROFILE_DB_URL, {
+                        method: 'PUT',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            name: "amara_user_profiles",
+                            data: { profiles: lsProfileData }
+                        })
+                    })
+                    .then(res => {
+                        if (res.ok) {
+                            console.log("Status deleted from cloud successfully!");
+                            renderUserProfile();
+                        }
+                    })
+                    .catch(err => console.error("Failed to delete status:", err));
+                }
+            });
+        }
+
+        // Send Chat Messages (Create)
+        if (lsChatSendForm) {
+            lsChatSendForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const text = lsChatInput.value.trim();
+                
+                if (text || lsActiveChatImgBase64) {
+                    const newMsg = {
+                        id: `msg_${Date.now()}_${Math.random().toString(36).substr(2, 5)}`,
+                        sender: lsCurrentUser,
+                        text: text,
+                        image: lsActiveChatImgBase64,
+                        time: new Date().toISOString()
+                    };
+
+                    // Add locally for high speed responsiveness
+                    lsChatMessagesData.push(newMsg);
+                    renderChatMessages(true);
+
+                    // Sync to Cloud
+                    fetch(CHAT_DB_URL, {
+                        method: 'PUT',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            name: "amara_chat_messages",
+                            data: { messages: lsChatMessagesData }
+                        })
+                    })
+                    .then(res => {
+                        if (res.ok) {
+                            console.log("Message successfully synced to cloud!");
+                        }
+                    })
+                    .catch(err => console.error("Cloud chat sync failed:", err));
+
+                    // Reset inputs
+                    lsChatInput.value = '';
+                    lsActiveChatImgBase64 = '';
+                    if (lsChatImgPreviewCard) lsChatImgPreviewCard.style.display = 'none';
+                    if (lsChatImgFile) lsChatImgFile.value = '';
+                    triggerConfettiBurst(10);
+                }
+            });
+        }
+
+        // Handle Image Attachment upload in chat
+        if (lsChatImgFile) {
+            lsChatImgFile.addEventListener('change', () => {
+                const file = lsChatImgFile.files[0];
+                if (file) {
+                    // Compress to max 350px width/height for fast transmission
+                    resizeImageBase64(file, 350, (base64) => {
+                        lsActiveChatImgBase64 = base64;
+                        lsChatImgPreview.src = base64;
+                        lsChatImgPreviewCard.style.display = 'flex';
+                    });
+                }
+            });
+        }
+
+        if (btnRemoveChatImgPreview) {
+            btnRemoveChatImgPreview.addEventListener('click', () => {
+                lsActiveChatImgBase64 = '';
+                lsChatImgPreviewCard.style.display = 'none';
+                lsChatImgFile.value = '';
+            });
+        }
+
+        // Logout
+        if (btnLogoutLoveSpace) {
+            btnLogoutLoveSpace.addEventListener('click', () => {
+                if (lsChatPollInterval) clearInterval(lsChatPollInterval);
+                lsCurrentUser = null;
+                lsPartnerUser = null;
+                lsWorkspace.style.display = 'none';
+                lsLoginOverlay.style.display = 'flex';
+                lsLoginOverlay.style.opacity = '1';
+                lsUsernameInput.value = '';
+                lsPasswordInput.value = '';
+            });
+        }
     }
 });
 

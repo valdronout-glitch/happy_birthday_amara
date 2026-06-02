@@ -1916,6 +1916,139 @@
             </div>
         </section>
 
+        <!-- 5B. AESTHETIC LOVESPACE SOCIAL MEDIA & REAL-TIME CHAT -->
+        <section class="section-container lovespace-section" id="loveSpaceSection">
+            <h2 class="section-title"><i class="fas fa-comments pink-icon"></i> LoveSpace Social Media & Chat 💖🌸</h2>
+            <p class="section-desc">Ruang media sosial pribadi rahasia Valdric & Amara. Bagikan obrolan manis dan gambar-gambar penuh kenangan yang tersinkronisasi secara real-time di mana saja! ✨</p>
+
+            <div class="lovespace-card-glass">
+                <!-- A. LOGIN OVERLAY SCREEN -->
+                <div class="lovespace-login-overlay" id="loveSpaceLoginOverlay">
+                    <div class="lovespace-login-card">
+                        <h3><i class="fas fa-lock-open pink-icon"></i> Masuk LoveSpace</h3>
+                        <p>Akses khusus ruang obrolan rahasia Valdric & Amara 🔐</p>
+                        <form id="loveSpaceLoginForm">
+                            <div class="lovespace-input-group">
+                                <label for="lsUsername">Nama Akun (Username):</label>
+                                <i class="fas fa-user"></i>
+                                <input type="text" id="lsUsername" class="lovespace-input" placeholder="Masukkan username..." required autocomplete="username">
+                            </div>
+                            <div class="lovespace-input-group">
+                                <label for="lsPassword">Kata Sandi (Password):</label>
+                                <i class="fas fa-key"></i>
+                                <input type="password" id="lsPassword" class="lovespace-input" placeholder="Masukkan password..." required autocomplete="current-password">
+                            </div>
+                            <button type="submit" class="action-btn lovespace-btn"><i class="fas fa-heart"></i> Buka Pintu Cinta ✨</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- B. WORKSPACE (Revealed after successful login) -->
+                <div class="lovespace-workspace" id="loveSpaceWorkspace" style="display: none;">
+                    <!-- LEFT COLUMN: USER PROFILE CARD (CRUD) -->
+                    <div class="lovespace-profile-panel">
+                        <!-- VIEW PROFILE STATE -->
+                        <div class="lovespace-profile-card" id="lsProfileCardView">
+                            <div class="lovespace-avatar-container">
+                                <img src="assets/amara_1.png" alt="Avatar" class="lovespace-avatar" id="lsProfileAvatarImg">
+                            </div>
+                            <h4 id="lsProfileDisplayName">Amara Clarinta</h4>
+                            <span class="lovespace-username-badge" id="lsProfileUsername">@amara</span>
+                            
+                            <p class="lovespace-profile-bio" id="lsProfileBio">"Tuliskan bio cinta manismu di sini..."</p>
+                            
+                            <div class="lovespace-profile-mood" id="lsProfileMoodContainer">
+                                <i class="fas fa-smile pink-icon"></i>
+                                <span id="lsProfileMood">Sedang bahagia! 🎉</span>
+                            </div>
+
+                            <div class="lovespace-love-stat">
+                                <div class="lovespace-love-label">
+                                    <span>Tingkat Cinta Kita</span>
+                                    <span>999.9% 💖</span>
+                                </div>
+                                <div class="lovespace-love-progress">
+                                    <div class="lovespace-love-bar"></div>
+                                </div>
+                            </div>
+
+                            <div class="lovespace-profile-actions">
+                                <button class="lovespace-btn-secondary" id="btnEditProfile"><i class="fas fa-edit"></i> Ubah Profil</button>
+                                <button class="lovespace-btn-danger" id="btnDeleteStatus"><i class="fas fa-trash-alt"></i> Hapus Status / Mood</button>
+                                <button class="action-btn" id="btnLogoutLoveSpace" style="padding: 10px; font-size: 12px; margin-top: 10px; background: #6b7280; color: white;"><i class="fas fa-sign-out-alt"></i> Ganti Akun</button>
+                            </div>
+                        </div>
+
+                        <!-- EDIT PROFILE STATE (CRUD FORM) -->
+                        <div class="lovespace-profile-card" id="lsProfileCardEdit" style="display: none;">
+                            <h4 style="margin-bottom: 20px;"><i class="fas fa-user-edit pink-icon"></i> Ubah Profil Anda</h4>
+                            <form id="lsProfileEditForm">
+                                <div class="lovespace-edit-form">
+                                    <label for="lsEditDisplayName">Nama Tampilan:</label>
+                                    <input type="text" id="lsEditDisplayName" class="lovespace-edit-input" placeholder="Display Name..." required maxlength="25">
+                                    
+                                    <label for="lsEditBio">Bio Cinta:</label>
+                                    <input type="text" id="lsEditBio" class="lovespace-edit-input" placeholder="Bio..." required maxlength="80">
+                                    
+                                    <label for="lsEditMood">Status / Suasana Hati (Mood):</label>
+                                    <input type="text" id="lsEditMood" class="lovespace-edit-input" placeholder="Mood..." required maxlength="30">
+                                    
+                                    <label>Foto Profil Baru:</label>
+                                    <label for="lsEditAvatarFile" class="lovespace-file-upload">
+                                        <i class="fas fa-camera"></i> Ganti Foto Profil
+                                    </label>
+                                    <input type="file" id="lsEditAvatarFile" accept="image/*" style="display: none;">
+                                    <span id="lsEditFileName" style="font-size: 11px; color: var(--light-text); display: block; text-align: center; margin-top: -10px; margin-bottom: 15px;">Belum ada foto terpilih</span>
+                                </div>
+                                <div class="lovespace-profile-actions">
+                                    <button type="submit" class="action-btn" style="padding: 11px;"><i class="fas fa-save"></i> Simpan Perubahan</button>
+                                    <button type="button" class="lovespace-btn-secondary" id="btnCancelEditProfile">Batal</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- RIGHT COLUMN: REAL-TIME PRIVATE CHAT ROOM -->
+                    <div class="lovespace-chat-panel">
+                        <!-- Chat Header -->
+                        <div class="lovespace-chat-header">
+                            <img src="assets/amara_2.jpg" alt="Partner Avatar" class="lovespace-chat-partner-avatar" id="lsChatPartnerAvatar">
+                            <div class="lovespace-chat-header-info">
+                                <h5 id="lsChatPartnerName">Valdric</h5>
+                                <div class="lovespace-chat-header-status" id="lsChatPartnerStatus">Terhubung</div>
+                            </div>
+                        </div>
+
+                        <!-- Chat Messages Area -->
+                        <div class="lovespace-chat-messages" id="lsChatMessages">
+                            <!-- Messages will be loaded programmatically -->
+                        </div>
+
+                        <!-- Chat Input Area -->
+                        <div class="lovespace-chat-footer">
+                            <label for="lsChatImgFile" class="lovespace-attach-btn">
+                                <i class="fas fa-image"></i>
+                            </label>
+                            <input type="file" id="lsChatImgFile" accept="image/*" style="display: none;">
+                            
+                            <form id="lsChatSendForm" style="flex: 1; display: flex; gap: 12px; align-items: center;">
+                                <div class="lovespace-chat-input-wrapper">
+                                    <input type="text" id="lsChatInput" class="lovespace-chat-input" placeholder="Tulis pesan manis untuknya di sini..." required maxlength="200" autocomplete="off">
+                                    
+                                    <!-- Image Preview overlay inside input -->
+                                    <div class="lovespace-input-preview-card" id="lsChatImgPreviewCard" style="display: none;">
+                                        <img src="" alt="Preview" class="lovespace-input-preview-img" id="lsChatImgPreview">
+                                        <button type="button" class="lovespace-input-preview-remove" id="btnRemoveChatImgPreview"><i class="fas fa-times"></i></button>
+                                    </div>
+                                </div>
+                                <button type="submit" class="lovespace-send-btn"><i class="fas fa-paper-plane"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- 6. INTERACTIVE SATURN HEART ORBIT -->
         <section class="section-container saturn-section" id="saturnSection">
             <div class="saturn-aurora-bg">

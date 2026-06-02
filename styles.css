@@ -5250,3 +5250,659 @@ body.dark-mode {
 .lightbox-card.portrait-video-mode .lightbox-img-container {
     aspect-ratio: 9 / 16 !important;
 }
+
+/* ==========================================================================
+   LOVE SPACE SOCIAL MEDIA & REAL-TIME CHAT STYLES
+   ========================================================================== */
+.lovespace-section {
+    position: relative;
+    overflow: hidden;
+}
+
+.lovespace-card-glass {
+    background: rgba(255, 255, 255, 0.45);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    padding: 30px;
+    box-shadow: 0 20px 45px rgba(255, 107, 139, 0.15);
+    margin-bottom: 40px;
+    transition: all 0.4s ease;
+}
+
+.lovespace-login-overlay {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.lovespace-login-card {
+    max-width: 400px;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    padding: 35px;
+    box-shadow: 0 15px 35px rgba(255, 107, 139, 0.1);
+    transform: translateY(0);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.lovespace-login-card h3 {
+    font-family: var(--font-heading);
+    font-size: 26px;
+    color: var(--primary-pink);
+    margin-bottom: 10px;
+}
+
+.lovespace-login-card p {
+    font-size: 13px;
+    color: var(--light-text);
+    margin-bottom: 25px;
+}
+
+.lovespace-input-group {
+    position: relative;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.lovespace-input-group label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--light-text);
+    margin-left: 4px;
+    margin-bottom: 6px;
+    display: block;
+}
+
+.lovespace-input-group i {
+    position: absolute;
+    bottom: 14px;
+    left: 16px;
+    color: var(--soft-pink);
+    font-size: 16px;
+}
+
+.lovespace-input {
+    width: 100%;
+    padding: 12px 16px 12px 42px;
+    border: 1.5px solid var(--glass-border);
+    border-radius: 12px;
+    font-family: var(--font-body);
+    font-size: 14px;
+    outline: none;
+    background: var(--cream);
+    color: var(--dark-text);
+    transition: all 0.25s;
+}
+
+.lovespace-input:focus {
+    border-color: var(--primary-pink);
+    box-shadow: 0 0 0 3px rgba(255, 107, 139, 0.15);
+}
+
+.lovespace-btn {
+    width: 100%;
+    padding: 14px;
+    font-weight: 700;
+    margin-top: 10px;
+    letter-spacing: 0.5px;
+}
+
+.lovespace-workspace {
+    display: flex;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+@media (max-width: 900px) {
+    .lovespace-workspace {
+        flex-direction: column;
+    }
+}
+
+/* PROFILE PANEL (LEFT) */
+.lovespace-profile-panel {
+    flex: 1;
+    max-width: 320px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+@media (max-width: 900px) {
+    .lovespace-profile-panel {
+        max-width: 100%;
+    }
+}
+
+.lovespace-profile-card {
+    background: rgba(255, 255, 255, 0.65);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(255, 107, 139, 0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+.lovespace-avatar-container {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    margin: 0 auto 15px auto;
+    border: 3.5px solid var(--primary-pink);
+    overflow: hidden;
+    background-color: var(--background-pink);
+    box-shadow: 0 5px 15px rgba(255, 107, 139, 0.2);
+    position: relative;
+}
+
+.lovespace-avatar {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.lovespace-profile-card h4 {
+    font-family: var(--font-heading);
+    font-size: 20px;
+    color: var(--primary-pink);
+    margin-bottom: 5px;
+}
+
+.lovespace-username-badge {
+    font-size: 11px;
+    font-weight: 700;
+    color: white;
+    background: linear-gradient(135deg, var(--primary-pink), var(--gold));
+    padding: 2px 10px;
+    border-radius: 20px;
+    display: inline-block;
+    margin-bottom: 15px;
+    box-shadow: 0 3px 8px rgba(255, 107, 139, 0.15);
+}
+
+.lovespace-profile-bio {
+    font-size: 13px;
+    font-style: italic;
+    color: var(--dark-text);
+    line-height: 1.5;
+    margin-bottom: 15px;
+    background: rgba(255, 255, 255, 0.45);
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid var(--glass-border);
+}
+
+.lovespace-profile-mood {
+    font-size: 12px;
+    font-weight: 600;
+    color: #4b5563;
+    background: var(--cream);
+    padding: 8px 12px;
+    border-radius: 8px;
+    border-left: 3px solid var(--primary-pink);
+    text-align: left;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.lovespace-love-stat {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.lovespace-love-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--light-text);
+    margin-bottom: 6px;
+}
+
+.lovespace-love-progress {
+    width: 100%;
+    height: 8px;
+    background: rgba(255, 107, 139, 0.15);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.lovespace-love-bar {
+    height: 100%;
+    background: linear-gradient(to right, var(--soft-pink), var(--primary-pink));
+    border-radius: 10px;
+    width: 90%;
+    animation: barPulse 2.5s infinite alternate;
+}
+
+@keyframes barPulse {
+    0% { filter: brightness(1); }
+    100% { filter: brightness(1.15); }
+}
+
+.lovespace-profile-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.lovespace-btn-secondary {
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid var(--soft-pink);
+    color: var(--primary-pink);
+    border-radius: 12px;
+    padding: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s;
+}
+
+.lovespace-btn-secondary:hover {
+    background: var(--primary-pink);
+    color: white;
+    border-color: var(--primary-pink);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(255, 107, 139, 0.2);
+}
+
+.lovespace-btn-danger {
+    background: transparent;
+    border: 1px dashed #ef4444;
+    color: #ef4444;
+    border-radius: 12px;
+    padding: 8px;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s;
+}
+
+.lovespace-btn-danger:hover {
+    background: #ef4444;
+    color: white;
+    transform: translateY(-1px);
+    box-shadow: 0 3px 8px rgba(239, 68, 68, 0.2);
+}
+
+/* EDIT PROFILE FORM */
+.lovespace-edit-form {
+    text-align: left;
+}
+
+.lovespace-edit-form label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--light-text);
+    margin-bottom: 4px;
+    display: block;
+}
+
+.lovespace-edit-input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--glass-border);
+    border-radius: 8px;
+    font-size: 13px;
+    outline: none;
+    background: var(--cream);
+    color: var(--dark-text);
+    margin-bottom: 12px;
+    transition: all 0.2s;
+}
+
+.lovespace-edit-input:focus {
+    border-color: var(--primary-pink);
+}
+
+.lovespace-file-upload {
+    display: inline-block;
+    padding: 6px 12px;
+    background: white;
+    border: 1px solid var(--soft-pink);
+    border-radius: 8px;
+    color: var(--primary-pink);
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-bottom: 15px;
+    text-align: center;
+    width: 100%;
+    transition: all 0.2s;
+}
+
+.lovespace-file-upload:hover {
+    background: var(--background-pink);
+}
+
+/* CHAT ROOM PANEL (RIGHT) */
+.lovespace-chat-panel {
+    flex: 2.2;
+    display: flex;
+    flex-direction: column;
+    background: rgba(255, 255, 255, 0.65);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    height: 520px;
+    box-shadow: 0 10px 25px rgba(255, 107, 139, 0.05);
+    overflow: hidden;
+}
+
+.lovespace-chat-header {
+    background: rgba(255, 255, 255, 0.85);
+    border-bottom: 1px solid var(--glass-border);
+    padding: 15px 25px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.lovespace-chat-partner-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 2px solid var(--soft-pink);
+    object-fit: cover;
+}
+
+.lovespace-chat-header-info {
+    flex: 1;
+}
+
+.lovespace-chat-header-info h5 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--dark-text);
+    margin-bottom: 2px;
+}
+
+.lovespace-chat-header-status {
+    font-size: 11px;
+    color: #10b981;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.lovespace-chat-header-status::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #10b981;
+    display: inline-block;
+    animation: blinkGlow 1.5s infinite alternate;
+}
+
+@keyframes blinkGlow {
+    0% { opacity: 0.4; }
+    100% { opacity: 1; }
+}
+
+.lovespace-chat-messages {
+    flex: 1;
+    padding: 20px 25px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.lovespace-chat-bubble-wrapper {
+    display: flex;
+    gap: 10px;
+    max-width: 75%;
+    align-items: flex-end;
+}
+
+.lovespace-chat-bubble-wrapper.own {
+    align-self: flex-end;
+    flex-direction: row-reverse;
+}
+
+.lovespace-chat-msg-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid var(--soft-pink);
+    flex-shrink: 0;
+}
+
+.lovespace-chat-bubble {
+    background: white;
+    border: 1.5px solid var(--glass-border);
+    border-radius: 16px 16px 16px 4px;
+    padding: 10px 14px;
+    font-size: 13.5px;
+    line-height: 1.5;
+    color: var(--dark-text);
+    box-shadow: 0 3px 8px rgba(0,0,0,0.02);
+    position: relative;
+}
+
+.lovespace-chat-bubble-wrapper.own .lovespace-chat-bubble {
+    background: linear-gradient(135deg, #fff0f3, #ffd6e0);
+    border-color: var(--soft-pink);
+    border-radius: 16px 16px 4px 16px;
+    color: #4e0d19;
+}
+
+.lovespace-chat-time {
+    font-size: 9px;
+    color: var(--light-text);
+    margin-top: 4px;
+    display: block;
+    text-align: right;
+}
+
+.lovespace-chat-image-attachment {
+    max-width: 100%;
+    max-height: 160px;
+    border-radius: 10px;
+    object-fit: cover;
+    margin-bottom: 5px;
+    cursor: zoom-in;
+    border: 1px solid rgba(0,0,0,0.05);
+    transition: transform 0.25s;
+    display: block;
+}
+
+.lovespace-chat-image-attachment:hover {
+    transform: scale(1.02);
+}
+
+/* CHAT INPUT AREA */
+.lovespace-chat-footer {
+    background: rgba(255, 255, 255, 0.85);
+    border-top: 1px solid var(--glass-border);
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.lovespace-attach-btn {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 1px solid var(--soft-pink);
+    background: white;
+    color: var(--primary-pink);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.2s;
+    flex-shrink: 0;
+}
+
+.lovespace-attach-btn:hover {
+    background: var(--background-pink);
+    transform: scale(1.05);
+}
+
+.lovespace-chat-input-wrapper {
+    flex: 1;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.lovespace-chat-input {
+    width: 100%;
+    padding: 12px 18px;
+    border: 1.5px solid var(--glass-border);
+    border-radius: 24px;
+    font-family: var(--font-body);
+    font-size: 13.5px;
+    outline: none;
+    background: var(--cream);
+    color: var(--dark-text);
+    transition: all 0.2s;
+}
+
+.lovespace-chat-input:focus {
+    border-color: var(--primary-pink);
+    background: white;
+}
+
+/* IMAGE PREVIEW IN INPUT */
+.lovespace-input-preview-card {
+    position: absolute;
+    bottom: 50px;
+    left: 10px;
+    background: white;
+    border: 1.5px solid var(--soft-pink);
+    border-radius: 12px;
+    padding: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 8px 20px rgba(255, 107, 139, 0.15);
+    z-index: 10;
+    animation: fadeInUp 0.2s ease;
+}
+
+.lovespace-input-preview-img {
+    width: 36px;
+    height: 36px;
+    border-radius: 6px;
+    object-fit: cover;
+}
+
+.lovespace-input-preview-remove {
+    background: #ef4444;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    cursor: pointer;
+}
+
+.lovespace-send-btn {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: none;
+    background: linear-gradient(135deg, var(--soft-pink), var(--primary-pink));
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.2s;
+    box-shadow: 0 4px 10px rgba(255, 107, 139, 0.25);
+    flex-shrink: 0;
+}
+
+.lovespace-send-btn:hover {
+    transform: scale(1.08) rotate(-10deg);
+    box-shadow: 0 6px 15px rgba(255, 107, 139, 0.35);
+}
+
+.lovespace-send-btn:active {
+    transform: scale(0.95);
+}
+
+.dark-mode .lovespace-card-glass {
+    background: rgba(15, 23, 42, 0.65) !important;
+    border-color: rgba(255,255,255,0.08) !important;
+}
+
+.dark-mode .lovespace-login-card {
+    background: rgba(30, 41, 59, 0.8) !important;
+    border-color: rgba(255,255,255,0.08) !important;
+}
+
+.dark-mode .lovespace-profile-card,
+.dark-mode .lovespace-chat-panel,
+.dark-mode .lovespace-chat-header,
+.dark-mode .lovespace-chat-footer {
+    background: rgba(30, 41, 59, 0.7) !important;
+    border-color: rgba(255,255,255,0.08) !important;
+}
+
+.dark-mode .lovespace-chat-bubble {
+    background: #1e293b !important;
+    color: #e2e8f0 !important;
+    border-color: rgba(255,255,255,0.08) !important;
+}
+
+.dark-mode .lovespace-chat-bubble-wrapper.own .lovespace-chat-bubble {
+    background: linear-gradient(135deg, #371426, #4c1d35) !important;
+    color: #ffd1dc !important;
+    border-color: var(--soft-pink) !important;
+}
+
+.dark-mode .lovespace-input,
+.dark-mode .lovespace-edit-input,
+.dark-mode .lovespace-chat-input {
+    background: #0f172a !important;
+    color: #f1f5f9 !important;
+    border-color: rgba(255,255,255,0.1) !important;
+}
+
+.dark-mode .lovespace-profile-bio {
+    background: rgba(15, 23, 42, 0.4) !important;
+    border-color: rgba(255,255,255,0.05) !important;
+    color: #cbd5e1 !important;
+}
+
+.dark-mode .lovespace-profile-mood {
+    background: #0f172a !important;
+    color: #94a3b8 !important;
+    border-color: var(--primary-pink) !important;
+}
+
+.dark-mode .lovespace-btn-secondary {
+    background: rgba(30, 41, 59, 0.9) !important;
+    border-color: rgba(255,255,255,0.1) !important;
+    color: var(--primary-pink) !important;
+}
+
+.dark-mode .lovespace-attach-btn {
+    background: #1e293b !important;
+    border-color: rgba(255,255,255,0.1) !important;
+}
