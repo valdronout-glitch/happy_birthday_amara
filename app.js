@@ -2845,7 +2845,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         const savePosition = () => {
-            fetch('/api/scrapbook/position', {
+            fetch('api/scrapbook_position', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -2960,7 +2960,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Load scrapbook entries on startup
     const localScrapbookData = JSON.parse(localStorage.getItem('amara_scrapbook') || '[]');
-    fetch('/api/scrapbook')
+    fetch('api/scrapbook')
         .then(res => {
             if (!res.ok) throw new Error("API failed");
             return res.json();
@@ -3054,7 +3054,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             resizeAndCompressImage(file, function (base64Image) {
                 // Try API first
-                fetch('/api/scrapbook', {
+                fetch('api/scrapbook', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
@@ -3127,62 +3127,22 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    function syncToCloudDB(wishes) {
-        fetch('https://api.restful-api.dev/objects/ff8081819d82fab6019e986c2bd44449', {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                name: "amara_wishes",
-                data: { wishes: wishes }
-            })
-        })
-        .then(() => console.log("Wishes successfully synced to cloud database!"))
-        .catch(err => console.error("Cloud database sync failed:", err));
-    }
-
     function saveAndSyncWish(wishPayload) {
         // 1. Save locally
         saveWishLocally(wishPayload);
 
-        // 2. Submit to local python database (for localhost development)
-        fetch('/api/wishes', {
+        // 2. Submit to local PHP database
+        fetch('api/wishes', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(wishPayload)
         })
         .then(res => {
-            if (res.ok) console.log("Wish successfully saved to local python server!");
+            if (res.ok) console.log("Wish successfully saved to database!");
         })
         .catch(err => {
-            console.log("Local python server is offline or static host.");
+            console.error("Failed to save wish to database:", err);
         });
-
-        // 3. Save & Sync to public cloud database (restful-api.dev)
-        fetch('https://api.restful-api.dev/objects/ff8081819d82fab6019e986c2bd44449')
-            .then(res => {
-                if (res.ok) return res.json();
-                throw new Error("Cloud fetch failed");
-            })
-            .then(obj => {
-                let cloudWishes = [];
-                if (obj && obj.data && Array.isArray(obj.data.wishes)) {
-                    cloudWishes = obj.data.wishes;
-                }
-                const exists = cloudWishes.some(w => w.text === wishPayload.text && w.sender === wishPayload.sender);
-                if (!exists) {
-                    cloudWishes.push(wishPayload);
-                    syncToCloudDB(cloudWishes);
-                }
-            })
-            .catch(err => {
-                console.warn("Cloud DB fetch failed during save, initializing with local list:", err);
-                const localWishes = JSON.parse(localStorage.getItem('amara_wishes') || '[]');
-                const exists = localWishes.some(w => w.text === wishPayload.text && w.sender === wishPayload.sender);
-                if (!exists) {
-                    localWishes.push(wishPayload);
-                }
-                syncToCloudDB(localWishes);
-            });
     }
 
     if (wishForm) {
@@ -3269,46 +3229,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function loadWishes() {
         const localWishesData = JSON.parse(localStorage.getItem('amara_wishes') || '[]');
-        let staticWishes = [];
-        let localApiWishes = [];
-        let cloudWishes = [];
+        let dbWishes = [];
 
-        // 1. Fetch static wishes.json
+        // Fetch wishes from local PHP API
         try {
-            const res = await fetch('wishes.json');
-            if (res.ok) staticWishes = await res.json();
-        } catch (e) {
-            console.warn("Failed to load static wishes.json:", e);
-        }
-
-        // 2. Fetch local python API wishes
-        try {
-            const res = await fetch('/api/wishes');
-            if (res.ok) localApiWishes = await res.json();
-        } catch (e) {
-            console.log("Local python server is offline or static host.");
-        }
-
-        // 3. Fetch cloud DB wishes
-        try {
-            const res = await fetch('https://api.restful-api.dev/objects/ff8081819d82fab6019e986c2bd44449');
+            const res = await fetch('api/wishes');
             if (res.ok) {
-                const obj = await res.json();
-                if (obj && obj.data && Array.isArray(obj.data.wishes)) {
-                    cloudWishes = obj.data.wishes;
-                }
+                dbWishes = await res.json();
             }
         } catch (e) {
-            console.warn("Failed to load wishes from cloud database:", e);
+            console.warn("Failed to load wishes from database:", e);
         }
 
-        // 4. Merge all wishes uniquely by sender + text
+        // Merge DB wishes and local storage wishes uniquely by sender + text
         const mergedMap = new Map();
         
         const allWishes = [
-            ...staticWishes,
-            ...localApiWishes,
-            ...cloudWishes,
+            ...dbWishes,
             ...localWishesData
         ];
 
@@ -3323,11 +3260,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Save merged list locally to localStorage
         localStorage.setItem('amara_wishes', JSON.stringify(mergedList));
-
-        // Sync back to cloud DB if we have more wishes locally or succeeded loading to ensure all users get the merged list
-        if (cloudWishes.length > 0 || mergedList.length > staticWishes.length) {
-            syncToCloudDB(mergedList);
-        }
 
         // Spawn all lanterns
         if (mergedList.length > 0) {
@@ -6543,8 +6475,8 @@ document.addEventListener('DOMContentLoaded', () => {
         let lsActiveAvatarBase64 = "";
         let lsActiveChatImgBase64 = "";
 
-        const CHAT_DB_URL = "https://api.restful-api.dev/objects/ff8081819d82fab6019e8908a3712e97";
-        const PROFILE_DB_URL = "https://api.restful-api.dev/objects/ff8081819d82fab6019e8908dd052e98";
+        const CHAT_DB_URL = "api/chat";
+        const PROFILE_DB_URL = "api/profile";
 
         // Predefined logins
         const LS_USERS = {

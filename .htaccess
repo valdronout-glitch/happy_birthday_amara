@@ -1,0 +1,12 @@
+Options -Indexes
+RewriteEngine On
+RewriteBase /beautifulday/
+
+# Route API calls without .php extension to the corresponding PHP file (for local Apache/XAMPP)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^api/wishes$               api/wishes.php [L,QSA]
+RewriteRule ^api/scrapbook$            api/scrapbook.php [L,QSA]
+RewriteRule ^api/scrapbook_position$   api/scrapbook_position.php [L,QSA]
+RewriteRule ^api/chat$                 api/chat.php [L,QSA]
+RewriteRule ^api/profile$              api/profile.php [L,QSA]

@@ -1,0 +1,8 @@
+# Vercel should not deploy PHP files (they'd be served as raw text source code)
+api/*.php
+server.py
+
+# Large video files
+0601.mp4
+IMG_6537.MOV
+IMG_6546.MOV
