@@ -13,5 +13,15 @@
         "text": "akusayangkamu",
         "sender": "V",
         "color": "#ffb6c1"
+    },
+    {
+        "text": "Happy birthday, hope you have a great year!",
+        "sender": "Tester",
+        "color": "#ffb6c1"
+    },
+    {
+        "text": "Semoga Amara panjang umur dan sehat selalu!",
+        "sender": "TestVerifier",
+        "color": "#ffb6c1"
     }
 ]

@@ -3128,7 +3128,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function syncToCloudDB(wishes) {
-        fetch('https://api.restful-api.dev/objects/ff8081819d82fab6019e88f0ea732e79', {
+        fetch('https://api.restful-api.dev/objects/ff8081819d82fab6019e986c2bd44449', {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -3158,7 +3158,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         // 3. Save & Sync to public cloud database (restful-api.dev)
-        fetch('https://api.restful-api.dev/objects/ff8081819d82fab6019e88f0ea732e79')
+        fetch('https://api.restful-api.dev/objects/ff8081819d82fab6019e986c2bd44449')
             .then(res => {
                 if (res.ok) return res.json();
                 throw new Error("Cloud fetch failed");
@@ -3291,7 +3291,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // 3. Fetch cloud DB wishes
         try {
-            const res = await fetch('https://api.restful-api.dev/objects/ff8081819d82fab6019e88f0ea732e79');
+            const res = await fetch('https://api.restful-api.dev/objects/ff8081819d82fab6019e986c2bd44449');
             if (res.ok) {
                 const obj = await res.json();
                 if (obj && obj.data && Array.isArray(obj.data.wishes)) {

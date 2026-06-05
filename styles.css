@@ -5906,3 +5906,22 @@ body.dark-mode {
     background: #1e293b !important;
     border-color: rgba(255,255,255,0.1) !important;
 }
+
+/* Lovespace Chat Read Receipts Checkmarks Ticks */
+.lovespace-ticks {
+    font-size: 11px;
+    color: #9ca3af; /* Gray ticks */
+    margin-left: 5px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.lovespace-ticks.read {
+    color: #3b82f6 !important; /* Blue ticks */
+    animation: tickPop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes tickPop {
+    0% { transform: scale(0.6); }
+    100% { transform: scale(1); }
+}
