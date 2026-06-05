@@ -1,12 +1,15 @@
 const { sql } = require('@vercel/postgres');
 
 const DEFAULT_WISHES = [
+    // --- Wishes dari Valdric ---
     { text: "I love you clar...", sender: "Valdric", color: "#ffb6c1" },
     { text: "I Love You SOMUCCHHHHHH", sender: "Valdric", color: "#ffb6c1" },
     { text: "akusayangkamu", sender: "V", color: "#ffb6c1" },
+    // --- Wishes dari pengunjung ---
     { text: "Happy birthday, hope you have a great year!", sender: "Tester", color: "#ffb6c1" },
     { text: "Semoga Amara panjang umur dan sehat selalu!", sender: "TestVerifier", color: "#ffb6c1" }
 ];
+
 
 module.exports = async function handler(req, res) {
     res.setHeader('Access-Control-Allow-Origin', '*');
